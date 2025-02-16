@@ -52,17 +52,18 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+  };
 
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+  services.xserver = {
+    enable = true;
+    displayManager.gdm.enable = true;
+    # desktopManager.gnome.enable = true;
+    xkb = {
+      layout = "us";
+      variant = "";
+    };
   };
 
   # Enable CUPS to print documents.
@@ -95,10 +96,6 @@
     xwayland.enable = true;
   };
 
-  hardware = {
-    opengl.enable = true;
-  };
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -111,6 +108,9 @@
     git
     kanata
     kitty
+    waybar
+    dunst
+    rofi-wayland
   #  wget
   ];
 
