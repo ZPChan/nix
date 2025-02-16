@@ -91,16 +91,6 @@
   # Install firefox.
   programs.firefox.enable = true;
 
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
-
-  xdg.portal = {
-    enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  };
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -114,11 +104,6 @@
     kanata
     kitty
     ghostty
-    waybar
-    mako
-    libnotify
-    hyprpaper
-    rofi-wayland
   #  wget
   ];
 
