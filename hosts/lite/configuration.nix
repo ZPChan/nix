@@ -96,6 +96,11 @@
     xwayland.enable = true;
   };
 
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -108,8 +113,11 @@
     git
     kanata
     kitty
+    ghostty
     waybar
-    dunst
+    mako
+    libnotify
+    hyprpaper
     rofi-wayland
   #  wget
   ];
