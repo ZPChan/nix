@@ -15,16 +15,6 @@
   # release notes.
   home.stateVersion = "24.11"; # Please read the comment before changing.
 
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
-
-  xdg.portal = {
-    enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  };
-
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
@@ -44,12 +34,6 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-    waybar
-    mako
-    libnotify
-    hyprpaper
-    rofi-wayland
-
     inputs.zen-browser.packages."${system}".default
   ];
 
