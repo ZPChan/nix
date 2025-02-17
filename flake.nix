@@ -24,7 +24,5 @@
 	  inputs.home-manager.nixosModules.default
 	];
       };
-
-      homeManagerModules.default = ./modules/user;
     };
 }
