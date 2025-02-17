@@ -8,6 +8,9 @@
       wl-clipboard
       kanata
     ];
+    fonts.packages = [
+      nerd-fonts.fira-code
+    ];
     services.kanata = {
       enable = true;
       keyboards.main.config = ''
