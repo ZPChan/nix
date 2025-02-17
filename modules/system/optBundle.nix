@@ -15,7 +15,7 @@
 
   user.enable = lib.mkDefault true;
   printing.enable = lib.mkDefault true;
-  sound.enable = lib.mkDefault true;
+  zzsound.enable = lib.mkDefault true;
   xserver.enable = lib.mkDefault true;
   firefox.enable = lib.mkDefault true;
   nvim.enable = lib.mkDefault true;
