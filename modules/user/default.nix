@@ -1,7 +1,8 @@
 { pkgs, lib, config, ... }: {
   imports = [
-    ./hyprland.nix
     ./git.nix
+    ./hyprland.nix
+    ./waybar.nix
   ];
 
   git.enable = lib.mkDefault true;

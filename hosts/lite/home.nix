@@ -6,6 +6,7 @@
   ];
 
   hyprland.enable = true;
+  waybar.enable = true;
 
   home.username = "zach";
   home.homeDirectory = "/home/zach";
