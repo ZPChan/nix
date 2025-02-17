@@ -8,7 +8,7 @@
       wl-clipboard
       kanata
     ];
-    fonts.packages = [
+    fonts.packages = with pkgs; [
       nerd-fonts.fira-code
     ];
     services.kanata = {
