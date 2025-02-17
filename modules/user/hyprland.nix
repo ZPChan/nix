@@ -3,6 +3,9 @@
     hyprland.enable = lib.mkEnableOption "enables hyprland module";
   };
   config = lib.mkIf config.hyprland.enable {
+    imports = [
+      ./waybar.nix
+    ];
     wayland.windowManager.hyprland = {
       enable = true;
 
