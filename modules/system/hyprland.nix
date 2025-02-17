@@ -25,5 +25,11 @@
       hyprpaper
       wofi
     ];
+
+    fonts.packages = with pkgs; [
+      (nerdfonts.override { fonts = [ "FiraCode" ]; })
+      fira-code
+      font-awesome
+    ];
   };
 }
