@@ -110,8 +110,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     neovim
-    wl-copy
-    wl-paste
+    wl-clipboard
     git
     kanata
     kitty
