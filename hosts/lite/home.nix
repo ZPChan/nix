@@ -1,4 +1,4 @@
-{ config, pkgs, system, inputs, ... }:
+{ config, pkgs, system, inputs, lib, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -18,11 +18,11 @@
   wayland.windowManager.hyprland = {
     enable = true;
 
-    plugins = [
-    ];
+    # plugins = [
+    # ];
 
-    settings = {
-    };
+    # settings = {
+    # };
   };
 
   # The home.packages option allows you to install Nix packages into your
