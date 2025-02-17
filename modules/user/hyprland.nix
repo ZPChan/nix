@@ -11,7 +11,7 @@
 
         "$terminal" = "ghostty";
         "$fileManager" = "dolphin";
-        "$menu" = "rofi-wayland";
+        "$menu" = "wofi --show drun";
 
         exec-once = "waybar & firefox";
 

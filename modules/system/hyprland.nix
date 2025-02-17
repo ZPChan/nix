@@ -23,7 +23,7 @@
       mako
       libnotify
       hyprpaper
-      rofi-wayland
+      wofi
     ];
   };
 }
