@@ -18,9 +18,13 @@
 
   hyprland.enable = true;
 
-  home-manager = {
+  home-manager."zach" = {
+    extraSpecialArgs = { inherit inputs; };
     users = {
-      "zach" = import ./home.nix;
+      modules = [
+        ./home.nix
+	inputs.self.outputs.homeManagerModules.default
+      ];
     };
   };
 

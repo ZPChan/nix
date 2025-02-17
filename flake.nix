@@ -25,6 +25,6 @@
 	];
       };
 
-      homeManagerModules.default = ./homeManagerModules;
+      homeManagerModules.default = ./modules/user;
     };
 }
