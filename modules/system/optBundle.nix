@@ -8,6 +8,7 @@
     ./touchpad.nix
     ./firefox.nix
     ./nvim.nix
+    ./lazyvim.nix
     ./git.nix
     ./ssh.nix
     ./suid.nix
