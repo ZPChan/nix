@@ -7,7 +7,6 @@
       neovim
       wl-clipboard
       kanata
-      gcc
     ];
     fonts.packages = with pkgs; [
       nerd-fonts.fira-code
