@@ -17,7 +17,6 @@
   networking.networkmanager.enable = true;
 
   hyprland.enable = true;
-  lazyvim.enable = true;
 
   home-manager = {
     users = {
