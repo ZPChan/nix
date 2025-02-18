@@ -15,6 +15,7 @@
         stylua
         ripgrep
         gcc
+        fzf
       ];
 
       plugins = with pkgs.vimPlugins; [
