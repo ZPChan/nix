@@ -13,10 +13,12 @@
       plugins = with pkgs.vimPlugins; [
         LazyVim
       ];
+    };
 
-      # extraLuaConfig = ''
-      #   ${builtins.readFile ./dotfiles/nvim/init.lua}
-      # '';
+    home.file = {
+      ".config/nvim" = {
+        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/modules/user/dotfiles/nvim";
+      };
     };
   };
 }
