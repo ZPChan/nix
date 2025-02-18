@@ -127,5 +127,5 @@
         };
       in
       "${parsers}/parser";
-  }
+  };
 }
