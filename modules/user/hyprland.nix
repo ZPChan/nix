@@ -263,6 +263,16 @@
         wallpaper = ", ~/.config/backgrounds/shaded.png";
       };
     };
+
+    programs.ghostty = {
+      enable = true;
+      settings = {
+        theme = "catppuccin-mocha";
+        font-family = "CaskaydiaCove Nerd Font";
+        font-size = 16;
+        gtk-titlebar = false;
+      };
+    };
   };
 }
 
