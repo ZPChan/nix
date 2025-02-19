@@ -248,7 +248,7 @@
           on-timeout = "loginctl lock-session";
         };
       };
-    }
+    };
   };
 }
 
