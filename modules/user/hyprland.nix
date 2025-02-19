@@ -282,6 +282,14 @@
         background-opacity = 0.9;
       };
     };
+
+    gtk = {
+      enable = true;
+      theme = {
+        name = "Catppuccin Gtk Theme";
+        package = pkgs.magnetic-catppuccin-gtk;
+      };
+    };
   };
 }
 

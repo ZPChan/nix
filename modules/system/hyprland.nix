@@ -27,8 +27,6 @@
       hyprshot
       hyprlock
       hypridle
-      nwg-look
-      catppuccin-gtk
     ];
 
     fonts.packages = with pkgs; [
