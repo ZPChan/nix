@@ -2,8 +2,8 @@
   imports = [
     ./git.nix
     ./hyprland.nix
-    ./waybar.nix
     ./nvim.nix
+    ./starship.nix
   ];
 
   git.enable = lib.mkDefault true;

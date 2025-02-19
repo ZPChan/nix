@@ -6,7 +6,7 @@
   ];
 
   hyprland.enable = true;
-  waybar.enable = true;
+  starship.enable = true;
 
   home.username = "zach";
   home.homeDirectory = "/home/zach";
