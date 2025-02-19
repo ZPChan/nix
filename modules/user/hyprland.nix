@@ -14,7 +14,7 @@
       };
     };
 
-    wayland.windowManager.hyprland.enable = true;
+    # wayland.windowManager.hyprland.enable = true;
 
     programs.waybar.enable = true;
     home.file = {
@@ -54,7 +54,6 @@
         background-opacity = 0.9;
       };
     };
-
   };
 }
 
