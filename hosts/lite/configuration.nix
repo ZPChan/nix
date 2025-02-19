@@ -7,6 +7,7 @@
       ./../../modules/system/stdBundle.nix
       ./../../modules/system/optBundle.nix
       inputs.home-manager.nixosModules.default
+      inputs.catppuccin.nixosModules.catppuccin
     ];
   
   # Bootloader.
@@ -19,10 +20,11 @@
   zsh.enable = true;
   hyprland.enable = true;
 
-  home-manager = {
-    users = {
-      "zach" = import ./home.nix;
-    };
+  home-manager.users."zach" = {
+    imports = [
+      ./home.nix
+      inputs.catppuccin.homeManagerModules.catppuccin
+    ];
   };
 
   system.stateVersion = "24.11";

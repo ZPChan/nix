@@ -3,6 +3,12 @@
     hyprland.enable = lib.mkEnableOption "enables hyprland module";
   };
   config = lib.mkIf config.hyprland.enable {
+
+    catppucin = {
+      enable = true;
+      flavor = "mocha";
+    };
+
     wayland.windowManager.hyprland = {
       enable = true;
 
