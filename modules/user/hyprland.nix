@@ -4,15 +4,6 @@
   };
   config = lib.mkIf config.hyprland.enable {
 
-    # catppuccin = {
-    #   flavor = "mocha";
-    #   gtk = {
-    #     enable = true;
-    #     flavor = "mocha";
-    #     size = "standard";
-    #   };
-    # };
-
     gtk = {
       enable = true;
       theme = {
@@ -303,13 +294,15 @@
       };
     };
 
-    # gtk = {
-    #   enable = true;
-    #   theme = {
-    #     name = "Catppuccin Gtk Theme";
-    #     package = pkgs.magnetic-catppuccin-gtk;
-    #   };
-    # };
+    programs.wofi = {
+      enable = true;
+    };
+    home.file = {
+      ".config/wofi" = {
+        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles/wofi";
+      };
+    };
+
   };
 }
 
