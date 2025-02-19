@@ -217,70 +217,32 @@
       };
     };
 
-    programs.waybar = {
-      enable = true;
-    };
+    programs.waybar.enable = true;
     home.file = {
       ".config/waybar" = {
         source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles/waybar";
       };
     };
 
-    programs.hyprlock = {
-      enable = true;
-      settings = {
-        background = {
-          monitor = "";
-          path = "screenshot";
-          color = "rgba(25, 20, 20, 1.0)";
-          blur_passes = "2";
-        };
-        input-field = {
-            monitor = "";
-            size = "20%, 5%";
-            outline_thickness = "3";
-            inner_color = "rgba(0, 0, 0, 0.0)";
-
-            outer_color = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-            check_color = "rgba(00ff99ee) rgba(ff6633ee) 120deg";
-            fail_color = "rgba(ff6633ee) rgba(ff0066ee) 40deg";
-
-            font_color = "rgb(143, 143, 143)";
-            fade_on_empty = "false";
-            rounding = "15";
-
-            position = "0, -20";
-            halign = "center";
-            valign = "center";
-        };
+    programs.hyprlock.enable = true;
+    services.hypridle.enable = true;
+    services.hyprpaper.enable = true;
+    home.file = {
+      ".config/hypr" = {
+        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles/hypr";
       };
     };
 
-    services.hypridle = {
-      enable = true;
-      settings = {
-        general = {
-          lock_cmd = "pidof hyprlock || hyprlock";
-        };
-
-        listener = {
-          timeout = "300";
-          on-timeout = "loginctl lock-session";
-        };
+    programs.wofi.enable = true;
+    home.file = {
+      ".config/wofi" = {
+        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles/wofi";
       };
     };
 
     home.file = {
       ".config/backgrounds" = {
         source = ./../../dotfiles/backgrounds;
-      };
-    };
-
-    services.hyprpaper = {
-      enable = true;
-      settings = {
-        preload = "~/.config/backgrounds/shaded.png";
-        wallpaper = ", ~/.config/backgrounds/shaded.png";
       };
     };
 
@@ -291,15 +253,6 @@
         font-family = "CaskaydiaCove Nerd Font";
         gtk-titlebar = false;
         background-opacity = 0.9;
-      };
-    };
-
-    programs.wofi = {
-      enable = true;
-    };
-    home.file = {
-      ".config/wofi" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles/wofi";
       };
     };
 
