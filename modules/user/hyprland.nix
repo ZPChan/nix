@@ -270,6 +270,7 @@
         theme = "catppuccin-mocha";
         font-family = "CaskaydiaCove Nerd Font";
         gtk-titlebar = false;
+        background-opacity = 0.9;
       };
     };
   };
