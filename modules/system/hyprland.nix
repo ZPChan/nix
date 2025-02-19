@@ -28,7 +28,6 @@
       hyprlock
       hypridle
       nautilus
-      nwg-look
     ];
 
     fonts.packages = with pkgs; [
