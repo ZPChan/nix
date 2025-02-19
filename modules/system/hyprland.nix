@@ -17,8 +17,6 @@
       extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     };
 
-
-
     environment.systemPackages = with pkgs; [
       ghostty
       waybar
@@ -29,6 +27,7 @@
       hyprshot
       hyprlock
       hypridle
+      nautilus
     ];
 
     fonts.packages = with pkgs; [
