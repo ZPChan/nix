@@ -4,12 +4,20 @@
   };
   config = lib.mkIf config.hyprland.enable {
 
-    catppuccin = {
-      flavor = "mocha";
-      gtk = {
-        enable = true;
-        flavor = "mocha";
-        size = "standard";
+    # catppuccin = {
+    #   flavor = "mocha";
+    #   gtk = {
+    #     enable = true;
+    #     flavor = "mocha";
+    #     size = "standard";
+    #   };
+    # };
+
+    gtk = {
+      enable = true;
+      theme = {
+        package = pkgs.magnetic-catppuccin-gtk;
+        name = "Catppuccin-GTK-Dark";
       };
     };
 
