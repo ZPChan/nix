@@ -168,7 +168,7 @@
           "$mainMod SHIFT, 9, movetoworkspace, 9"
           "$mainMod SHIFT, 0, movetoworkspace, 10"
           
-          "$mainMod S, exec, hyprshot -m window"
+          "$mainMod, S, exec, hyprshot -m window"
           "$mainMod SHIFT, S, exec, hyprshot -m region"
           
           "$mainMod, Z, togglespecialworkspace, magic"
