@@ -5,6 +5,7 @@
   config = lib.mkIf config.git.enable {
     environment.systemPackages = with pkgs; [
       git
+      lazygit
     ];
   };
 }

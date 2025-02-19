@@ -10,10 +10,10 @@
         monitor = ",preferred,auto,1.0";
 
         "$terminal" = "ghostty";
-        "$fileManager" = "dolphin";
+        "$fileManager" = "nautilus";
         "$menu" = "wofi --show drun";
 
-        exec-once = "waybar & firefox";
+        exec-once = "waybar & swaync & hypridle";
 
         env = [
           "XCURSOR_SIZE,24"
@@ -131,19 +131,20 @@
         "$mainMod" = "SUPER";
         
         bind = [
-          "$mainMod, Q, exec, $terminal"
+          "$mainMod, return, exec, $terminal"
           "$mainMod, C, killactive,"
           "$mainMod, M, exit,"
           "$mainMod, E, exec, $fileManager"
           "$mainMod, V, togglefloating,"
-          "$mainMod, R, exec, $menu"
+          "$mainMod, space, exec, $menu"
           "$mainMod, P, pseudo,"
-          "$mainMod, J, togglesplit,"
-          
-          "$mainMod, left, movefocus, l"
-          "$mainMod, right, movefocus, r"
-          "$mainMod, up, movefocus, u"
-          "$mainMod, down, movefocus, d"
+          "$mainMod, T, togglesplit,"
+          "$mainMod SHIFT, L, exec, hyprlock"
+
+          "$mainMod, H, movefocus, l"
+          "$mainMod, L, movefocus, r"
+          "$mainMod, K, movefocus, u"
+          "$mainMod, J, movefocus, d"
           
           "$mainMod, 1, workspace, 1"
           "$mainMod, 2, workspace, 2"
@@ -167,8 +168,11 @@
           "$mainMod SHIFT, 9, movetoworkspace, 9"
           "$mainMod SHIFT, 0, movetoworkspace, 10"
           
-          "$mainMod, S, togglespecialworkspace, magic"
-          "$mainMod SHIFT, S, movetoworkspace, special:magic"
+          "$mainMod S, exec, hyprshot -m window"
+          "$mainMod SHIFT, S, exec, hyprshot -m region"
+          
+          "$mainMod, Z, togglespecialworkspace, magic"
+          "$mainMod SHIFT, Z, movetoworkspace, special:magic"
           
           "$mainMod, mouse_down, workspace, e+1"
           "$mainMod, mouse_up, workspace, e-1"
@@ -202,6 +206,49 @@
       };
     };
 
+    programs.hyprlock = {
+      enable = true;
+      settings = {
+        background = {
+          monitor = "";
+          path = "screenshot";
+          color = "rgba(25, 20, 20, 1.0)";
+          blur_passes = "2";
+        };
+        input-field = {
+            monitor = "";
+            size = "20%, 5%";
+            outline_thickness = "3";
+            inner_color = "rgba(0, 0, 0, 0.0)";
+
+            outer_color = "rgba(33ccffee) rgba(00ff99ee) 45deg";
+            check_color = "rgba(00ff99ee) rgba(ff6633ee) 120deg";
+            fail_color = "rgba(ff6633ee) rgba(ff0066ee) 40deg";
+
+            font_color = "rgb(143, 143, 143)";
+            fade_on_empty = "false";
+            rounding = "15";
+
+            position = "0, -20";
+            halign = "center";
+            valign = "center";
+        };
+      };
+    };
+
+    services.hypridle = {
+      enable = true;
+      settings = {
+        general = {
+          lock_cmd = "pidof hyprlock || hyprlock";
+        };
+
+        listener = {
+          timeout = "300";
+          on-timeout = "loginctl lock-session";
+        };
+      };
+    }
   };
 }
 

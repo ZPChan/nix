@@ -20,10 +20,13 @@
     environment.systemPackages = with pkgs; [
       ghostty
       waybar
-      mako
+      swaynotificationcenter
       libnotify
       hyprpaper
       wofi
+      hyprshot
+      hyprlock
+      hypridle
     ];
 
     fonts.packages = with pkgs; [
