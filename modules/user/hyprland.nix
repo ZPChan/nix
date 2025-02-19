@@ -5,8 +5,12 @@
   config = lib.mkIf config.hyprland.enable {
 
     catppuccin = {
-      enable = true;
       flavor = "mocha";
+      gtk = {
+        enable = true;
+        flavor = "mocha";
+        size = "standard";
+      };
     };
 
     wayland.windowManager.hyprland = {
