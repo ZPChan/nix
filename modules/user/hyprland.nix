@@ -13,7 +13,7 @@
         "$fileManager" = "nautilus";
         "$menu" = "wofi --show drun";
 
-        exec-once = "waybar & swaync & hypridle";
+        exec-once = "waybar & hyprpaper & swaync & hypridle";
 
         env = [
           "XCURSOR_SIZE,24"
@@ -247,6 +247,20 @@
           timeout = "300";
           on-timeout = "loginctl lock-session";
         };
+      };
+    };
+
+    home.file = {
+      ".config/backgrounds" = {
+        source = ./../../dotfiles/backgrounds;
+      };
+    };
+
+    services.hyprpaper = {
+      enable = true;
+      settings = {
+        preload = "~/.config/backgrounds/shaded.png";
+        wallpaper = ", ~/.config/backgrounds/shaded.png";
       };
     };
   };
