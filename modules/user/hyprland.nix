@@ -16,8 +16,10 @@
     gtk = {
       enable = true;
       theme = {
-        package = pkgs.magnetic-catppuccin-gtk;
-        name = "Catppuccin-GTK-Dark";
+        package = pkgs.magnetic-catppuccin-gtk.override {
+          size = "compact";
+        };
+        name = "Catppuccin-GTK-Dark-Compact";
       };
     };
 
