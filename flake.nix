@@ -17,13 +17,15 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       nixosConfigurations.lite = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {inherit inputs;};
-	modules = [
+        specialArgs = { 
+          inherit inputs;
+          systemType = ${system};
+        };
+        modules = [
           ./hosts/lite/configuration.nix
-	  inputs.home-manager.nixosModules.default
+          inputs.home-manager.nixosModules.default
           inputs.catppuccin.nixosModules.catppuccin
-	];
+        ];
       };
     };
 }
