@@ -11,6 +11,8 @@
     environment.systemPackages = with pkgs; [
       zsh
     ];
+
+    home-manager.users."zach".programs.zsh.enable = true;
   };
 }
 
