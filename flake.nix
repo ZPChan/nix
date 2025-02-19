@@ -17,7 +17,7 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       nixosConfigurations.lite = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
+        specialArgs = {inherit inputs system;};
 	modules = [
           ./hosts/lite/configuration.nix
 	  inputs.home-manager.nixosModules.default
