@@ -4,7 +4,7 @@
   };
   config = lib.mkIf config.hyprland.enable {
 
-    catppucin = {
+    catppuccin = {
       enable = true;
       flavor = "mocha";
     };
