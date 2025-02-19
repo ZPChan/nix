@@ -27,6 +27,8 @@
       hyprshot
       hyprlock
       hypridle
+      magnetic-catppuccin-gtk
+      nwg-look
     ];
 
     fonts.packages = with pkgs; [

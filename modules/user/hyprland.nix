@@ -283,13 +283,13 @@
       };
     };
 
-    gtk = {
-      enable = true;
-      theme = {
-        name = "Catppuccin Gtk Theme";
-        package = pkgs.magnetic-catppuccin-gtk;
-      };
-    };
+    # gtk = {
+    #   enable = true;
+    #   theme = {
+    #     name = "Catppuccin Gtk Theme";
+    #     package = pkgs.magnetic-catppuccin-gtk;
+    #   };
+    # };
   };
 }
 
