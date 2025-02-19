@@ -7,6 +7,8 @@
       neovim
       wl-clipboard
       kanata
+      wget
+      unzip
     ];
     fonts.packages = with pkgs; [
       nerd-fonts.caskaydia-cove
