@@ -16,6 +16,7 @@
   networking.hostName = "lite";
   networking.networkmanager.enable = true;
 
+  zsh.enable = true;
   hyprland.enable = true;
 
   home-manager = {

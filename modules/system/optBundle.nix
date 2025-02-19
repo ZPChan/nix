@@ -1,6 +1,7 @@
 { pkgs, lib, config, ... }: {
   imports = [
     ./user.nix
+    ./zsh.nix
     ./printing.nix
     ./sound.nix
     ./xserver.nix
