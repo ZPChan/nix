@@ -16,6 +16,7 @@
         ripgrep
         gcc
         fzf
+        fd
       ];
 
       plugins = with pkgs.vimPlugins; [

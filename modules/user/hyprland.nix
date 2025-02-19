@@ -269,7 +269,6 @@
       settings = {
         theme = "catppuccin-mocha";
         font-family = "CaskaydiaCove Nerd Font";
-        font-size = 16;
         gtk-titlebar = false;
       };
     };
