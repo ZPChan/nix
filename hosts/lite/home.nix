@@ -7,6 +7,7 @@
 
   hyprland.enable = true;
   starship.enable = true;
+  remmina.enable = true;
 
   home.username = "zach";
   home.homeDirectory = "/home/zach";
