@@ -2,6 +2,7 @@
   imports = [
     ./user.nix
     ./zsh.nix
+    ./wifi.nix
     ./printing.nix
     ./sound.nix
     ./xserver.nix
@@ -17,6 +18,7 @@
   ];
 
   user.enable = lib.mkDefault true;
+  wifi.enable = lib.mkDefault true;
   printing.enable = lib.mkDefault true;
   zzsound.enable = lib.mkDefault true;
   xserver.enable = lib.mkDefault true;
