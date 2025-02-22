@@ -18,8 +18,8 @@
     hostName = "lite";
     networkmanager.enable = true;
     wireless = {
-      wireless.enable = true;
-      wireless.userControlled.enable = true;
+      enable = true;
+      userControlled.enable = true;
     };
   };
 
