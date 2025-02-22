@@ -16,7 +16,7 @@
 
   networking = {
     hostName = "lite";
-    networkmanager.enable = true;
+    #   networkmanager.enable = true;
     wireless = {
       enable = true;
       userControlled.enable = true;
