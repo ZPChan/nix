@@ -19,6 +19,7 @@
 
   zsh.enable = true;
   hyprland.enable = true;
+  twingate.enable = true;
 
   home-manager.users."zach" = {
     imports = [

@@ -13,6 +13,7 @@
     ./ssh.nix
     ./suid.nix
     ./zenbrowser.nix
+    ./twingate.nix
   ];
 
   user.enable = lib.mkDefault true;
