@@ -14,8 +14,14 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "lite";
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "lite";
+    networkmanager.enable = true;
+    wireless = {
+      wireless.enable = true;
+      wireless.userControlled.enable = true;
+    };
+  };
 
   zsh.enable = true;
   hyprland.enable = true;
