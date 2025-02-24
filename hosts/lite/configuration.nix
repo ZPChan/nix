@@ -4,8 +4,7 @@
   imports =
     [
       ./hardware-configuration.nix
-      ./../../modules/system/stdBundle.nix
-      ./../../modules/system/optBundle.nix
+      ./../../modules/system
       inputs.home-manager.nixosModules.default
       inputs.catppuccin.nixosModules.catppuccin
     ];

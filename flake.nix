@@ -18,8 +18,7 @@
     in {
       nixosConfigurations.lite = nixpkgs.lib.nixosSystem {
         specialArgs = { 
-          inherit inputs;
-          systemType = system;
+          inherit inputs system;
         };
         modules = [
           ./hosts/lite/configuration.nix
