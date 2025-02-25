@@ -9,6 +9,7 @@
       kanata
       wget
       unzip
+      nil
     ];
     fonts.packages = with pkgs; [
       nerd-fonts.caskaydia-cove
