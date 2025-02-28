@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, lib, userName, ... }:
+{ config, pkgs, inputs, lib, osConfig, ... }:
 
 {
   imports = [
@@ -9,8 +9,8 @@
   starship.enable = true;
   remmina.enable = true;
 
-  home.username = "${userName}";
-  home.homeDirectory = "/home/${userName}";
+  home.username = "${osConfig.userName}";
+  home.homeDirectory = "/home/${osConfig.userName}";
 
   home.stateVersion = "24.11";
 
