@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./../../modules/user/default.nix
+    ./../../modules/user
   ];
 
   hyprland.enable = true;

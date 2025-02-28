@@ -1,5 +1,7 @@
 { pkgs, lib, inputs, config, ... }:
-
+let
+  userName="zach";
+in
 {
   imports =
     [
@@ -19,11 +21,14 @@
   hyprland.enable = true;
   twingate.enable = true;
 
-  home-manager.users."zach" = {
-    imports = [
-      ./home.nix
-      inputs.catppuccin.homeManagerModules.catppuccin
-    ];
+  home-manager = {
+    extraSpecialArgs = { inherit userName; };
+    users.${userName} = {
+      imports = [
+        ./home.nix
+        inputs.catppuccin.homeManagerModules.catppuccin
+      ];
+    };
   };
 
   system.stateVersion = "24.11";
