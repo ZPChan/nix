@@ -5,7 +5,6 @@
     ./user.nix
     ./zsh.nix
     ./wifi.nix
-    ./printing.nix
     ./sound.nix
     ./xserver.nix
     ./hyprland.nix
@@ -20,12 +19,12 @@
 
   user.enable = lib.mkDefault true;
   wifi.enable = lib.mkDefault true;
-  printing.enable = lib.mkDefault true;
-  zzsound.enable = lib.mkDefault true;
+  services.printing.enable = lib.mkDefault true;
+  sound.enable = lib.mkDefault true;
   xserver.enable = lib.mkDefault true;
   programs.firefox.enable = lib.mkDefault true;
   zenbrowser.enable = lib.mkDefault true;
-  nvim.enable = lib.mkDefault true;
+  programs.nvim.enable = lib.mkDefault true;
   programs.git.enable = lib.mkDefault true;
 }
 

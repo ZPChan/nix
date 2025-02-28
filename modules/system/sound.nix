@@ -1,8 +1,8 @@
 { pkgs, lib, config, ... }: {
   options = {
-    zzsound.enable = lib.mkEnableOption "enables zzsound module";
+    sound.enable = lib.mkEnableOption "enables sound module";
   };
-  config = lib.mkIf config.zzsound.enable {
+  config = lib.mkIf config.sound.enable {
     # Enable sound with pipewire.
     services.pulseaudio.enable = false;
     security.rtkit.enable = true;

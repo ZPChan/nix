@@ -1,8 +1,8 @@
 { pkgs, lib, config, ... }: {
   options = {
-    nvim.enable = lib.mkEnableOption "enables nvim module";
+    programs.nvim.enable = lib.mkEnableOption "enables nvim module";
   };
-  config = lib.mkIf config.nvim.enable {
+  config = lib.mkIf config.programs.nvim.enable {
     environment.systemPackages = with pkgs; [
       neovim
       wl-clipboard
