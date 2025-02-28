@@ -16,12 +16,12 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in {
-      nixosConfigurations.lite = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.nixos-lite = nixpkgs.lib.nixosSystem {
         specialArgs = { 
           inherit inputs system;
         };
         modules = [
-          ./hosts/lite/configuration.nix
+          ./hosts/nixos-lite/configuration.nix
           inputs.home-manager.nixosModules.default
           inputs.catppuccin.nixosModules.catppuccin
         ];

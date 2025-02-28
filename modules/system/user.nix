@@ -1,11 +1,11 @@
-{ pkgs, lib, config, ... }: {
+{ pkgs, lib, config, userName, userFullName, ... }: {
   options = {
     user.enable = lib.mkEnableOption "enables user module";
   };
   config = lib.mkIf config.user.enable {
-    users.users.zach = {
+    users.users."${userName}" = {
       isNormalUser = true;
-      description = "Zach Putman";
+      description = "${userFullName}";
       extraGroups = [ "networkmanager" "wheel" ];
     };
   };
