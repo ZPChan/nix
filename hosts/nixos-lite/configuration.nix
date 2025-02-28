@@ -11,9 +11,6 @@ in {
       inputs.home-manager.nixosModules.default
       inputs.catppuccin.nixosModules.catppuccin
     ];
-  userName = "${userName}";
-  userFullName = "${userFullName}";
-  hostName = "${hostName}";
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

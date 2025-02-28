@@ -9,8 +9,8 @@
   starship.enable = true;
   remmina.enable = true;
 
-  home.username = "${osConfig.userName}";
-  home.homeDirectory = "/home/${osConfig.userName}";
+  home.username = "zach";
+  home.homeDirectory = "/home/zach";
 
   home.stateVersion = "24.11";
 
