@@ -1,5 +1,9 @@
 { pkgs, lib, inputs, config, ... }:
-rec {
+let 
+  userName = "zach";
+  userFullName = "Zach Putman";
+  hostName = "nixos-lite";
+in {
   imports =
     [
       ./hardware-configuration.nix
@@ -7,16 +11,15 @@ rec {
       inputs.home-manager.nixosModules.default
       inputs.catppuccin.nixosModules.catppuccin
     ];
+  userName = "${userName}";
+  userFullName = "${userFullName}";
+  hostName = "${hostName}";
 
-  userName = "zach";
-  userFullName = "Zach Putman";
-  hostName = "nixos-lite";
-  
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = hostName;
+  networking.hostName = "${hostName}";
 
   zsh.enable = true;
   hyprland.enable = true;
