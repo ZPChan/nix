@@ -1,8 +1,6 @@
 { pkgs, lib, inputs, config, ... }:
-let 
+let
   userName = "zach";
-  userFullName = "Zach Putman";
-  hostName = "nixos-lite";
 in {
   imports =
     [
@@ -16,10 +14,13 @@ in {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "${hostName}";
+  networking.hostName = "nixos-lite";
+
+  user.userName = "${userName}";
+  user.userFullName = "Zach Putman";
 
   zsh.enable = true;
-  hyprland.enable = true;
+  programs.hyprland.enable = true;
   twingate.enable = true;
 
   home-manager = {

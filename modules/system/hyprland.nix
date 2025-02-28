@@ -1,14 +1,10 @@
 { pkgs, lib, config, ... }: {
-  options = {
-    hyprland.enable = lib.mkEnableOption "enables hyprland module";
-  };
-  config = lib.mkIf config.hyprland.enable {
+  config = lib.mkIf config.programs.hyprland.enable {
     environment.sessionVariables = {
       NIXOS_OZONE_WL = "1";
     };
 
     programs.hyprland = {
-      enable = true;
       xwayland.enable = true;
     };
 
