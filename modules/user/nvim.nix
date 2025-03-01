@@ -13,6 +13,7 @@
         gcc
         fzf
         fd
+        nil
       ];
 
       plugins = with pkgs.vimPlugins; [
