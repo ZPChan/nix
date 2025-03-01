@@ -6,6 +6,8 @@
     environment.systemPackages = with pkgs; [
       zsh
     ];
+
+    environment.pathsToLink = [ "/share/zsh"];
   };
 }
 

@@ -4,7 +4,6 @@
     programs.zsh = {
       autosuggestion.enable = true;
     };
-    environment.pathsToLink = [ "/share/zsh"];
   };
 }
 
