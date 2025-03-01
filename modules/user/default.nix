@@ -4,7 +4,6 @@
     ./hyprland.nix
     ./nvim.nix
     ./starship.nix
-    ./remmina.nix
   ];
 
   programs.git.enable = lib.mkDefault true;
