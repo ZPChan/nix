@@ -1,6 +1,8 @@
 { pkgs, lib, inputs, config, ... }:
 let
   userName = "zach";
+  userFullName = "Zach Putman";
+  hostName = "nixos-lite";
 in {
   imports =
     [
@@ -14,10 +16,10 @@ in {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos-lite";
+  networking.hostName = "${hostName}";
 
   user.userName = "${userName}";
-  user.userFullName = "Zach Putman";
+  user.userFullName = "${userFullName}";
 
   programs.zsh.enable = true;
   programs.hyprland.enable = true;

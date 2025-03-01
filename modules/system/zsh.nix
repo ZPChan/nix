@@ -6,8 +6,6 @@
     environment.systemPackages = with pkgs; [
       zsh
     ];
-
-    home-manager.users."${config.user.userName}".programs.zsh.enable = true;
   };
 }
 
