@@ -1,10 +1,6 @@
 { pkgs, lib, config, ... }: {
-  options = {
-    starship.enable = lib.mkEnableOption "enables starship module";
-  };
-  config = lib.mkIf config.starship.enable {
+  config = lib.mkIf config.programs.starship.enable {
     programs.starship = {
-      enable = true;
       enableZshIntegration = true;
     };
     home.file = {

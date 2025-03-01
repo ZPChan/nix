@@ -1,10 +1,6 @@
 { pkgs, lib, config, ... }: {
-  options = {
-    nvim.enable = lib.mkEnableOption "enables nvim module";
-  };
-  config = lib.mkIf config.nvim.enable {
+  config = lib.mkIf config.programs.neovim.enable {
     programs.neovim = {
-      enable = true;
       
       viAlias = true;
       vimAlias = true;

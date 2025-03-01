@@ -7,6 +7,6 @@
     ./remmina.nix
   ];
 
-  git.enable = lib.mkDefault true;
-  nvim.enable = lib.mkDefault true;
+  programs.git.enable = lib.mkDefault true;
+  programs.neovim.enable = lib.mkDefault true;
 }

@@ -5,9 +5,9 @@
     ./../../modules/user
   ];
 
-  hyprland.enable = true;
-  starship.enable = true;
-  remmina.enable = true;
+  programs.hyprland.enable = true;
+  programs.starship.enable = true;
+  services.remmina.enable = true;
 
   home.username = "zach";
   home.homeDirectory = "/home/zach";
