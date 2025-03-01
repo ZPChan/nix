@@ -1,18 +1,13 @@
 { pkgs, lib, config, ... }: {
-  options = {
-    zsh.enable = lib.mkEnableOption "enables zsh module";
-  };
-  config = lib.mkIf config.zsh.enable {
+  config = lib.mkIf config.programs.zsh.enable {
 
-    programs.zsh.enable = true;
-
-    users.users.zach.shell = pkgs.zsh;
+    users.users."${config.user.userName}".shell = pkgs.zsh;
 
     environment.systemPackages = with pkgs; [
       zsh
     ];
 
-    home-manager.users."zach".programs.zsh.enable = true;
+    home-manager.users."${config.user.userName}".programs.zsh.enable = true;
   };
 }
 

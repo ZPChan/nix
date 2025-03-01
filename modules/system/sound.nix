@@ -1,8 +1,8 @@
 { pkgs, lib, config, ... }: {
   options = {
-    sound.enable = lib.mkEnableOption "enables sound module";
+    services.audio.enable = lib.mkEnableOption "enables audio module";
   };
-  config = lib.mkIf config.sound.enable {
+  config = lib.mkIf config.services.audio.enable {
     # Enable sound with pipewire.
     services.pulseaudio.enable = false;
     security.rtkit.enable = true;

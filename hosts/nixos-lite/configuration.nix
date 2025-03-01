@@ -19,9 +19,9 @@ in {
   user.userName = "${userName}";
   user.userFullName = "Zach Putman";
 
-  zsh.enable = true;
+  programs.zsh.enable = true;
   programs.hyprland.enable = true;
-  twingate.enable = true;
+  services.twingate.enable = true;
 
   home-manager = {
     users."${userName}" = {

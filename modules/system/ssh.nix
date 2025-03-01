@@ -1,8 +1,8 @@
 { pkgs, lib, config, ... }: {
   options = {
-    ssh.enable = lib.mkEnableOption "enables ssh module";
+    services.ssh.enable = lib.mkEnableOption "enables ssh module";
   };
-  config = lib.mkIf config.ssh.enable {
+  config = lib.mkIf config.services.ssh.enable {
     services.openssh.enable = true;
   };
 }

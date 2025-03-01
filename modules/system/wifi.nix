@@ -1,8 +1,8 @@
 { pkgs, lib, config, ... }: {
   options = {
-    wifi.enable = lib.mkEnableOption "enables wifi module";
+    services.wifi.enable = lib.mkEnableOption "enables wifi module";
   };
-  config = lib.mkIf config.wifi.enable {
+  config = lib.mkIf config.services.wifi.enable {
     environment.systemPackages = with pkgs; [
       networkmanagerapplet
     ];

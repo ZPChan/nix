@@ -1,10 +1,6 @@
 { pkgs, lib, config, ... }: {
-  options = {
-    xserver.enable = lib.mkEnableOption "enables xserver module";
-  };
-  config = lib.mkIf config.xserver.enable {
+  config = lib.mkIf config.services.xserver.enable {
     services.xserver = {
-      enable = true;
       displayManager.gdm.enable = true;
       xkb = {
         layout = "us";
