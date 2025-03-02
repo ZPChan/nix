@@ -9,6 +9,7 @@
     ./xserver.nix
     ./hyprland.nix
     ./nvim.nix
+    ./remapcaps.nix
     ./git.nix
     ./ssh.nix
     ./suid.nix

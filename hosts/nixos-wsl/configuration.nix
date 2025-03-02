@@ -23,6 +23,7 @@ in {
   services.printing.enable = false;
   services.audio.enable = false;
   services.xserver.enable = false;
+  services.remapcaps.enable = false;
 
   programs.zsh.enable = true;
   programs.firefox.enable = false;
