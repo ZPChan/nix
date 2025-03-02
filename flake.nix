@@ -32,6 +32,7 @@
           specialArgs = { 
             inherit inputs system;
           };
+	  system = "${system}";
           modules = [
 	    nixos-wsl.nixosModules.default {
 	    	system.stateVersion = "24.05";
