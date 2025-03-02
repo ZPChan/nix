@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     catppuccin.url = "github:catppuccin/nix";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -11,7 +12,7 @@
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: 
+  outputs = { self, nixpkgs, nixos-wsl, ... }@inputs: 
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -32,6 +33,10 @@
             inherit inputs system;
           };
           modules = [
+	    nixos-wsl.nixosModules.default {
+	    	system.stateVersion = "24.05";
+		wsl.enable = true;
+	    }
             ./hosts/nixos-wsl/configuration.nix
             inputs.home-manager.nixosModules.default
             inputs.catppuccin.nixosModules.catppuccin

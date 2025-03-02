@@ -6,7 +6,6 @@ let
 in {
   imports =
     [
-	    <nixos-wsl/modules>
       ./../../modules/system
       inputs.home-manager.nixosModules.default
       inputs.catppuccin.nixosModules.catppuccin
