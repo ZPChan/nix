@@ -16,15 +16,27 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in {
-      nixosConfigurations.nixos-lite = nixpkgs.lib.nixosSystem {
-        specialArgs = { 
-          inherit inputs system;
+      nixosConfigurations = {
+        nixos-lite = nixpkgs.lib.nixosSystem {
+          specialArgs = { 
+            inherit inputs system;
+          };
+          modules = [
+            ./hosts/nixos-lite/configuration.nix
+            inputs.home-manager.nixosModules.default
+            inputs.catppuccin.nixosModules.catppuccin
+          ];
         };
-        modules = [
-          ./hosts/nixos-lite/configuration.nix
-          inputs.home-manager.nixosModules.default
-          inputs.catppuccin.nixosModules.catppuccin
-        ];
+        nixos-wsl = nixpkgs.lib.nixosSystem {
+          specialArgs = { 
+            inherit inputs system;
+          };
+          modules = [
+            ./hosts/nixos-wsl/configuration.nix
+            inputs.home-manager.nixosModules.default
+            inputs.catppuccin.nixosModules.catppuccin
+          ];
+        };
       };
     };
 }
