@@ -34,10 +34,7 @@
           };
 	  system = "${system}";
           modules = [
-	    nixos-wsl.nixosModules.default {
-	    	system.stateVersion = "24.05";
-		wsl.enable = true;
-	    }
+	    nixos-wsl.nixosModules.default
             ./hosts/nixos-wsl/configuration.nix
             inputs.home-manager.nixosModules.default
             inputs.catppuccin.nixosModules.catppuccin
