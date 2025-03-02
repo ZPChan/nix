@@ -2,7 +2,7 @@
   options = {
     services.remapcaps.enable = lib.mkEnableOption "enables remapcaps module";
   };
-  config = lib.mkIf config.services.rempacaps.enable {
+  config = lib.mkIf config.services.remapcaps.enable {
     environment.systemPackages = with pkgs; [
       kanata
     ];
