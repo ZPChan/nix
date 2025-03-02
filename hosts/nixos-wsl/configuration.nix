@@ -1,29 +1,33 @@
 { pkgs, lib, inputs, config, ... }:
 let
-  userName = "zach";
+  userName = "nixos";
   userFullName = "Zach Putman";
-  hostName = "nixos-lite";
+  hostName = "nixos-wsl";
 in {
   imports =
     [
-      ./hardware-configuration.nix
+	    <nixos-wsl/modules>
       ./../../modules/system
       inputs.home-manager.nixosModules.default
       inputs.catppuccin.nixosModules.catppuccin
     ];
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  wsl.enable = true;
+  wsl.defaultUser = "nixos";
 
   networking.hostName = "${hostName}";
 
   user.userName = "${userName}";
   user.userFullName = "${userFullName}";
 
+  services.wifi.enable = false;
+  services.printing.enable = false;
+  services.audio.enable = false;
+  services.xserver.enable = false;
+
   programs.zsh.enable = true;
-  programs.hyprland.enable = true;
-  services.twingate.enable = true;
+  programs.firefox.enable = false;
+  programs.zenbrowser.enable = false;
 
   home-manager = {
     users."${userName}" = {
