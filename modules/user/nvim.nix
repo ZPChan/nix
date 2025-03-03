@@ -18,19 +18,22 @@
         csharpier
         djlint
         docker-compose-language-service
+        dockerfile-language-server-nodejs
         hadolint
         helm-ls
         lua-language-server
         markdownlint-cli2
         marksman
         netcoredbg
+        nodePackages.vscode-json-languageserver
+        omnisharp-roslyn
         semgrep
         shellcheck
         shfmt
         sqlfluff
         stylua
+        vimPlugins.vim-markdown-toc
         vtsls
-        vscode-json-language-server
         yaml-language-server
       ];
 
