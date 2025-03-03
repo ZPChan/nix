@@ -27,6 +27,7 @@
         markdownlint-cli2
         marksman
         netcoredbg
+        nodejs_23
         nodePackages.vscode-json-languageserver
         omnisharp-roslyn
         semgrep
