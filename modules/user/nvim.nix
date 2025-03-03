@@ -102,21 +102,29 @@
       '';
   };
 
-  # https://github.com/nvim-treesitter/nvim-treesitter#i-get-query-error-invalid-node-type-at-position
-  xdg.configFile."nvim/parser".source =
-    let
-      parsers = pkgs.symlinkJoin {
-        name = "treesitter-parsers";
-        paths = (pkgs.vimPlugins.nvim-treesitter.withPlugins (plugins: with plugins; [
-          c
-          lua
-        ])).dependencies;
-      };
-    in
-    "${parsers}/parser";
+  # # https://github.com/nvim-treesitter/nvim-treesitter#i-get-query-error-invalid-node-type-at-position
+  # xdg.configFile."nvim/parser".source =
+  #   let
+  #     parsers = pkgs.symlinkJoin {
+  #       name = "treesitter-parsers";
+  #       paths = (pkgs.vimPlugins.nvim-treesitter.withPlugins (plugins: with plugins; [
+  #         c
+  #         lua
+  #       ])).dependencies;
+  #     };
+  #   in
+  #   "${parsers}/parser";
 
-  # Normal LazyVim config here, see https://github.com/LazyVim/starter/tree/main/lua
-  xdg.configFile."nvim/lua".source = ../../dotfiles/lua;
+    home.file = {
+      ".config/nvim/lua" = {
+        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles/nvim/lua";
+      };
+    };
+    home.file = {
+      ".config/nvim/parser" = {
+        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles/nvim/parser";
+      };
+    };
 }
 
 
