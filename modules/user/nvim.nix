@@ -14,6 +14,7 @@
         fzf
         fd
         nil
+        markdownlint-cli2
       ];
 
       plugins = with pkgs.vimPlugins; [
