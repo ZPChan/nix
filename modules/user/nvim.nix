@@ -1,6 +1,12 @@
 { config, lib, pkgs, ... }:
 {
   programs.neovim = {
+
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
+    vimdiffAlias = true;
+
     extraPackages = with pkgs; [
       # LazyVim
       lua-language-server
@@ -41,7 +47,7 @@
           nvim-lspconfig
           nvim-notify
           nvim-spectre
-          nvim-treesitter
+          (nvim-treesitter.withPlugins (p: with p; [ lua json ]))
           nvim-treesitter-context
           nvim-treesitter-textobjects
           nvim-ts-autotag
@@ -102,29 +108,21 @@
       '';
   };
 
-  # # https://github.com/nvim-treesitter/nvim-treesitter#i-get-query-error-invalid-node-type-at-position
-  # xdg.configFile."nvim/parser".source =
-  #   let
-  #     parsers = pkgs.symlinkJoin {
-  #       name = "treesitter-parsers";
-  #       paths = (pkgs.vimPlugins.nvim-treesitter.withPlugins (plugins: with plugins; [
-  #         c
-  #         lua
-  #       ])).dependencies;
-  #     };
-  #   in
-  #   "${parsers}/parser";
-
-    home.file = {
-      ".config/nvim/lua" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles/nvim/lua";
-      };
+  home.file = {
+    ".config/nvim/lua" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles/nvim/lua";
     };
-    home.file = {
-      ".config/nvim/parser" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles/nvim/parser";
-      };
+  };
+  home.file = {
+    ".config/nvim/lazyvim.json" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles/nvim/lazyvim.json";
     };
+  };
+  home.file = {
+    ".config/nvim/stylua.toml" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles/nvim/stylua.toml";
+    };
+  };
 }
 
 
