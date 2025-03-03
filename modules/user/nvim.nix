@@ -21,7 +21,6 @@
         hadolint
         helm-ls
         lua-language-server
-        markdown-toc
         markdownlint-cli2
         marksman
         netcoredbg
