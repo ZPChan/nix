@@ -24,7 +24,6 @@
         markdownlint-cli2
         marksman
         netcoredbg
-        omnisharp
         semgrep
         shellcheck
         shfmt
