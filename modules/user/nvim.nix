@@ -18,7 +18,6 @@
         csharpier
         djlint
         docker-compose-language-service
-        dockerfile-language-server
         hadolint
         helm-ls
         json-lsp
