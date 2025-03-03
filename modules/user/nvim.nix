@@ -47,7 +47,7 @@
           nvim-lspconfig
           nvim-notify
           nvim-spectre
-          (nvim-treesitter.withPlugins (p: with p; [ lua json ]))
+          nvim-treesitter.withAllGrammars
           nvim-treesitter-context
           nvim-treesitter-textobjects
           nvim-ts-autotag
@@ -102,7 +102,11 @@
             -- import/override with your plugins
             { import = "plugins" },
             -- treesitter handled by xdg.configFile."nvim/parser", put this line at the end of spec to clear ensure_installed
-            { "nvim-treesitter/nvim-treesitter", opts = { ensure_installed = {} } },
+            { "nvim-treesitter/nvim-treesitter",
+              opts = function(_, opts)
+                opts.ensure_installed = {}
+              end
+            },
           },
         })
       '';
