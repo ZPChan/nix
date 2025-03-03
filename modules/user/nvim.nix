@@ -8,11 +8,16 @@
     vimdiffAlias = true;
 
     extraPackages = with pkgs; [
-      # LazyVim
-      lua-language-server
-      stylua
       # Telescope
       ripgrep
+# LSP
+      lua-language-server
+      nodePackages.vscode-json-languageserver
+# Formatters
+      stylua
+      jq
+# Linters
+
     ];
 
     plugins = with pkgs.vimPlugins; [
