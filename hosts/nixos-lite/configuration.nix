@@ -25,6 +25,10 @@ in {
   programs.hyprland.enable = true;
   services.twingate.enable = true;
 
+  environment.systemPackages = with pkgs; [
+    nodejs_23
+  ];
+
   home-manager = {
     users."${userName}" = {
       imports = [
