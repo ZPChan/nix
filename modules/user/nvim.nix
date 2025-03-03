@@ -14,7 +14,6 @@
         fd
         nil
 
-        bash-debug-adapter
         bash-language-server
         csharpier
         djlint
