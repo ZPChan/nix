@@ -30,6 +30,7 @@
         sqlfluff
         stylua
         vtsls
+        vscode-json-language-server
         yaml-language-server
       ];
 
