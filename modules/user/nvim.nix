@@ -20,7 +20,6 @@
         docker-compose-language-service
         hadolint
         helm-ls
-        json-lsp
         lua-language-server
         markdown-toc
         markdownlint-cli2
