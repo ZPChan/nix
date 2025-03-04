@@ -12,9 +12,9 @@
         '';
         type =
           with lib.types;
-          lib.listOf (lib.oneOf [
-            lib.str
-            lib.package
+          listOf (oneOf [
+            str
+            package
           ]);
       };
     };
