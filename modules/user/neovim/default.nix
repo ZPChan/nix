@@ -1,5 +1,9 @@
 { config, lib, pkgs, ... }:
 {
+  imports = [
+    ./langs
+  ];
+
     options = {
       my.neovim.treesitterParsers = lib.mkOption {
         default = [ ];
@@ -14,18 +18,15 @@
           ]);
       };
     };
-    config = 
-{
-  imports = [
-    ./langs
-  ];
-
+  config = lib.mkIf config.programs.neovim.enable {
   programs.neovim = {
 
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
+
+    my.lang.enable = lib.mkDefault true;
 
     extraPackages = with pkgs; [
       # Telescope
