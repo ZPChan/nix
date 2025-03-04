@@ -1,9 +1,9 @@
 { config, lib, pkgs, ... }:
 {
     options = {
-      my.neovim.treesitterParsers = mkOption {
+      my.neovim.treesitterParsers = lib.mkOption {
         default = [ ];
-        example = literalExpression ''
+        example = lib.literalExpression ''
           [ "nix" pkgs.vimPlugins.nvim-treesitter-parsers.yaml ]
         '';
         type =
