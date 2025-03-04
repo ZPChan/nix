@@ -10,8 +10,7 @@
   };
   config = lib.mkIf config.my.lang.json.enable {
     programs.neovim.extraPackages = with pkgs; [
-      nodePackages.vscode-json-languageserver
-      jq
+      vscode-langservers-extracted
     ];
 
     my.neovim.treesitterParsers = [

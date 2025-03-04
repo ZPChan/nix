@@ -26,6 +26,11 @@
   config = lib.mkIf config.programs.neovim.enable {
 
     my.lang.enable = lib.mkDefault true;
+    my.neovim.treesitterParsers = [
+      "csv"
+      "regex"
+    ];
+
     programs.neovim = {
 
       defaultEditor = true;
