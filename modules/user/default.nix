@@ -2,7 +2,7 @@
   imports = [
     ./git.nix
     ./hyprland.nix
-    ./nvim.nix
+    ./neovim
     ./starship.nix
     ./zsh.nix
   ];

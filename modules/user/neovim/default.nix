@@ -1,5 +1,25 @@
 { config, lib, pkgs, ... }:
 {
+    options = {
+      my.neovim.treesitterParsers = mkOption {
+        default = [ ];
+        example = literalExpression ''
+          [ "nix" pkgs.vimPlugins.nvim-treesitter-parsers.yaml ]
+        '';
+        type =
+          with lib.types;
+          lib.listOf (lib.oneOf [
+            lib.str
+            lib.package
+          ]);
+      };
+    };
+    config = 
+{
+  imports = [
+    ./langs
+  ];
+
   programs.neovim = {
 
     defaultEditor = true;
@@ -10,14 +30,6 @@
     extraPackages = with pkgs; [
       # Telescope
       ripgrep
-# LSP
-      lua-language-server
-      nodePackages.vscode-json-languageserver
-# Formatters
-      stylua
-      jq
-# Linters
-
     ];
 
     plugins = with pkgs.vimPlugins; [
@@ -52,7 +64,7 @@
           nvim-lspconfig
           nvim-notify
           nvim-spectre
-          nvim-treesitter.withAllGrammars
+          nvim-treesitter
           nvim-treesitter-context
           nvim-treesitter-textobjects
           nvim-ts-autotag
@@ -118,74 +130,33 @@
   };
 
   home.file = {
-    ".config/nvim/lua" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles/nvim/lua";
+    ".config/nvim/lua/config" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles/nvim/lua/config";
     };
-  };
-  home.file = {
+    ".config/nvim/lua/plugins/colorscheme.lua" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles/nvim/lua/plugins/colorscheme.lua";
+    };
     ".config/nvim/lazyvim.json" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles/nvim/lazyvim.json";
     };
-  };
-  home.file = {
     ".config/nvim/stylua.toml" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles/nvim/stylua.toml";
     };
   };
+xdg.configFile."nvim/parser".source =
+      let
+        parserStrings = builtins.filter builtins.isString cfg.treesitterParsers;
+        parserPackages = builtins.filter lib.isDerivation cfg.treesitterParsers;
+        parsers = pkgs.symlinkJoin {
+          name = "treesitter-parsers";
+          paths =
+            (pkgs.vimPlugins.nvim-treesitter.withPlugins (
+              plugins: lib.attrVals parserStrings plugins ++ parserPackages
+            )).dependencies;
+        };
+      in
+      "${parsers}/parser";
+};
 }
 
 
-# { pkgs, lib, config, ... }: {
-#   config = lib.mkIf config.programs.neovim.enable {
-#     programs.neovim = {
-#       
-#       defaultEditor = true;
-#       viAlias = true;
-#       vimAlias = true;
-#       vimdiffAlias = true;
-# 
-#       withNodeJs = true;
-# 
-#       extraPackages = with pkgs; [
-#         ripgrep
-#         gcc
-#         fzf
-#         fd
-#         nil
-# 
-#         bash-language-server
-#         csharpier
-#         djlint
-#         docker-compose-language-service
-#         dockerfile-language-server-nodejs
-#         hadolint
-#         helm-ls
-#         lua-language-server
-#         markdownlint-cli2
-#         marksman
-#         netcoredbg
-#         nodejs_23
-#         nodePackages.vscode-json-languageserver
-#         omnisharp-roslyn
-#         semgrep
-#         shellcheck
-#         shfmt
-#         sqlfluff
-#         stylua
-#         vimPlugins.vim-markdown-toc
-#         vtsls
-#         yaml-language-server
-#       ];
-# 
-#       plugins = with pkgs.vimPlugins; [
-#         lazy-nvim
-#       ];
-#     };
-# 
-#     # home.file = {
-#     #   ".config/nvim" = {
-#     #     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles/nvim";
-#     #   };
-#     # };
-#   };
-# }
