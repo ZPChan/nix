@@ -170,12 +170,12 @@
       ".config/nvim/lua/plugins/colorscheme.lua" = {
         source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles/nvim/lua/plugins/colorscheme.lua";
       };
-      ".config/nvim/lazyvim.json" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles/nvim/lazyvim.json";
-      };
-      ".config/nvim/stylua.toml" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles/nvim/stylua.toml";
-      };
+      #       ".config/nvim/lazyvim.json" = {
+      #         source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles/nvim/lazyvim.json";
+      #       };
+      #       ".config/nvim/stylua.toml" = {
+      #         source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles/nvim/stylua.toml";
+      #       };
     };
     xdg.configFile."nvim/parser".source =
       let
