@@ -1,4 +1,10 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   options = {
     programs.suid.enable = lib.mkEnableOption "enables suid module";
   };
@@ -12,4 +18,3 @@
     };
   };
 }
-

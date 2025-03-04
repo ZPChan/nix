@@ -1,4 +1,5 @@
-{ lib, config, ... }: {
+{ lib, config, ... }:
+{
   imports = [
     ./nix
     ./lua
@@ -14,4 +15,3 @@
   };
 
 }
-

@@ -1,4 +1,12 @@
-{ pkgs, lib, config, inputs, system, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  inputs,
+  system,
+  ...
+}:
+{
   options = {
     programs.zenbrowser.enable = lib.mkEnableOption "enables zenbrowser module";
   };
@@ -8,4 +16,3 @@
     ];
   };
 }
-

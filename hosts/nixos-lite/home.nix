@@ -1,9 +1,17 @@
-{ config, pkgs, inputs, lib, osConfig, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  lib,
+  osConfig,
+  ...
+}:
 let
   userName = "zach";
   userFullName = "Zach Putman";
   userGitEmail = "23585500+ZPChan@users.noreply.github.com";
-in {
+in
+{
   imports = [
     ./../../modules/user
   ];

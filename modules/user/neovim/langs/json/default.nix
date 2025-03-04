@@ -1,4 +1,10 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   options = {
     my.lang.json.enable = lib.mkEnableOption "json";
   };
@@ -8,8 +14,9 @@
       jq
     ];
 
-    my.neovim.treesitterParsers = [ "json" "jsonc" ];
+    my.neovim.treesitterParsers = [
+      "json"
+      "jsonc"
+    ];
   };
 }
-
-

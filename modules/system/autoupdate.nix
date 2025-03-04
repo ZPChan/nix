@@ -1,4 +1,11 @@
-{ pkgs, lib, config, inputs, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  inputs,
+  ...
+}:
+{
   options = {
     services.autoupdate.enable = lib.mkEnableOption "enables autoupdate module";
   };
@@ -17,4 +24,3 @@
     };
   };
 }
-

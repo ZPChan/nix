@@ -1,16 +1,22 @@
-{ pkgs, lib, inputs, config, ... }:
+{
+  pkgs,
+  lib,
+  inputs,
+  config,
+  ...
+}:
 let
   userName = "zach";
   userFullName = "Zach Putman";
   hostName = "nixos-lite";
-in {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ./../../modules/system
-      inputs.home-manager.nixosModules.default
-      inputs.catppuccin.nixosModules.catppuccin
-    ];
+in
+{
+  imports = [
+    ./hardware-configuration.nix
+    ./../../modules/system
+    inputs.home-manager.nixosModules.default
+    inputs.catppuccin.nixosModules.catppuccin
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

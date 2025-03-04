@@ -1,4 +1,10 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   options = {
     programs.nvim.enable = lib.mkEnableOption "enables nvim module";
   };
@@ -16,4 +22,3 @@
     services.remapcaps.enable = lib.mkDefault true;
   };
 }
-

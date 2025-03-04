@@ -1,4 +1,10 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   config = lib.mkIf config.programs.git.enable {
     programs.git = {
       extraConfig = {
@@ -7,4 +13,3 @@
     };
   };
 }
-

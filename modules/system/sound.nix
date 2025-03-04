@@ -1,4 +1,10 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   options = {
     services.audio.enable = lib.mkEnableOption "enables audio module";
   };
@@ -19,4 +25,3 @@
     };
   };
 }
-

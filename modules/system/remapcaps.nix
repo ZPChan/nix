@@ -1,4 +1,10 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   options = {
     services.remapcaps.enable = lib.mkEnableOption "enables remapcaps module";
   };
@@ -10,11 +16,9 @@
     services.kanata = {
       enable = true;
       keyboards.main.config = ''
-      (defsrc caps)
-      (deflayer main esc)
+        (defsrc caps)
+        (deflayer main esc)
       '';
     };
   };
 }
-
-

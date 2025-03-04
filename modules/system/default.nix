@@ -1,4 +1,10 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   imports = [
     ./locale.nix
     ./settings.nix
@@ -29,4 +35,3 @@
   programs.nvim.enable = lib.mkDefault true;
   programs.git.enable = lib.mkDefault true;
 }
-

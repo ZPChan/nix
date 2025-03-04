@@ -1,23 +1,28 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   imports = [
     ./langs
   ];
 
-    options = {
-      my.neovim.treesitterParsers = lib.mkOption {
-        default = [ ];
-        example = lib.literalExpression ''
-          [ "nix" pkgs.vimPlugins.nvim-treesitter-parsers.yaml ]
-        '';
-        type =
-          with lib.types;
-          listOf (oneOf [
-            str
-            package
-          ]);
-      };
+  options = {
+    my.neovim.treesitterParsers = lib.mkOption {
+      default = [ ];
+      example = lib.literalExpression ''
+        [ "nix" pkgs.vimPlugins.nvim-treesitter-parsers.yaml ]
+      '';
+      type =
+        with lib.types;
+        listOf (oneOf [
+          str
+          package
+        ]);
     };
+  };
   config = lib.mkIf config.programs.neovim.enable {
 
     my.lang.enable = lib.mkDefault true;
@@ -27,7 +32,6 @@
       viAlias = true;
       vimAlias = true;
       vimdiffAlias = true;
-
 
       extraPackages = with pkgs; [
         # Telescope
@@ -82,18 +86,46 @@
             vim-illuminate
             vim-startuptime
             which-key-nvim
-            { name = "LuaSnip"; path = luasnip; }
-            { name = "catppuccin"; path = catppuccin-nvim; }
-            { name = "mini.ai"; path = mini-nvim; }
-            { name = "mini.bufremove"; path = mini-nvim; }
-            { name = "mini.comment"; path = mini-nvim; }
-            { name = "mini.indentscope"; path = mini-nvim; }
-            { name = "mini.pairs"; path = mini-nvim; }
-            { name = "mini.surround"; path = mini-nvim; }
+            {
+              name = "LuaSnip";
+              path = luasnip;
+            }
+            {
+              name = "catppuccin";
+              path = catppuccin-nvim;
+            }
+            {
+              name = "mini.ai";
+              path = mini-nvim;
+            }
+            {
+              name = "mini.bufremove";
+              path = mini-nvim;
+            }
+            {
+              name = "mini.comment";
+              path = mini-nvim;
+            }
+            {
+              name = "mini.indentscope";
+              path = mini-nvim;
+            }
+            {
+              name = "mini.pairs";
+              path = mini-nvim;
+            }
+            {
+              name = "mini.surround";
+              path = mini-nvim;
+            }
           ];
-          mkEntryFromDrv = drv:
+          mkEntryFromDrv =
+            drv:
             if lib.isDerivation drv then
-              { name = "${lib.getName drv}"; path = drv; }
+              {
+                name = "${lib.getName drv}";
+                path = drv;
+              }
             else
               drv;
           lazyPath = pkgs.linkFarm "lazy-plugins" (builtins.map mkEntryFromDrv plugins);
@@ -145,20 +177,18 @@
         source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles/nvim/stylua.toml";
       };
     };
-  xdg.configFile."nvim/parser".source =
-        let
-          parserStrings = builtins.filter builtins.isString config.my.neovim.treesitterParsers;
-          parserPackages = builtins.filter lib.isDerivation config.my.neovim.treesitterParsers;
-          parsers = pkgs.symlinkJoin {
-            name = "treesitter-parsers";
-            paths =
-              (pkgs.vimPlugins.nvim-treesitter.withPlugins (
-                plugins: lib.attrVals parserStrings plugins ++ parserPackages
-              )).dependencies;
-          };
-        in
-        "${parsers}/parser";
-};
+    xdg.configFile."nvim/parser".source =
+      let
+        parserStrings = builtins.filter builtins.isString config.my.neovim.treesitterParsers;
+        parserPackages = builtins.filter lib.isDerivation config.my.neovim.treesitterParsers;
+        parsers = pkgs.symlinkJoin {
+          name = "treesitter-parsers";
+          paths =
+            (pkgs.vimPlugins.nvim-treesitter.withPlugins (
+              plugins: lib.attrVals parserStrings plugins ++ parserPackages
+            )).dependencies;
+        };
+      in
+      "${parsers}/parser";
+  };
 }
-
-

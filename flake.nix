@@ -12,14 +12,21 @@
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
-  outputs = { self, nixpkgs, nixos-wsl, ... }@inputs: 
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixos-wsl,
+      ...
+    }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-    in {
+    in
+    {
       nixosConfigurations = {
         nixos-lite = nixpkgs.lib.nixosSystem {
-          specialArgs = { 
+          specialArgs = {
             inherit inputs system;
           };
           modules = [
@@ -29,12 +36,12 @@
           ];
         };
         nixos-wsl = nixpkgs.lib.nixosSystem {
-          specialArgs = { 
+          specialArgs = {
             inherit inputs system;
           };
-	  system = "${system}";
+          system = "${system}";
           modules = [
-	    nixos-wsl.nixosModules.default
+            nixos-wsl.nixosModules.default
             ./hosts/nixos-wsl/configuration.nix
             inputs.home-manager.nixosModules.default
             inputs.catppuccin.nixosModules.catppuccin

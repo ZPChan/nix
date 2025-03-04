@@ -1,15 +1,21 @@
-{ pkgs, lib, inputs, config, ... }:
+{
+  pkgs,
+  lib,
+  inputs,
+  config,
+  ...
+}:
 let
   userName = "nixos";
   userFullName = "Zach Putman";
   hostName = "nixos-wsl";
-in {
-  imports =
-    [
-      ./../../modules/system
-      inputs.home-manager.nixosModules.default
-      inputs.catppuccin.nixosModules.catppuccin
-    ];
+in
+{
+  imports = [
+    ./../../modules/system
+    inputs.home-manager.nixosModules.default
+    inputs.catppuccin.nixosModules.catppuccin
+  ];
 
   wsl.enable = true;
   wsl.defaultUser = "nixos";

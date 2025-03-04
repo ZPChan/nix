@@ -1,4 +1,10 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   options = {
     services.wifi.enable = lib.mkEnableOption "enables wifi module";
   };
@@ -11,4 +17,3 @@
     };
   };
 }
-

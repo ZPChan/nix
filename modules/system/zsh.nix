@@ -1,4 +1,10 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   config = lib.mkIf config.programs.zsh.enable {
 
     users.users."${config.user.userName}".shell = pkgs.zsh;
@@ -7,8 +13,6 @@
       zsh
     ];
 
-    environment.pathsToLink = [ "/share/zsh"];
+    environment.pathsToLink = [ "/share/zsh" ];
   };
 }
-
-

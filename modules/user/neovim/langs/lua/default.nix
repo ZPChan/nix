@@ -1,4 +1,10 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   options = {
     my.lang.lua.enable = lib.mkEnableOption "lua";
   };
@@ -11,5 +17,3 @@
     my.neovim.treesitterParsers = [ "lua" ];
   };
 }
-
-
