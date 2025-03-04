@@ -52,6 +52,9 @@
           plugins = with pkgs.vimPlugins; [
             # LazyVim
             LazyVim
+            alpha-nvim
+            blink-cmp
+            blink-compat
             bufferline-nvim
             cmp-buffer
             cmp-nvim-lsp
@@ -59,10 +62,12 @@
             cmp_luasnip
             conform-nvim
             dashboard-nvim
+            dial-nvim
             dressing-nvim
             flash-nvim
             friendly-snippets
             gitsigns-nvim
+            inc-rename-nvim
             indent-blankline-nvim
             lualine-nvim
             neo-tree-nvim
@@ -71,6 +76,7 @@
             noice-nvim
             nui-nvim
             nvim-cmp
+            nvim-dap
             nvim-lint
             nvim-lspconfig
             nvim-notify
@@ -83,6 +89,7 @@
             nvim-web-devicons
             persistence-nvim
             plenary-nvim
+            snacks-nvim
             telescope-fzf-native-nvim
             telescope-nvim
             todo-comments-nvim
@@ -91,6 +98,8 @@
             vim-illuminate
             vim-startuptime
             which-key-nvim
+            yanky-nvim
+
             {
               name = "LuaSnip";
               path = luasnip;
@@ -121,6 +130,14 @@
             }
             {
               name = "mini.surround";
+              path = mini-nvim;
+            }
+            {
+              name = "mini.starter";
+              path = mini-nvim;
+            }
+            {
+              name = "mini.hipatterns";
               path = mini-nvim;
             }
           ];
