@@ -1,4 +1,5 @@
-require("lspconfig").bashls.setup({})
+return {}
+
 --return {
 --	{
 --		"neovim/nvim-lspconfig",
