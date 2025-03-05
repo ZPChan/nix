@@ -1,10 +1,11 @@
-return {
-	{
-		"neovim/nvim-lspconfig",
-		opts = {
-			servers = {
-				bashls = {},
-			},
-		},
-	},
-}
+require("lspconfig").bashls.setup({})
+--return {
+--	{
+--		"neovim/nvim-lspconfig",
+--		opts = {
+--			servers = {
+--				bashls = {},
+--			},
+--		},
+--	},
+--}
