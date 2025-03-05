@@ -12,7 +12,7 @@
 
     programs.zsh.enable = true;
 
-    users.users."${config.user.userName}".shell = pkgs.zsh;
+    users.users."${config.my.user.userName}".shell = pkgs.zsh;
 
     environment.systemPackages = with pkgs; [
       zsh
