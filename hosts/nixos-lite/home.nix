@@ -18,13 +18,19 @@ in
 
   home.username = "${userName}";
   home.homeDirectory = "/home/${userName}";
+
   programs.git = {
     userName = "${userFullName}";
     userEmail = "${userGitEmail}";
   };
 
-  programs.hyprland.enable = true;
-  programs.zsh.enable = true;
+  my.git.enable = true;
+  my.hyprland.enable = true;
+  my.neovim.enable = true;
+  my.starship.enable = true;
+  my.webdev.enable = true;
+  my.zsh.enable = true;
+
   services.remmina.enable = true;
 
   home.stateVersion = "24.11";

@@ -6,9 +6,9 @@
 }:
 {
   options = {
-    programs.suid.enable = lib.mkEnableOption "enables suid module";
+    my.suid.enable = lib.mkEnableOption "enables suid module";
   };
-  config = lib.mkIf config.programs.suid.enable {
+  config = lib.mkIf config.my.suid.enable {
     # Some programs need SUID wrappers, can be configured further or are
     # started in user sessions.
     programs.mtr.enable = true;

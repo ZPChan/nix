@@ -5,12 +5,16 @@
   ...
 }:
 {
-  config = lib.mkIf config.programs.hyprland.enable {
+  options = {
+    my.hyprland.enable = lib.mkEnableOption "hyprland";
+  };
+  config = lib.mkIf config.my.hyprland.enable {
     environment.sessionVariables = {
       NIXOS_OZONE_WL = "1";
     };
 
     programs.hyprland = {
+      enable = true;
       xwayland.enable = true;
     };
 

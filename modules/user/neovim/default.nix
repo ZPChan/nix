@@ -10,6 +10,7 @@
   ];
 
   options = {
+    my.neovim.enable = lib.mkEnableOption "enables neovim module";
     my.neovim.treesitterParsers = lib.mkOption {
       default = [ ];
       example = lib.literalExpression ''
@@ -23,20 +24,24 @@
         ]);
     };
   };
-  config = lib.mkIf config.programs.neovim.enable {
+  config = lib.mkIf config.my.neovim.enable {
 
-    my.lang.enable = lib.mkDefault true;
+    my.lang.bash.enable = lib.mkDefault true;
+    my.lang.lua.enable = lib.mkDefault true;
+    my.lang.nix.enable = lib.mkDefault true;
+
     my.neovim.treesitterParsers = [
       "csv"
       "regex"
     ];
 
     programs.neovim = {
+      enable = lib.mkDefault true;
 
-      defaultEditor = true;
-      viAlias = true;
-      vimAlias = true;
-      vimdiffAlias = true;
+      defaultEditor = lib.mkDefault true;
+      viAlias = lib.mkDefault true;
+      vimAlias = lib.mkDefault true;
+      vimdiffAlias = lib.mkDefault true;
 
       extraPackages = with pkgs; [
         # Telescope

@@ -24,17 +24,24 @@ in
 
   networking.hostName = "${hostName}";
 
-  user.userName = "${userName}";
-  user.userFullName = "${userFullName}";
+  my.user.userName = "${userName}";
+  my.user.userFullName = "${userFullName}";
 
-  programs.zsh.enable = true;
-  programs.hyprland.enable = true;
-  services.twingate.enable = true;
+  my.autoupdate.enable = true;
+  my.dev.enable = true;
+  my.git.enable = true;
+  my.hyprland.enable = true;
+  my.nvim.enable = true;
+  my.remapcaps.enable = true;
+  my.sound.enable = true;
+  my.twingate.enable = true;
+  my.user.enable = true;
+  my.wifi.enable = true;
+  my.xserver.enable = true;
+  my.zenbrowser.enable = true;
+  my.zsh.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    nodejs_23
-    nodePackages.vscode-json-languageserver
-  ];
+  services.printing.enable = true;
 
   home-manager = {
     users."${userName}" = {

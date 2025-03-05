@@ -7,9 +7,9 @@
 }:
 {
   options = {
-    services.autoupdate.enable = lib.mkEnableOption "enables autoupdate module";
+    my.autoupdate.enable = lib.mkEnableOption "enables autoupdate module";
   };
-  config = lib.mkIf config.services.autoupdate.enable {
+  config = lib.mkIf config.my.autoupdate.enable {
     system.autoUpgrade = {
       enable = true;
       flake = inputs.self.outPath;

@@ -6,14 +6,14 @@
 }:
 {
   options = {
-    user.enable = lib.mkEnableOption "enables user module";
-    user.userName = lib.mkOption { type = lib.types.str; };
-    user.userFullName = lib.mkOption { type = lib.types.str; };
+    my.user.enable = lib.mkEnableOption "enables user module";
+    my.user.userName = lib.mkOption { type = lib.types.str; };
+    my.user.userFullName = lib.mkOption { type = lib.types.str; };
   };
-  config = lib.mkIf config.user.enable {
-    users.users."${config.user.userName}" = {
+  config = lib.mkIf config.my.user.enable {
+    users.users."${config.my.user.userName}" = {
       isNormalUser = true;
-      description = "${config.user.userFullName}";
+      description = "${config.my.user.userFullName}";
       extraGroups = [
         "networkmanager"
         "wheel"

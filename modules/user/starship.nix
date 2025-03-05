@@ -5,8 +5,12 @@
   ...
 }:
 {
-  config = lib.mkIf config.programs.starship.enable {
+  options = {
+    my.starship.enable = lib.mkEnableOption "enables starship module";
+  };
+  config = lib.mkIf config.my.starship.enable {
     programs.starship = {
+      enable = true;
       enableZshIntegration = true;
     };
     home.file = {

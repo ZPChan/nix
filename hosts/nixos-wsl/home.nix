@@ -18,12 +18,17 @@ in
 
   home.username = "${userName}";
   home.homeDirectory = "/home/${userName}";
+
   programs.git = {
     userName = "${userFullName}";
     userEmail = "${userGitEmail}";
   };
 
-  programs.zsh.enable = true;
+  my.git.enable = true;
+  my.neovim.enable = true;
+  my.starship.enable = true;
+  my.webdev.enable = true;
+  my.zsh.enable = true;
 
   home.stateVersion = "24.11";
 

@@ -17,5 +17,7 @@
       "json"
       "jsonc"
     ];
+
+    programs.jq.enable = lib.mkDefault true;
   };
 }

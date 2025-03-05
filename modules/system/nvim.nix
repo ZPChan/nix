@@ -6,9 +6,9 @@
 }:
 {
   options = {
-    programs.nvim.enable = lib.mkEnableOption "enables nvim module";
+    my.nvim.enable = lib.mkEnableOption "enables nvim module";
   };
-  config = lib.mkIf config.programs.nvim.enable {
+  config = lib.mkIf config.my.nvim.enable {
     environment.systemPackages = with pkgs; [
       neovim
       wl-clipboard
@@ -18,7 +18,5 @@
     fonts.packages = with pkgs; [
       nerd-fonts.caskaydia-cove
     ];
-
-    services.remapcaps.enable = lib.mkDefault true;
   };
 }

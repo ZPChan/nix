@@ -6,9 +6,9 @@
 }:
 {
   options = {
-    programs.hyprland.enable = lib.mkEnableOption "enables hyprland module";
+    my.hyprland.enable = lib.mkEnableOption "enables hyprland module";
   };
-  config = lib.mkIf config.programs.hyprland.enable {
+  config = lib.mkIf config.my.hyprland.enable {
 
     gtk = {
       enable = true;

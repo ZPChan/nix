@@ -22,18 +22,14 @@ in
 
   networking.hostName = "${hostName}";
 
-  user.userName = "${userName}";
-  user.userFullName = "${userFullName}";
+  my.user.userName = "${userName}";
+  my.user.userFullName = "${userFullName}";
 
-  services.wifi.enable = false;
-  services.printing.enable = false;
-  services.audio.enable = false;
-  services.xserver.enable = false;
-  services.remapcaps.enable = false;
-
-  programs.zsh.enable = true;
-  programs.firefox.enable = false;
-  programs.zenbrowser.enable = false;
+  my.autoupdate.enable = true;
+  my.dev.enable = true;
+  my.git.enable = true;
+  my.nvim.enable = true;
+  my.zsh.enable = true;
 
   home-manager = {
     users."${userName}" = {

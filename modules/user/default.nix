@@ -9,10 +9,8 @@
     ./git.nix
     ./hyprland.nix
     ./neovim
+    ./webdev
     ./starship.nix
     ./zsh.nix
   ];
-
-  programs.git.enable = lib.mkDefault true;
-  programs.neovim.enable = lib.mkDefault true;
 }

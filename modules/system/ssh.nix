@@ -6,9 +6,9 @@
 }:
 {
   options = {
-    services.ssh.enable = lib.mkEnableOption "enables ssh module";
+    my.ssh.enable = lib.mkEnableOption "enables ssh module";
   };
-  config = lib.mkIf config.services.ssh.enable {
+  config = lib.mkIf config.my.ssh.enable {
     services.openssh.enable = true;
   };
 }
