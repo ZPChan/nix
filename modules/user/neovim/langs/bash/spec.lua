@@ -1,12 +1,10 @@
-return {}
-
---return {
---	{
---		"neovim/nvim-lspconfig",
---		opts = {
---			servers = {
---				bashls = {},
---			},
---		},
---	},
---}
+return {
+	{
+		"neovim/nvim-lspconfig",
+		opts = {
+			servers = {
+				bashls = {},
+			},
+		},
+	},
+}
