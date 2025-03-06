@@ -3,7 +3,7 @@ return {
 		"neovim/nvim-lspconfig",
 		opts = {
 			servers = {
-				jsonls = {},
+				marksman = {},
 			},
 		},
 	},
@@ -11,8 +11,8 @@ return {
 		"stevearc/conform.nvim",
 		opts = {
 			formatters_by_ft = {
-				json = { "prettierd" },
-				jsonc = { "prettierd" },
+				md = { "prettierd" },
+				markdown = { "prettierd" },
 			},
 		},
 	},
