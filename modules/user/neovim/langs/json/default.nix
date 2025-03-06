@@ -19,5 +19,7 @@
     ];
 
     programs.jq.enable = lib.mkDefault true;
+
+    xdg.configFile."nvim/lua/plugins/json.lua".source = ./spec.lua;
   };
 }
