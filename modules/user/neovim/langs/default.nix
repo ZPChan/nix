@@ -5,6 +5,6 @@
     ./json
     ./lua
     ./nix
-    ./md
+    ./markdown
   ];
 }
