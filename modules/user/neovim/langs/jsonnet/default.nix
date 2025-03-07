@@ -18,6 +18,8 @@
       "jsonnet"
     ];
 
+    programs.jsonnet.enable = lib.mkDefault true;
+
     xdg.configFile."nvim/lua/plugins/jsonnet.lua".source = ./spec.lua;
   };
 }
