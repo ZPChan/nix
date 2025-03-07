@@ -11,6 +11,7 @@
   config = lib.mkIf config.my.starship.enable {
     programs.starship = {
       enable = true;
+      enableBashIntegration = true;
       enableZshIntegration = true;
     };
     home.file = {
