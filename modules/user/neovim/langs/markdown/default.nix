@@ -11,7 +11,7 @@
   config = lib.mkIf config.my.lang.markdown.enable {
     programs.neovim.extraPackages = with pkgs; [
       marksman
-      prettierd
+      markdownlint-cli2
     ];
 
     my.neovim.treesitterParsers = [
