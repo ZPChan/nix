@@ -1,4 +1,10 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   options = {
     my.lang.javascript.enable = lib.mkEnableOption "javascript";
   };
@@ -15,4 +21,3 @@
     xdg.configFile."nvim/lua/plugins/javascript.lua".source = ./spec.lua;
   };
 }
-

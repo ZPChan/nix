@@ -1,4 +1,10 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   options = {
     my.lang.html.enable = lib.mkEnableOption "html";
   };
@@ -15,4 +21,3 @@
     xdg.configFile."nvim/lua/plugins/html.lua".source = ./spec.lua;
   };
 }
-

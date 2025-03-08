@@ -1,4 +1,10 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   options = {
     my.lang.typescript.enable = lib.mkEnableOption "typescript";
   };
@@ -15,4 +21,3 @@
     xdg.configFile."nvim/lua/plugins/typescript.lua".source = ./spec.lua;
   };
 }
-
