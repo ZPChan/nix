@@ -2,10 +2,14 @@
 {
   imports = [
     ./bash
+    ./css
+    ./html
+    ./javascript
     ./json
     ./jsonnet
     ./lua
-    ./nix
     ./markdown
+    ./nix
+    ./typescript
   ];
 }
