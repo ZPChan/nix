@@ -19,5 +19,6 @@
     ];
 
     environment.pathsToLink = [ "/share/zsh" ];
+    programs.tmux.shell = "\${pkgs.zsh}/bin/zsh";
   };
 }

@@ -29,6 +29,7 @@ in
   my.dev.enable = true;
   my.git.enable = true;
   my.nvim.enable = true;
+  my.tmux.enable = true;
   my.zsh.enable = true;
 
   home-manager = {
