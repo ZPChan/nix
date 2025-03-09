@@ -27,6 +27,7 @@ in
   my.git.enable = true;
   my.neovim.enable = true;
   my.starship.enable = true;
+  my.tmux.enable = true;
   my.webdev.enable = true;
   my.zsh.enable = true;
 

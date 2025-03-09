@@ -17,7 +17,7 @@
     ./sound.nix
     ./ssh.nix
     ./suid.nix
-    ./tmux
+    ./tmux.nix
     ./twingate.nix
     ./user.nix
     ./wifi.nix

@@ -12,5 +12,6 @@
     ./webdev
     ./starship.nix
     ./zsh.nix
+    ./tmux.nix
   ];
 }
