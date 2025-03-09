@@ -7,7 +7,7 @@
   ...
 }:
 let
-  userName = "nixos";
+  userName = "zach";
   userFullName = "Zach Putman";
   userGitEmail = "23585500+ZPChan@users.noreply.github.com";
 in

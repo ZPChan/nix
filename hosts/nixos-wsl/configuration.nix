@@ -6,7 +6,7 @@
   ...
 }:
 let
-  userName = "nixos";
+  userName = "zach";
   userFullName = "Zach Putman";
   hostName = "nixos-wsl";
 in
@@ -17,8 +17,10 @@ in
     inputs.catppuccin.nixosModules.catppuccin
   ];
 
-  wsl.enable = true;
-  wsl.defaultUser = "nixos";
+  my.wsl = {
+    enable = true;
+    userName = "${userName}";
+  };
 
   networking.hostName = "${hostName}";
 
