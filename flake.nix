@@ -31,6 +31,7 @@
           };
           modules = [
             ./hosts/nixos-lite/configuration.nix
+            nixos-wsl.nixosModules.default
             inputs.home-manager.nixosModules.default
             inputs.catppuccin.nixosModules.catppuccin
           ];
@@ -41,8 +42,8 @@
           };
           system = "${system}";
           modules = [
-            nixos-wsl.nixosModules.default
             ./hosts/nixos-wsl/configuration.nix
+            nixos-wsl.nixosModules.default
             inputs.home-manager.nixosModules.default
             inputs.catppuccin.nixosModules.catppuccin
           ];
