@@ -21,7 +21,6 @@
     ./twingate.nix
     ./user.nix
     ./wifi.nix
-    ./wsl.nix
     ./xserver.nix
     ./zenbrowser.nix
     ./zsh.nix

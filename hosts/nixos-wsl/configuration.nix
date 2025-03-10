@@ -13,6 +13,7 @@ in
 {
   imports = [
     ./../../modules/system
+    ./../../modules/system/wsl.nix
     inputs.home-manager.nixosModules.default
     inputs.catppuccin.nixosModules.catppuccin
   ];
