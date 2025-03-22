@@ -11,6 +11,12 @@
   config = lib.mkIf config.my.tmux.enable {
     programs.tmux = {
       enable = true;
+      baseIndex = 1;
+      keyMode = "vi";
+      mouse = true;
+      plugins = with pkgs; [
+        tmuxPlugins.catppuccin
+      ];
     };
   };
 }
