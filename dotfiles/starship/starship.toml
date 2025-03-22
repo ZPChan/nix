@@ -15,7 +15,7 @@ $docker_context\
 [](fg:blue bg:mauve)\
 $time\
 [ ](fg:mauve)\
-([ ](fg:red)$battery[ ](fg:red))\
+([  ](fg:red)$battery[ ](fg:red))\
 $line_break$character"""
 
 palette = 'catppuccin_mocha'
@@ -122,11 +122,11 @@ format = '[  $time ]($style)'
 
 [battery]
 disabled = false
-style = "fg:mantle bg:red"
-format = '[ $percentage ]($style)'
+format = '[$symbol$percentage]($style)'
 
 [[battery.display]]
 threshold = 10
+style = "fg:mantle bg:red"
 
 [line_break]
 disabled = false
