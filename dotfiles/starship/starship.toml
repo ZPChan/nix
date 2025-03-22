@@ -103,18 +103,16 @@ truncation_symbol = "…/"
 "Developer" = "󰲋 "
 
 [git_branch]
-symbol = ""
 style = "fg:mantle bg:green"
-format = '[ $symbol $branch ]($style)'
+format = '[  $branch ]($style)'
 
 [git_status]
 style = "fg:mantle bg:green"
 format = '[($all_status$ahead_behind )]($style)'
 
 [docker_context]
-symbol = ""
 style = "fg:mantle bg:blue"
-format = '[ $symbol( $context) ]($style)'
+format = '[ ( $context) ]($style)'
 
 [time]
 disabled = false
@@ -125,7 +123,7 @@ format = '[  $time ]($style)'
 [battery]
 disabled = false
 style = "fg:mantle bg:red"
-format = '[ $symbol$percentage ]($style)'
+format = '[ $percentage ]($style)'
 
 [[battery.display]]
 threshold = 10
