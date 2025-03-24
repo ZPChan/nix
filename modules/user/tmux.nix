@@ -21,7 +21,7 @@
 
         # Configure the catppuccin plugin
         set -g @catppuccin_flavor "mocha"
-        set -g @catppuccin_window_status_style "rounded"
+        set -g @catppuccin_window_status_style "slanted"
 
         # Make the status line pretty and add some modules
         set -g status-right-length 100
