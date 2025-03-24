@@ -14,6 +14,7 @@
       baseIndex = 1;
       keyMode = "vi";
       mouse = true;
+      customPaneNavigationAndResize = true;
       plugins = with pkgs; [
         tmuxPlugins.catppuccin
       ];
