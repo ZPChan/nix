@@ -13,8 +13,12 @@
       enable = true;
       baseIndex = 1;
       keyMode = "vi";
+      escapeTime = 0;
       mouse = true;
       customPaneNavigationAndResize = true;
+      extraConfig = ''
+        set-option -g status-position top
+      '';
       plugins = with pkgs; [
         tmuxPlugins.catppuccin
       ];
