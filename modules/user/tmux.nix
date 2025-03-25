@@ -18,6 +18,7 @@
       customPaneNavigationAndResize = true;
       extraConfig = ''
         set-option -g status-position top
+        set-option -g allow-rename off
 
         # Configure the catppuccin plugin
         set -g @catppuccin_flavor "mocha"
