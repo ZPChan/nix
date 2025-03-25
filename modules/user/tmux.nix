@@ -22,7 +22,6 @@
         set -g @catppuccin_flavor "mocha"
 
         set -g status-right-length 100
-        set -g status-left ""
 
         # Window
         set -g @catppuccin_window_status_style "custom"
@@ -47,6 +46,7 @@
         set -g @catppuccin_date_time_text "%d-%m %H:%M"
 
         # Status
+        set -g status-left ""
         set -gF  status-right "#{@catppuccin_status_directory}"
         set -agF status-right "#{@catppuccin_status_session}"
         set -agF status-right "#{@catppuccin_status_user}"
