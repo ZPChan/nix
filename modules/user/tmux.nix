@@ -16,6 +16,29 @@
       escapeTime = 0;
       mouse = true;
       customPaneNavigationAndResize = true;
+      plugins = with pkgs; [
+        {
+          plugin = tmuxPlugins.catppuccin;
+          extraConfig = ''
+            set -g @catppuccin_flavor "mocha"
+            set -g @catppuccin_window_status_style "slanted"
+
+            # set -g @catppuccin_window_default_text " #{window_name}"
+            # set -g @catppuccin_window_status "icon"
+            # set -g @catppuccin_window_default_fill "number"
+            # set -g @catppuccin_window_number_position "left"
+
+            # set -g @catppuccin_window_left_separator "█"
+            # set -g @catppuccin_window_middle_separator "█"
+            # set -g @catppuccin_window_right_separator "█"
+
+            ## Window current configuration
+            # set -g @catppuccin_window_current_text "#{window_name}"
+            # set -g @catppuccin_window_current_fill "all"
+            # set -g @catppuccin_window_current_middle_separator "#[noreverse] 󰿟 #[reverse]"
+          '';
+        }
+      ];
       extraConfig = ''
         set-option -g status-position top
 
@@ -29,29 +52,6 @@
         set -agF status-right "#{@catppuccin_status_user}"
         set -agF status-right "#{@catppuccin_status_host}"
       '';
-      plugins = with pkgs; [
-        {
-          plugin = tmuxPlugins.catppuccin;
-          extraConfig = ''
-            set -g @catppuccin_flavor "mocha"
-            set -g @catppuccin_window_status_style "custom"
-
-            set -g @catppuccin_window_default_text " #{window_name}"
-            set -g @catppuccin_window_status "icon"
-            set -g @catppuccin_window_default_fill "number"
-            set -g @catppuccin_window_number_position "left"
-
-            set -g @catppuccin_window_left_separator "█"
-            set -g @catppuccin_window_middle_separator "█"
-            set -g @catppuccin_window_right_separator "█"
-
-            ## Window current configuration
-            set -g @catppuccin_window_current_text "#{window_name}"
-            set -g @catppuccin_window_current_fill "all"
-            set -g @catppuccin_window_current_middle_separator "#[reverse] 󰿟 #[noreverse]"
-          '';
-        }
-      ];
     };
   };
 }
