@@ -53,7 +53,10 @@
         set -agF status-right "#{@catppuccin_status_host}"
       '';
       plugins = with pkgs; [
-        tmuxPlugins.catppuccin
+        {
+          plugin = tmuxPlugins.catppuccin;
+          extraConfig = "# where am i?";
+        }
       ];
     };
   };
