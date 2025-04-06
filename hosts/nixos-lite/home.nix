@@ -36,6 +36,12 @@ in
 
   programs.lazyvim = {
     enable = true;
+    extras = {
+      coding = {
+mini-surround.enable = true;
+        };
+
+      };
   };
 
   home.stateVersion = "24.11";
