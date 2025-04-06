@@ -40,6 +40,7 @@ in
       imports = [
         ./home.nix
         inputs.catppuccin.homeManagerModules.catppuccin
+        inputs.LazyVim.homeManagerModules.default
       ];
     };
   };
