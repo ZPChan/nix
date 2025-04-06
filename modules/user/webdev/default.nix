@@ -9,7 +9,7 @@
     my.webdev.enable = lib.mkEnableOption "webdev";
   };
   config = lib.mkIf config.my.webdev.enable {
-    my.neovim.enable = lib.mkDefault true;
+    my.lazyvim.enable = lib.mkDefault true;
     my.lang.css.enable = lib.mkDefault true;
     my.lang.html.enable = lib.mkDefault true;
     my.lang.javascript.enable = lib.mkDefault true;

@@ -9,7 +9,7 @@
     ./git.nix
     ./hyprland.nix
     ./lazyvim
-    #./webdev
+    ./webdev
     ./starship.nix
     ./zsh.nix
     ./tmux.nix

@@ -6,18 +6,21 @@
 }:
 {
   options = {
-    my.lang.html.enable = lib.mkEnableOption "html";
+    my.lang.css.enable = lib.mkEnableOption "css";
   };
-  config = lib.mkIf config.my.lang.html.enable {
+  config = lib.mkIf config.my.lang.css.enable {
+
+    programs.lazyvim = {
+      pluginsFile."my.lang.css.lua".source = ./spec.lua;
+    };
+
     programs.neovim.extraPackages = with pkgs; [
       vscode-langservers-extracted
       prettierd
     ];
 
     my.neovim.treesitterParsers = [
-      "html"
+      "css"
     ];
-
-    xdg.configFile."nvim/lua/plugins/html.lua".source = ./spec.lua;
   };
 }

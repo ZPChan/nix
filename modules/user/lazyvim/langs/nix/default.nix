@@ -11,7 +11,7 @@
   config = lib.mkIf config.my.lang.nix.enable {
 
     programs.lazyvim = {
-      extras.lang.nix.enable = true;
+      extras.lang.nix.enable = lib.mkDefault true;
       pluginsFile."my.lang.nix.lua".source = ./spec.lua;
     };
 
@@ -19,5 +19,6 @@
       nixd
       nixfmt-rfc-style
     ];
+
   };
 }
