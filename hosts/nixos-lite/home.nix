@@ -34,6 +34,10 @@ in
 
   services.remmina.enable = true;
 
+  programs.lazyvim = {
+    enable = true;
+  };
+
   home.stateVersion = "24.11";
 
   programs.home-manager.enable = true;
