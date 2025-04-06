@@ -8,8 +8,8 @@
   imports = [
     ./git.nix
     ./hyprland.nix
-    ./neovim
-    ./webdev
+    ./lazyvim
+    #./webdev
     ./starship.nix
     ./zsh.nix
     ./tmux.nix

@@ -11,18 +11,6 @@
 
   options = {
     my.neovim.enable = lib.mkEnableOption "enables neovim module";
-    my.neovim.treesitterParsers = lib.mkOption {
-      default = [ ];
-      example = lib.literalExpression ''
-        [ "nix" pkgs.vimPlugins.nvim-treesitter-parsers.yaml ]
-      '';
-      type =
-        with lib.types;
-        listOf (oneOf [
-          str
-          package
-        ]);
-    };
   };
   config = lib.mkIf config.my.neovim.enable {
 
@@ -30,10 +18,26 @@
     my.lang.lua.enable = lib.mkDefault true;
     my.lang.nix.enable = lib.mkDefault true;
 
-    my.neovim.treesitterParsers = [
-      "csv"
-      "regex"
-    ];
+  programs.lazyvim = {
+    enable = lib.mkDefault true;
+    extras = {
+      coding = {
+          yanky.enable = true;
+mini-surround.enable = true;
+        };
+        editor = {
+          dial.enable = true;
+          inc-rename.enable = true;
+        };
+        test = {
+          core.enable = true;
+        };
+        util = {
+          dot.enable = true;
+          mini-hipatterns.enable = true;
+        };
+      };
+  };
 
     programs.neovim = {
       enable = lib.mkDefault true;
