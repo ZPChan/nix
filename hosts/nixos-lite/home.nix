@@ -40,9 +40,17 @@ in
       coding = {
 mini-surround.enable = true;
         };
+        lang = {
+nix.enable = true;
+          };
 
       };
   };
+    home.file = {
+      ".config/nvim/lua/plugins/colorscheme.lua" = {
+        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles/nvim/lua/plugins/colorscheme.lua";
+      };
+    };
 
   home.stateVersion = "24.11";
 
