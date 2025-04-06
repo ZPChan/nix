@@ -39,7 +39,7 @@ in
     users."${userName}" = {
       imports = [
         ./home.nix
-        inputs.catppuccin.homeManagerModules.catppuccin
+        inputs.catppuccin.homeModules.catppuccin
         inputs.LazyVim.homeManagerModules.default
       ];
     };
