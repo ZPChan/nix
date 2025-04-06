@@ -58,8 +58,8 @@
 
     xdg.configFile."nvim/parser".source =
       let
-        parserStrings = builtins.filter builtins.isString config.my.neovim.treesitterParsers;
-        parserPackages = builtins.filter lib.isDerivation config.my.neovim.treesitterParsers;
+        parserStrings = builtins.filter builtins.isString config.my.lazyvim.treesitterParsers;
+        parserPackages = builtins.filter lib.isDerivation config.my.lazyvim.treesitterParsers;
         parsers = pkgs.symlinkJoin {
           name = "treesitter-parsers";
           paths =
