@@ -20,6 +20,6 @@
       shfmt
     ];
 
-    my.neovim.treesitterParsers = [ "bash" ];
+    my.lazyvim.treesitterParsers = [ "bash" ];
   };
 }

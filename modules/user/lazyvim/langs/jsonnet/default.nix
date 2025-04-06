@@ -19,7 +19,7 @@
       jsonnet-language-server
     ];
 
-    my.neovim.treesitterParsers = [
+    my.lazyvim.treesitterParsers = [
       "jsonnet"
     ];
 

@@ -20,7 +20,7 @@
       prettierd
     ];
 
-    my.neovim.treesitterParsers = [
+    my.lazyvim.treesitterParsers = [
       "markdown"
     ];
   };

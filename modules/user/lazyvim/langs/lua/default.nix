@@ -15,6 +15,6 @@
       stylua
     ];
 
-    my.neovim.treesitterParsers = [ "lua" ];
+    my.lazyvim.treesitterParsers = [ "lua" ];
   };
 }

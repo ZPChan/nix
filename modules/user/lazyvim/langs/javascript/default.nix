@@ -19,7 +19,7 @@
       prettierd
     ];
 
-    my.neovim.treesitterParsers = [
+    my.lazyvim.treesitterParsers = [
       "javascript"
     ];
   };
