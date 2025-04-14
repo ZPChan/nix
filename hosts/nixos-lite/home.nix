@@ -31,6 +31,7 @@ in
   my.starship.enable = true;
   my.tmux.enable = true;
   my.zsh.enable = true;
+  my.nushell.enable = true;
 
   services.remmina.enable = true;
 

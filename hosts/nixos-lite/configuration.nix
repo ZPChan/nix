@@ -41,7 +41,8 @@ in
   my.xserver.enable = true;
   my.zenbrowser.enable = true;
   my.zsh.enable = true;
-  my.zsh.defaultShell = true;
+  my.nushell.enable = true;
+  my.nushell.defaultShell = true;
 
   services.printing.enable = true;
 
