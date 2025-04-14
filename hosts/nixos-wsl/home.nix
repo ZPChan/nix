@@ -30,6 +30,7 @@ in
   my.tmux.enable = true;
   my.webdev.enable = true;
   my.zsh.enable = true;
+  my.nushell.enable = true;
 
   home.stateVersion = "24.11";
 

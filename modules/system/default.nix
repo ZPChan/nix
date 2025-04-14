@@ -11,6 +11,7 @@
     ./git.nix
     ./hyprland.nix
     ./locale.nix
+    ./nushell.nix
     ./nvim.nix
     ./remapcaps.nix
     ./settings.nix

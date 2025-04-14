@@ -34,6 +34,7 @@ in
   my.nvim.enable = true;
   my.tmux.enable = true;
   my.zsh.enable = true;
+  my.nushell.enable = true;
 
   home-manager = {
     users."${userName}" = {

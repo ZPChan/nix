@@ -9,9 +9,10 @@
     ./git.nix
     ./hyprland.nix
     ./lazyvim
-    ./webdev
+    ./nushell.nix
     ./starship.nix
-    ./zsh.nix
     ./tmux.nix
+    ./webdev
+    ./zsh.nix
   ];
 }
