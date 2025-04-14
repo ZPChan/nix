@@ -13,6 +13,7 @@
     (lib.mkIf config.my.nushell.enable {
       environment.systemPackages = with pkgs; [
         nushell
+        vivid
       ];
     })
     (lib.mkIf config.my.nushell.defaultShell {
