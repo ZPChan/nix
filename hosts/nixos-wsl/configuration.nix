@@ -35,6 +35,7 @@ in
   my.tmux.enable = true;
   my.zsh.enable = true;
   my.nushell.enable = true;
+  my.nushell.defaultShell = true;
 
   home-manager = {
     users."${userName}" = {
