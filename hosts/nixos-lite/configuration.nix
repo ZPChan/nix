@@ -27,6 +27,11 @@ in
   my.user.userName = "${userName}";
   my.user.userFullName = "${userFullName}";
 
+  catppuccin = {
+    flavor = "mocha";
+    accent = "mauve";
+  };
+
   my.autoupdate.enable = true;
   my.dev.enable = true;
   my.git.enable = true;

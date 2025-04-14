@@ -24,6 +24,11 @@ in
     userEmail = "${userGitEmail}";
   };
 
+  catppuccin = {
+    flavor = "mocha";
+    accent = "mauve";
+  };
+
   my.git.enable = true;
   my.lazyvim.enable = true;
   my.starship.enable = true;

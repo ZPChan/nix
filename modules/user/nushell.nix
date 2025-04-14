@@ -10,5 +10,6 @@
   };
   config = lib.mkIf config.my.nushell.enable {
     programs.nushell.enable = true;
+    catppuccin.nushell.enable = true;
   };
 }
