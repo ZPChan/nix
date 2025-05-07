@@ -17,5 +17,6 @@
       '';
     };
     catppuccin.nushell.enable = true;
+    my.lang.nu.enable = lib.mkDefault true;
   };
 }

@@ -10,6 +10,7 @@
     ./lua
     ./markdown
     ./nix
+    ./nu
     ./typescript
   ];
 }
