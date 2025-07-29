@@ -5,6 +5,7 @@
     ./css
     ./html
     ./javascript
+    ./jinja
     ./json
     ./jsonnet
     ./lua
