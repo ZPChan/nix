@@ -4,7 +4,7 @@ return {
 		opts = {
 			servers = {
 				jinja_lsp = {
-					filetypes = { "jinja", "html", "htm" },
+					filetypes = { "jinja" },
 				},
 			},
 		},
@@ -14,8 +14,6 @@ return {
 		opts = {
 			formatters_by_ft = {
 				jinja = { "djlint" },
-				html = { "djlint" },
-				htm = { "djlint" },
 			},
 		},
 	},
