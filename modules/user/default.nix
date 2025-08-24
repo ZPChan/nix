@@ -6,6 +6,7 @@
 }:
 {
   imports = [
+    ./autogc.nix
     ./git.nix
     ./hyprland.nix
     ./lazyvim

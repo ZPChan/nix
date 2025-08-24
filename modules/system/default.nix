@@ -6,6 +6,7 @@
 }:
 {
   imports = [
+    ./autogc.nix
     ./autoupdate.nix
     ./dev
     ./git.nix

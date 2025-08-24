@@ -29,6 +29,7 @@ in
     accent = "mauve";
   };
 
+  my.autogc.enable = true;
   my.git.enable = true;
   my.lazyvim.enable = true;
   my.starship.enable = true;
