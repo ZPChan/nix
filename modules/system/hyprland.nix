@@ -34,6 +34,7 @@
       hyprlock
       hypridle
       nautilus
+      brightnessctl
     ];
 
     fonts.packages = with pkgs; [
