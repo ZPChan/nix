@@ -8,7 +8,7 @@
 let
   userName = "zach";
   userFullName = "Zach Putman";
-  hostName = "micro-server";
+  hostName = "timberlane-server";
 in
 {
   imports = [
@@ -36,7 +36,7 @@ in
   my.autoupdate.enable = true;
   my.dev.enable = true;
   my.git.enable = true;
-  my.mdns.publishing.enable = true;
+  my.mdns.resolution.enable = true;
   my.nvim.enable = true;
   my.remapcaps.enable = true;
   my.ssh.enable = true;

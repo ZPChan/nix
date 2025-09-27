@@ -39,16 +39,6 @@
             inputs.catppuccin.nixosModules.catppuccin
           ];
         };
-        micro-server = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs system;
-          };
-          modules = [
-            ./hosts/micro-server/configuration.nix
-            inputs.home-manager.nixosModules.default
-            inputs.catppuccin.nixosModules.catppuccin
-          ];
-        };
         nixos-wsl = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs system;
@@ -57,6 +47,16 @@
           modules = [
             ./hosts/nixos-wsl/configuration.nix
             nixos-wsl.nixosModules.default
+            inputs.home-manager.nixosModules.default
+            inputs.catppuccin.nixosModules.catppuccin
+          ];
+        };
+        timberlane-server = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs system;
+          };
+          modules = [
+            ./hosts/micro-server/configuration.nix
             inputs.home-manager.nixosModules.default
             inputs.catppuccin.nixosModules.catppuccin
           ];
