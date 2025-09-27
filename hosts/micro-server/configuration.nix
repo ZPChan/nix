@@ -39,7 +39,6 @@ in
   my.remapcaps.enable = true;
   my.tmux.enable = true;
   my.user.enable = true;
-  my.xserver.enable = true;
   my.zsh.enable = true;
   my.nushell.enable = true;
   my.nushell.defaultShell = true;
