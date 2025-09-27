@@ -56,6 +56,7 @@ in
       workstation = true;
     };
   };
+  networking.firewall.allowedUDPPorts = [ 5353 ];
 
   home-manager = {
     users."${userName}" = {
