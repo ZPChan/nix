@@ -11,11 +11,11 @@
   config = lib.mkIf config.my.xserver.enable {
     services.xserver = {
       enable = true;
-      displayManager.gdm.enable = true;
       xkb = {
         layout = "us";
         variant = "";
       };
     };
+    services.displayManager.gdm.enable = true;
   };
 }
