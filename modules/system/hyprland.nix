@@ -37,6 +37,8 @@
       brightnessctl
     ];
 
+    services.udisks2.enable = true;
+
     fonts.packages = with pkgs; [
       font-awesome
     ];
