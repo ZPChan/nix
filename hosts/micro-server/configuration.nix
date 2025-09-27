@@ -36,6 +36,8 @@ in
   my.autoupdate.enable = true;
   my.dev.enable = true;
   my.git.enable = true;
+  my.mdns.enable = true;
+  my.mdns.publish = true;
   my.nvim.enable = true;
   my.remapcaps.enable = true;
   my.ssh.enable = true;
@@ -46,17 +48,6 @@ in
   my.nushell.defaultShell = true;
 
   virtualisation.docker.enable = true;
-
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    publish = {
-      enable = true;
-      addresses = true;
-      workstation = true;
-    };
-  };
-  networking.firewall.allowedUDPPorts = [ 5353 ];
 
   home-manager = {
     users."${userName}" = {
