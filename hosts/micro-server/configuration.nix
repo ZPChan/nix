@@ -38,6 +38,7 @@ in
   my.git.enable = true;
   my.nvim.enable = true;
   my.remapcaps.enable = true;
+  my.ssh.enable = true;
   my.tmux.enable = true;
   my.user.enable = true;
   my.zsh.enable = true;
