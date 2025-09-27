@@ -56,7 +56,7 @@
             inherit inputs system;
           };
           modules = [
-            ./hosts/micro-server/configuration.nix
+            ./hosts/timberlane-server/configuration.nix
             inputs.home-manager.nixosModules.default
             inputs.catppuccin.nixosModules.catppuccin
           ];
