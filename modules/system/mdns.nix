@@ -6,17 +6,25 @@
 }:
 {
   options = {
-    my.mdns.enable = lib.mkEnableOption "enables mdns module";
-    my.mdns.publish = lib.mkEnableOption "enables mdns publishing";
+    my.mdns.resolution.enable = lib.mkEnableOption "enables mdns resolution";
+    my.mdns.publishing.enable = lib.mkEnableOption "enables mdns publishing";
   };
-  config = lib.mkIf config.my.mdns.enable {
-    services.avahi = {
-      enable = true;
-      nssmdns4 = true;
-      publish = {
-        enable = config.my.mdns.publish;
-        addresses = true;
+  config = lib.mkMerge [
+    (lib.mkIf config.my.mdns.resolution.enable {
+      services.avahi = {
+        enable = true;
+        nssmdns4 = true;
       };
-    };
-  };
+    })
+    (lib.mkIf config.my.mdns.publishing.enable {
+      services.avahi = {
+        enable = true;
+        nssmdns4 = true;
+        publish = {
+          enable = true;
+          addresses = true;
+        };
+      };
+    })
+  ];
 }

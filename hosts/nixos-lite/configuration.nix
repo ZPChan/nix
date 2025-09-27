@@ -36,7 +36,7 @@ in
   my.dev.enable = true;
   my.git.enable = true;
   my.hyprland.enable = true;
-  my.mdns.enable = true;
+  my.mdns.resolution.enable = true;
   my.nvim.enable = true;
   my.remapcaps.enable = true;
   my.sound.enable = true;

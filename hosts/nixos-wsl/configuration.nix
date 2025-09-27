@@ -36,7 +36,7 @@ in
   my.autoupdate.enable = true;
   my.dev.enable = true;
   my.git.enable = true;
-  my.mdns.enable = true;
+  my.mdns.resolution.enable = true;
   my.nvim.enable = true;
   my.tmux.enable = true;
   my.zsh.enable = true;

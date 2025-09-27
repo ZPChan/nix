@@ -36,8 +36,7 @@ in
   my.autoupdate.enable = true;
   my.dev.enable = true;
   my.git.enable = true;
-  my.mdns.enable = true;
-  my.mdns.publish = true;
+  my.mdns.publishing.enable = true;
   my.nvim.enable = true;
   my.remapcaps.enable = true;
   my.ssh.enable = true;
