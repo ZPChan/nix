@@ -31,15 +31,11 @@ in
 
   my.autogc.enable = true;
   my.git.enable = true;
-  my.hyprland.enable = true;
   my.lazyvim.enable = true;
-  my.webdev.enable = true;
   my.starship.enable = true;
   my.tmux.enable = true;
   my.zsh.enable = true;
   my.nushell.enable = true;
-
-  services.remmina.enable = true;
 
   home.stateVersion = "25.05";
 
