@@ -23,6 +23,7 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "${hostName}";
+  networking.wireless.enable = true;
 
   my.user.userName = "${userName}";
   my.user.userFullName = "${userFullName}";
