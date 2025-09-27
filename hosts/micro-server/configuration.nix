@@ -45,10 +45,7 @@ in
   my.nushell.enable = true;
   my.nushell.defaultShell = true;
 
-  virtualisation.docker.rootless = {
-    enable = true;
-    setSocketVariable = true;
-  };
+  virtualisation.docker.enable = true;
 
   home-manager = {
     users."${userName}" = {
