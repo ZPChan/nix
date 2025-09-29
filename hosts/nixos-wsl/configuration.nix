@@ -39,6 +39,7 @@ in
   my.mdns.resolution.enable = true;
   my.nvim.enable = true;
   my.tmux.enable = true;
+  my.twingate.enable = true;
   my.zsh.enable = true;
   my.nushell.enable = true;
   my.nushell.defaultShell = true;
