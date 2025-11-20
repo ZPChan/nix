@@ -15,7 +15,10 @@
     environment.systemPackages = with pkgs; [
       yazi
       curl
-      direnv
     ];
+
+    programs.direnv = {
+      enable = true;
+    };
   };
 }
