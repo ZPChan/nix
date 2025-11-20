@@ -30,6 +30,7 @@ in
   };
 
   my.autogc.enable = true;
+  my.dev.enable = true;
   my.git.enable = true;
   my.lazyvim.enable = true;
   my.starship.enable = true;
