@@ -16,9 +16,5 @@
       yazi
       curl
     ];
-
-    programs.direnv = {
-      enable = true;
-    };
   };
 }
