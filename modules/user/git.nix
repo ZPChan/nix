@@ -13,6 +13,9 @@
       enable = true;
       extraConfig = {
         init.defaultBranch = "main";
+        difftool.prompt = true;
+        diff.tool = "nvimdiff";
+        difftool."nvimdiff".cmd = "nvim -d \"$LOCAL\" \"$REMOTE\"";
       };
     };
   };
