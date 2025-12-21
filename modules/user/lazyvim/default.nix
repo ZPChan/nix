@@ -51,24 +51,14 @@
       };
     };
 
+    programs.neovim.plugins = [
+      pkgs.vimPlugins.nvim-treesitter.withAllGrammars
+    ];
+
     home.file = {
       ".config/nvim/lua/plugins/colorscheme.lua" = {
         source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles/nvim/lua/plugins/colorscheme.lua";
       };
     };
-
-    xdg.configFile."nvim/parser".source =
-      let
-        parserStrings = builtins.filter builtins.isString config.my.lazyvim.treesitterParsers;
-        parserPackages = builtins.filter lib.isDerivation config.my.lazyvim.treesitterParsers;
-        parsers = pkgs.symlinkJoin {
-          name = "treesitter-parsers";
-          paths =
-            (pkgs.vimPlugins.nvim-treesitter.withPlugins (
-              plugins: lib.attrVals parserStrings plugins ++ parserPackages
-            )).dependencies;
-        };
-      in
-      "${parsers}/parser";
   };
 }

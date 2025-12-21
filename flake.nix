@@ -14,6 +14,7 @@
       url = "github:matadaniel/LazyVim-module";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nvim-treesitter-main.url = "github:iofq/nvim-treesitter-main";
   };
 
   outputs =
@@ -25,7 +26,23 @@
     }@inputs:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs.legacyPackages.${system} {
+        inherit system;
+        overlays = [
+          inputs.nvim-treesitter-main.overlays.default
+          (final: prev: {
+            vimPlugins = prev.vimPlugins.extend (
+              f: p: {
+                nvim-treesitter = p.nvim-treesitter.withAllGrammars; # or withPlugins...
+                # also redefine nvim-treesitter-textobjects (any other plugins that depend on nvim-treesitter)
+                nvim-treesitter-textobjects = p.nvim-treesitter-textobjects.overrideAttrs {
+                  dependencies = [ f.nvim-treesitter ];
+                };
+              }
+            );
+          })
+        ];
+      };
     in
     {
       nixosConfigurations = {
