@@ -41,7 +41,7 @@ in
   my.remapcaps.enable = true;
   my.sound.enable = true;
   my.tmux.enable = true;
-  my.twingate.enable = false;
+  my.twingate.enable = true;
   my.user.enable = true;
   my.wifi.enable = true;
   my.xserver.enable = true;
