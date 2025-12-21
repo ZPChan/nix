@@ -11,7 +11,7 @@
   config = lib.mkIf config.my.git.enable {
     programs.git = {
       enable = true;
-      extraConfig = {
+      settings = {
         init.defaultBranch = "main";
         difftool.prompt = true;
         diff.tool = "nvimdiff";
