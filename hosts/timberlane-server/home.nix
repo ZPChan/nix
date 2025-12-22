@@ -19,9 +19,9 @@ in
   home.username = "${userName}";
   home.homeDirectory = "/home/${userName}";
 
-  programs.git = {
-    userName = "${userFullName}";
-    userEmail = "${userGitEmail}";
+  programs.git.settings.user = {
+    name = "${userFullName}";
+    email = "${userGitEmail}";
   };
 
   catppuccin = {
