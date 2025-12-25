@@ -2,11 +2,12 @@
   pkgs,
   lib,
   config,
+  inputs,
   ...
 }:
 {
   imports = [
-    arion.nixosModules.arion
+    inputs.arion.nixosModules.arion
   ];
   options = {
     my.docker.adguardhome.enable = lib.mkEnableOption "enables adguardhome container";
