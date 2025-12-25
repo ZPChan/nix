@@ -35,7 +35,7 @@ in
 
   my.autoupdate.enable = true;
   my.dev.enable = true;
-  my.docker.enable = true;
+  my.docker.adguardhome.enable = true;
   my.git.enable = true;
   my.mdns.resolution.enable = true;
   my.nvim.enable = true;
