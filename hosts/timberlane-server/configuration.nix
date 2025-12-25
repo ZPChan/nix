@@ -35,6 +35,7 @@ in
 
   my.autoupdate.enable = true;
   my.dev.enable = true;
+  my.docker.enable = true;
   my.git.enable = true;
   my.mdns.resolution.enable = true;
   my.nvim.enable = true;
@@ -45,8 +46,6 @@ in
   my.zsh.enable = true;
   my.nushell.enable = true;
   my.nushell.defaultShell = true;
-
-  virtualisation.docker.enable = true;
 
   home-manager = {
     users."${userName}" = {

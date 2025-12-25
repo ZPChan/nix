@@ -9,6 +9,7 @@
     ./autogc.nix
     ./autoupdate.nix
     ./dev
+    ./docker.nix
     ./git.nix
     ./hyprland.nix
     ./locale.nix
