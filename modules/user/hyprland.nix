@@ -69,6 +69,7 @@
         font-family = "CaskaydiaCove Nerd Font";
         gtk-titlebar = false;
         background-opacity = 0.9;
+        shell-integration-features = "ssh-terminfo,ssh-env";
       };
     };
   };
