@@ -8,6 +8,7 @@
   imports = [
     ./autogc.nix
     ./autoupdate.nix
+    ./containers
     ./dev
     ./docker.nix
     ./git.nix
