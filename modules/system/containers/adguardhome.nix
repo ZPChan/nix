@@ -18,7 +18,7 @@
       backend = "docker";
       projects.adguardhome.settings.services.adguardhome.service = {
         image = "adguard/adguardhome";
-        restart = "always";
+        restart = "unless-stopped";
         volumes = [
           "/var/containers/adguardhome/work:/opt/adguardhome/work"
           "/var/containers/adguardhome/conf:/opt/adguardhome/conf"
