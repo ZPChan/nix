@@ -15,6 +15,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nvim-treesitter-main.url = "github:iofq/nvim-treesitter-main";
+    arion.url = "github:hercules-ci/arion";
   };
   nixConfig = {
     extra-substituters = [
