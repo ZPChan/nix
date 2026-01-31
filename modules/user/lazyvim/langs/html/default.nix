@@ -11,16 +11,14 @@
   config = lib.mkIf config.my.lang.html.enable {
 
     programs.lazyvim = {
-      pluginsFile."my.lang.html.lua".source = ./spec.lua;
+      extraPackages = with pkgs; [
+        vscode-langservers-extracted
+        prettierd
+      ];
+      treesitterParsers = with pkgs.vimPlugins.nvim-treesitter.grammarPlugins; [
+        html
+      ];
+      plugins."my.lang.html" = builtins.readFile ./spec.lua;
     };
-
-    programs.neovim.extraPackages = with pkgs; [
-      vscode-langservers-extracted
-      prettierd
-    ];
-
-    my.lazyvim.treesitterParsers = [
-      "html"
-    ];
   };
 }

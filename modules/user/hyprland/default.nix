@@ -8,7 +8,20 @@
   options = {
     my.hyprland.enable = lib.mkEnableOption "enables hyprland module";
   };
+  imports = [
+    ./hyprland.conf.nix
+    ./hypridle.conf.nix
+    ./hyprlock.conf.nix
+    ./hyprpaper.conf.nix
+  ];
   config = lib.mkIf config.my.hyprland.enable {
+    wayland.windowManager.hyprland = {
+      enable = true;
+      systemd.enable = false;
+      plugins = [
+        pkgs.hyprlandPlugins.hyprscrolling
+      ];
+    };
 
     gtk = {
       enable = true;
@@ -31,41 +44,25 @@
       };
     };
 
-    # wayland.windowManager.hyprland.enable = true;
-
     programs.waybar.enable = true;
     home.file = {
-      ".config/waybar" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles/waybar";
-      };
+      ".config/waybar/config.jsonc".source = ./waybar.config.jsonc;
+      ".config/waybar/style.css".source = ./waybar.style.css;
+      ".config/waybar/mocha.css".source = ./waybar.mocha.css;
     };
 
     programs.hyprlock.enable = true;
     services.hypridle.enable = true;
     services.hyprpaper.enable = true;
-    home.file = {
-      ".config/hypr" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles/hypr";
-      };
-    };
 
     programs.wofi.enable = true;
-    home.file = {
-      ".config/wofi" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles/wofi";
-      };
-    };
+    home.file.".config/wofi/style.css".source = ./wofi.style.css;
 
-    home.file = {
-      ".config/backgrounds" = {
-        source = ./../../dotfiles/backgrounds;
-      };
-    };
+    home.file.".config/wallpaper.png".source = ./wallpaper/shaded.png;
 
     programs.ghostty = {
       enable = true;
       settings = {
-        theme = "catppuccin-mocha";
         font-family = "CaskaydiaCove Nerd Font";
         gtk-titlebar = false;
         background-opacity = 0.9;

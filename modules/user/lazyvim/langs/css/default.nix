@@ -11,16 +11,14 @@
   config = lib.mkIf config.my.lang.css.enable {
 
     programs.lazyvim = {
-      pluginsFile."my.lang.css.lua".source = ./spec.lua;
+      extraPackages = with pkgs; [
+        vscode-langservers-extracted
+        prettierd
+      ];
+      treesitterParsers = with pkgs.vimPlugins.nvim-treesitter.grammarPlugins; [
+        css
+      ];
+      plugins."my.lang.css" = builtins.readFile ./spec.lua;
     };
-
-    programs.neovim.extraPackages = with pkgs; [
-      vscode-langservers-extracted
-      prettierd
-    ];
-
-    my.lazyvim.treesitterParsers = [
-      "css"
-    ];
   };
 }

@@ -12,16 +12,14 @@
 
     programs.lazyvim = {
       extras.lang.markdown.enable = lib.mkDefault true;
-      pluginsFile."my.lang.markdown.lua".source = ./spec.lua;
+      extraPackages = with pkgs; [
+        marksman
+        prettierd
+      ];
+      treesitterParsers = with pkgs.vimPlugins.nvim-treesitter.grammarPlugins; [
+        markdown
+      ];
+      plugins."my.lang.markdown" = builtins.readFile ./spec.lua;
     };
-
-    programs.neovim.extraPackages = with pkgs; [
-      marksman
-      prettierd
-    ];
-
-    my.lazyvim.treesitterParsers = [
-      "markdown"
-    ];
   };
 }

@@ -11,14 +11,17 @@
   config = lib.mkIf config.my.lang.nix.enable {
 
     programs.lazyvim = {
-      extras.lang.nix.enable = lib.mkDefault true;
-      pluginsFile."my.lang.nix.lua".source = ./spec.lua;
+      extras.lang.nix = {
+        enable = lib.mkDefault true;
+      };
+      extraPackages = with pkgs; [
+        nixd
+        nixfmt
+      ];
+      treesitterParsers = with pkgs.vimPlugins.nvim-treesitter.grammarPlugins; [
+        nix
+      ];
+      plugins."my.lang.nix" = builtins.readFile ./spec.lua;
     };
-
-    programs.neovim.extraPackages = with pkgs; [
-      nixd
-      nixfmt-rfc-style
-    ];
-
   };
 }

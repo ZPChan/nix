@@ -9,10 +9,10 @@
     ./autogc.nix
     ./dev
     ./git.nix
-    ./hyprland.nix
+    ./hyprland
     ./lazyvim
     ./nushell.nix
-    ./starship.nix
+    ./starship
     ./tmux.nix
     ./webdev
     ./zsh.nix

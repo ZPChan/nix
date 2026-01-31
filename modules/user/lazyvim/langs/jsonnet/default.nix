@@ -11,17 +11,15 @@
   config = lib.mkIf config.my.lang.jsonnet.enable {
 
     programs.lazyvim = {
-      pluginsFile."my.lang.jsonnet.lua".source = ./spec.lua;
+      extraPackages = with pkgs; [
+        jsonnet
+        jsonnet-language-server
+      ];
+      treesitterParsers = with pkgs.vimPlugins.nvim-treesitter.grammarPlugins; [
+        jsonnet
+      ];
+      plugins."my.lang.jsonnet" = builtins.readFile ./spec.lua;
     };
-
-    programs.neovim.extraPackages = with pkgs; [
-      jsonnet
-      jsonnet-language-server
-    ];
-
-    my.lazyvim.treesitterParsers = [
-      "jsonnet"
-    ];
 
     home.packages = with pkgs; [
       jsonnet

@@ -12,18 +12,15 @@
 
     programs.lazyvim = {
       extras.lang.json.enable = lib.mkDefault true;
-      pluginsFile."my.lang.json.lua".source = ./spec.lua;
+      extraPackages = with pkgs; [
+        vscode-langservers-extracted
+        prettierd
+      ];
+      treesitterParsers = with pkgs.vimPlugins.nvim-treesitter.grammarPlugins; [
+        json
+      ];
+      plugins."my.lang.json" = builtins.readFile ./spec.lua;
     };
-
-    programs.neovim.extraPackages = with pkgs; [
-      vscode-langservers-extracted
-      prettierd
-    ];
-
-    my.lazyvim.treesitterParsers = [
-      "json"
-      "jsonc"
-    ];
 
     programs.jq.enable = lib.mkDefault true;
   };

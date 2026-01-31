@@ -52,7 +52,7 @@ in
       imports = [
         ./home.nix
         inputs.catppuccin.homeModules.catppuccin
-        inputs.LazyVim.homeManagerModules.default
+        inputs.lazyvim.homeManagerModules.default
       ];
     };
   };

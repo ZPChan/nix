@@ -15,6 +15,7 @@
 
     programs.hyprland = {
       enable = true;
+      withUWSM = true;
       xwayland.enable = true;
     };
 
@@ -35,6 +36,7 @@
       hypridle
       nautilus
       brightnessctl
+      hyprlandPlugins.hyprscrolling
     ];
 
     services.udisks2.enable = true;

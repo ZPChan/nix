@@ -11,16 +11,14 @@
   config = lib.mkIf config.my.lang.javascript.enable {
 
     programs.lazyvim = {
-      pluginsFile."my.lang.javascript.lua".source = ./spec.lua;
+      extraPackages = with pkgs; [
+        typescript-language-server
+        prettierd
+      ];
+      treesitterParsers = with pkgs.vimPlugins.nvim-treesitter.grammarPlugins; [
+        javascript
+      ];
+      plugins."my.lang.javascript" = builtins.readFile ./spec.lua;
     };
-
-    programs.neovim.extraPackages = with pkgs; [
-      typescript-language-server
-      prettierd
-    ];
-
-    my.lazyvim.treesitterParsers = [
-      "javascript"
-    ];
   };
 }

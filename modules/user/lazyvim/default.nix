@@ -11,18 +11,6 @@
 
   options = {
     my.lazyvim.enable = lib.mkEnableOption "enables lazyvim module";
-    my.lazyvim.treesitterParsers = lib.mkOption {
-      default = [ ];
-      example = lib.literalExpression ''
-        [ "nix" pkgs.vimPlugins.nvim-treesitter-parsers.yaml ]
-      '';
-      type =
-        with lib.types;
-        listOf (oneOf [
-          str
-          package
-        ]);
-    };
   };
   config = lib.mkIf config.my.lazyvim.enable {
 
@@ -32,33 +20,34 @@
 
     programs.lazyvim = {
       enable = lib.mkDefault true;
+      pluginSource = "nixpkgs";
       extras = {
         coding = {
           yanky.enable = lib.mkDefault true;
-          mini-surround.enable = lib.mkDefault true;
+          mini_surround.enable = lib.mkDefault true;
         };
         editor = {
           dial.enable = lib.mkDefault true;
-          inc-rename.enable = lib.mkDefault true;
+          inc_rename.enable = lib.mkDefault true;
         };
         test = {
           core.enable = lib.mkDefault true;
         };
         util = {
           dot.enable = lib.mkDefault true;
-          mini-hipatterns.enable = lib.mkDefault true;
+          mini_hipatterns.enable = lib.mkDefault true;
         };
       };
-    };
-
-    programs.neovim.plugins = [
-      pkgs.vimPlugins.nvim-treesitter.withAllGrammars
-    ];
-
-    home.file = {
-      ".config/nvim/lua/plugins/colorscheme.lua" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles/nvim/lua/plugins/colorscheme.lua";
-      };
+      plugins.colorscheme = ''
+        return {
+          {
+            "LazyVim/LazyVim",
+            opts = {
+              colorscheme = "catppuccin",
+            },
+          },
+        }
+      '';
     };
   };
 }
