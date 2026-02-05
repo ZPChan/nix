@@ -36,8 +36,8 @@
         sensitivity = "0";
       };
       general = {
-        gaps_in = "4";
-        gaps_out = "4";
+        gaps_in = "8";
+        gaps_out = "8";
         border_size = "4";
         "col.active_border" = "$mauve $flamingo 90deg";
         "col.inactive_border" = "$surface0";
@@ -103,14 +103,20 @@
       windowrulev2 = "suppressevent maximize, class:.*";
       layerrule = "no_anim on, match:class = wofi";
       "$mainMod" = "super";
+      plugin = {
+        hyprscrolling = {
+          fullscreen_on_one_column = true;
+          column_width = 0.465;
+          explicit_column_widths = "0.31,0.465,0.62,0.93";
+        };
+      };
       bind = [
         "$mainMod, escape, exec, $terminal"
         "$mainMod SHIFT, Q, killactive, "
-        "$mainMod, M, exit, "
         "$mainMod, E, exec, $fileManager"
         "$mainMod, V, togglefloating, "
         "$mainMod, N, exec, $menu"
-        "$SUPER_SHIFT, R, exec, hyprctl reload"
+        "$mainMod SHIFT, R, exec, hyprctl reload"
         "$mainMod, S, exec, hyprshot -m window"
         "$mainMod SHIFT, S, exec, hyprshot -m region"
         "$mainMod, P, pseudo, # dwindle"
@@ -121,10 +127,12 @@
         "$mainMod, L, movefocus, r"
         "$mainMod, K, movefocus, u"
         "$mainMod, J, movefocus, d"
-        "$mainMod SHIFT, H, movewindow, l"
-        "$mainMod SHIFT, L, movewindow, r"
-        "$mainMod SHIFT, K, movewindow, u"
-        "$mainMod SHIFT, J, movewindow, d"
+        "$mainMod SHIFT, H, layoutmsg, movewindowto l"
+        "$mainMod SHIFT, L, layoutmsg, movewindowto r"
+        "$mainMod SHIFT, K, layoutmsg, movewindowto u"
+        "$mainMod SHIFT, J, layoutmsg, movewindowto d"
+        "$mainMod, comma, layoutmsg, colresize -conf"
+        "$mainMod, period, layoutmsg, colresize +conf"
         "$mainMod, 1, workspace, 1"
         "$mainMod, 2, workspace, 2"
         "$mainMod, 3, workspace, 3"
