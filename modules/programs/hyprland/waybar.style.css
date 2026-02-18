@@ -1,0 +1,102 @@
+@import "mocha.css";
+
+* {
+  font-family: "MesloLGS Nerd Font Mono Bold";
+  font-size: 12px;
+  font-weight: bold;
+  color: @text;
+}
+
+#waybar {
+  background-color: transparent;
+}
+
+#workspaces button {
+  border: none;
+  background-color: @surface0;
+  padding: 0 0.5em;
+  margin: 0.5em 0 0.5em 0.5em;
+  border-radius: 0.15em;
+}
+
+#workspaces button:hover {
+  color: @mauve;
+}
+
+#workspaces button.active {
+  color: @mauve;
+  box-shadow:
+    -0.15em -0.15em @mauve inset,
+    0.15em -0.15em @mauve inset,
+    -0.15em 0.15em @mauve inset,
+    0.15em 0.15em @mauve inset;
+}
+
+#workspaces button.urgent {
+  background-color: #eb4d4b;
+}
+
+#window {
+  background-color: @surface0;
+  margin: 0.5em 3em;
+  padding: 0 0.75em;
+  border-radius: 1em;
+}
+#window label {
+  min-width: 5em;
+}
+
+#stats,
+#pulseaudio,
+#clock,
+#battery,
+#disk,
+#temperature,
+#backlight,
+#wireplumber,
+#tray,
+#network,
+#mode,
+#custom-vpn,
+#scratchpad {
+  background-color: @surface0;
+  margin: 0.5em 0.5em 0.5em 0;
+  padding: 0 0.75em;
+  border-radius: 1em;
+}
+
+#stats #cpu {
+  margin: 0 1em 0 0;
+}
+
+#cpu, #memory {
+  color: @sapphire;
+}
+
+#clock {
+  color: @maroon;
+}
+
+#pulseaudio {
+  color: @blue;
+}
+
+#network {
+  color: @yellow;
+}
+
+#idle_inhibitor {
+  color: #7cb342;
+}
+
+#idle_inhibitor.activated {
+  color: @red;
+}
+
+#battery {
+  color: @green;
+}
+
+#custom-vpn {
+  color: @lavender;
+}

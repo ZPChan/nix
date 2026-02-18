@@ -1,69 +1,26 @@
+# DO-NOT-EDIT. This file was auto-generated using github:vic/flake-file.
+# Use `nix run .#write-flake` to regenerate it.
 {
-  description = "NixOS configuration";
+
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
-    catppuccin.url = "github:catppuccin/nix";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
-    lazyvim = {
-      url = "github:pfassina/lazyvim-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     arion.url = "github:hercules-ci/arion";
+    catppuccin.url = "github:catppuccin/nix";
+    flake-file.url = "github:vic/flake-file";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    home-manager = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/home-manager";
+    };
+    import-tree.url = "github:vic/import-tree";
+    lazyvim = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:pfassina/lazyvim-nix";
+    };
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      nixos-wsl,
-      ...
-    }@inputs:
-    let
-      system = "x86_64-linux";
-      pkgs = import nixpkgs.legacyPackages.${system} {
-        inherit system;
-      };
-    in
-    {
-      nixosConfigurations = {
-        nixos-lite = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs system;
-          };
-          modules = [
-            ./hosts/nixos-lite/configuration.nix
-            inputs.home-manager.nixosModules.default
-            inputs.catppuccin.nixosModules.catppuccin
-          ];
-        };
-        nixos-wsl = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs system;
-          };
-          system = "${system}";
-          modules = [
-            ./hosts/nixos-wsl/configuration.nix
-            nixos-wsl.nixosModules.default
-            inputs.home-manager.nixosModules.default
-            inputs.catppuccin.nixosModules.catppuccin
-          ];
-        };
-        timberlane-server = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs system;
-          };
-          modules = [
-            ./hosts/timberlane-server/configuration.nix
-            inputs.home-manager.nixosModules.default
-            inputs.catppuccin.nixosModules.catppuccin
-          ];
-        };
-      };
-    };
 }
