@@ -15,16 +15,15 @@ in
     imports = with inputs.self.modules.nixos; [
       cli-tools-advanced
       mdns
-      system-simple
+      system-wsl
       twingate
-      wsl
       zach
     ];
 
     home-manager.users.zach = {
       imports = with inputs.self.modules.homeManager; [
         cli-tools-advanced
-        system-simple
+        system-wsl
         zach
       ];
     };

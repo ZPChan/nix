@@ -7,7 +7,6 @@
       nvim
       tmux
       yazi
-      remapcaps
       zsh
     ];
   };

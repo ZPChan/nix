@@ -17,6 +17,7 @@ in
       brightnessctl
       cli-tools-advanced
       mdns
+      remapcaps
       system-desktop
       twingate
       zach
