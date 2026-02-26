@@ -79,11 +79,11 @@
         ".config/waybar/config.jsonc".source = ./waybar.config.jsonc;
         ".config/waybar/style.css".source = ./waybar.style.css;
         ".config/waybar/mocha.css".source = ./waybar.mocha.css;
+
+        ".config/wofi/style.css".source = ./wofi.style.css;
+
+        ".config/wallpaper.png".source = ./wallpaper/shaded.png;
       };
-      home.file.".config/wofi/style.css".source = ./wofi.style.css;
-
-      home.file.".config/wallpaper.png".source = ./wallpaper/shaded.png;
-
     };
 
 }
