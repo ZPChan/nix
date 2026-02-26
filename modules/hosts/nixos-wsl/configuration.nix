@@ -12,6 +12,8 @@ in
 
     networking.hostName = "${hostName}";
 
+    wsl.defaultUser = "zach";
+
     imports = with inputs.self.modules.nixos; [
       cli-tools-advanced
       mdns
