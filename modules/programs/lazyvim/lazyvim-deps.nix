@@ -3,6 +3,7 @@
   ...
 }:
 {
+  # follow lazyvim installation instructions online
   flake.modules.nixos.lazyvim-deps =
     { pkgs, ... }:
     {
