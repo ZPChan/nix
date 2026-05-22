@@ -1,14 +1,16 @@
 {
   flake.modules.homeManager.hyprland = {
+    wayland.windowManager.hyprland.configType = "hyprlang";
     wayland.windowManager.hyprland.settings = {
       exec-once = [
         "hyprctl setcursor catppuccin-mocha-dark-cursors 28"
         "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
         "waybar & swaync & hyprpaper & hypridle"
+        "systemctl --user start hyprpolkitagent"
       ];
       monitor = ",preferred,auto,1.0";
       "$terminal" = "ghostty";
-      "$fileManager" = "nautilus";
+      "$fileManager" = "ghostty -e yazi";
       "$menu" = "wofi --show drun";
       xwayland = {
         force_zero_scaling = true;
@@ -87,7 +89,6 @@
         ];
       };
       dwindle = {
-        pseudotile = "yes";
         preserve_split = "yes";
       };
       misc.force_default_wallpaper = 0;
@@ -98,12 +99,10 @@
       windowrule = "match:class .*, suppress_event maximize";
       layerrule = "no_anim on, match:class = wofi";
       "$mainMod" = "super";
-      plugin = {
-        hyprscrolling = {
-          fullscreen_on_one_column = true;
-          column_width = 0.465;
-          explicit_column_widths = "0.31,0.465,0.62,0.93";
-        };
+      scrolling = {
+        fullscreen_on_one_column = true;
+        column_width = 0.465;
+        explicit_column_widths = "0.32,0.465,0.64,0.93";
       };
       bind = [
         "$mainMod, escape, exec, $terminal"
@@ -112,22 +111,24 @@
         "$mainMod, V, togglefloating, "
         "$mainMod, N, exec, $menu"
         "$mainMod SHIFT, R, exec, hyprctl reload"
-        "$mainMod, S, exec, hyprshot -m window"
-        "$mainMod SHIFT, S, exec, hyprshot -m region"
+        "$mainMod, S, exec, grim - | satty -f - --copy-command wl-copy -o \"~/Pictures/Screenshots/%Y%m%d_%H%M%S.png\""
+        "$mainMod SHIFT, S, exec, grim -g \"\$(slurp)\" - | satty -f - --copy-command wl-copy -o \"~/Pictures/Screenshots/%Y%m%d_%H%M%S.png\""
         "$mainMod, P, pseudo, # dwindle"
-        "$mainMod, T, togglesplit, # dwindle"
+        "$mainMod, T, layoutmsg, togglesplit, # dwindle"
         "$mainMod, F, fullscreen, # dwindle"
         "$mainMod, W, togglegroup, # dwindle"
         "$mainMod, H, movefocus, l"
         "$mainMod, L, movefocus, r"
         "$mainMod, K, movefocus, u"
         "$mainMod, J, movefocus, d"
-        "$mainMod SHIFT, H, layoutmsg, movewindowto l"
-        "$mainMod SHIFT, L, layoutmsg, movewindowto r"
-        "$mainMod SHIFT, K, layoutmsg, movewindowto u"
-        "$mainMod SHIFT, J, layoutmsg, movewindowto d"
-        "$mainMod, comma, layoutmsg, colresize -conf"
-        "$mainMod, period, layoutmsg, colresize +conf"
+        "$mainMod SHIFT, H, layoutmsg, consume_or_expel prev"
+        "$mainMod SHIFT, L, layoutmsg, consume_or_expel next"
+        "$mainMod SHIFT, K, movewindow, u"
+        "$mainMod SHIFT, J, movewindow, d"
+        "$mainMod CTRL, H, layoutmsg, colresize -conf"
+        "$mainMod CTRL, L, layoutmsg, colresize +conf"
+        "$mainMod CTRL, K, resizeactive, 0 20"
+        "$mainMod CTRL, J, resizeactive, 0 -20"
         "$mainMod, 1, workspace, 1"
         "$mainMod, 2, workspace, 2"
         "$mainMod, 3, workspace, 3"
@@ -152,6 +153,8 @@
         "$mainMod SHIFT, Z, movetoworkspace, special:magic"
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
+        "$mainMod, code:21, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+" # equals key
+        "$mainMod, code:20, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-" # minus key
       ];
       bindm = [
         "$mainMod, mouse:272, movewindow"

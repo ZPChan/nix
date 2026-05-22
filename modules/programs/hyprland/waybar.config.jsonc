@@ -23,12 +23,12 @@
     "tooltip-format": "{time}",
   },
   "network": {
-    "format-wifi": "   {essid}",
+    "format-wifi": " ",
     "format-ethernet": "󰤭   Disconnected",
     "format-linked": "{ifname} (No IP) ",
     "format-disconnected": "   Disconnected",
     "tooltip-format-wifi": "Signal Strenght: {signalStrength}%",
-    "on-click": "nm-connection-editor",
+    "on-click": "control --wifi",
   },
   "pulseaudio": {
     "format": "{icon}  {volume}%",
@@ -36,7 +36,7 @@
     "format-icons": {
       "default": ["", " ", " "],
     },
-    "on-click": "pavucontrol",
+    "on-click": "control --volume",
   },
   "cpu": {
     "format": "  {usage}%",

@@ -1,6 +1,9 @@
 {
-  flake.modules.nixos.bootloader = {
-    boot.loader.systemd-boot.enable = true;
-    boot.loader.efi.canTouchEfiVariables = true;
-  };
+  flake.modules.nixos.bootloader = 
+    { pkgs, ... }:
+    {
+      boot.loader.systemd-boot.enable = true;
+      boot.loader.efi.canTouchEfiVariables = true;
+      boot.kernelPackages = pkgs.linuxPackages_latest;
+    };
 }

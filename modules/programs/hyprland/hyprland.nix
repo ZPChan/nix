@@ -1,20 +1,27 @@
+{ inputs, ... }:
 {
   flake.modules.nixos.hyprland =
     { pkgs, ... }:
     {
+      imports = with inputs.self.modules.nixos; [
+        kitty
+      ];
+
       environment.sessionVariables = {
         NIXOS_OZONE_WL = "1";
+        HYPRSHOT_DIR = "screenshots";
       };
 
       programs.hyprland = {
         enable = true;
-        withUWSM = true;
         xwayland.enable = true;
       };
 
       xdg.portal = {
         enable = true;
-        extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+        extraPortals = with pkgs; [ 
+          xdg-desktop-portal-gtk 
+        ];
       };
 
       environment.systemPackages = with pkgs; [
@@ -23,10 +30,13 @@
         libnotify
         hyprpaper
         wofi
-        hyprshot
+        grim
+        slurp
+        satty
         hyprlock
         hypridle
-        hyprlandPlugins.hyprscrolling
+        hyprpolkitagent
+        hyprshutdown
       ];
 
       services.udisks2.enable = true;
@@ -42,9 +52,6 @@
       wayland.windowManager.hyprland = {
         enable = true;
         systemd.enable = false;
-        plugins = [
-          pkgs.hyprlandPlugins.hyprscrolling
-        ];
       };
 
       gtk = {

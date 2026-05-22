@@ -1,7 +1,7 @@
 {
   flake.modules.nixos.system-minimal = {
     nixpkgs.config.allowUnfree = true;
-    system.stateVersion = "25.05";
+    system.stateVersion = "26.05";
 
     nix.settings = {
       experimental-features = [
@@ -17,6 +17,6 @@
   };
 
   flake.modules.homeManager.system-minimal = {
-    home.stateVersion = "25.05";
+    home.stateVersion = "26.05";
   };
 }

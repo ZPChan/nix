@@ -2,12 +2,16 @@
 {
   flake.modules.nixos.system-desktop = {
     imports = with inputs.self.modules.nixos; [
+      bluetooth
+      control
       ghostty
       hyprland
       networkmanager
       printing
+      slack
       sound
       system-simple
+      thunderbird
       xserver
       zen
     ];
