@@ -15,6 +15,7 @@ in
     imports = with inputs.self.modules.nixos; [
       bootloader
       brightnessctl
+      clamav
       cli-tools-advanced
       mdns
       nextcloud
