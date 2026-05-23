@@ -55,7 +55,7 @@ let
   };
 in
 {
-  flake.modules.homeManager.hyprland = {
+  flake.modules.homeManager.hyprland-base = {
     wayland.windowManager.hyprland.settings = mocha;
     programs.hyprlock.settings = mocha;
   };

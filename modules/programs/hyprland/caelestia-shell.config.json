@@ -1,0 +1,112 @@
+{
+  "bar": {
+    "activeWindow": {
+      "compact": true,
+      "inverted": true
+    },
+    "clock": {
+      "showDate": true
+    },
+    "status": {
+      "showAudio": true
+    },
+    "workspaces": {
+      "showWindows": false
+    }
+  },
+  "launcher": {
+    "actions": [
+      {
+        "command": [
+          "hyprshutdown",
+          "--post-cmd",
+          "'systemctl poweroff'"
+        ],
+        "dangerous": true,
+        "description": "Shutdown the system",
+        "enabled": true,
+        "icon": "power_settings_new",
+        "name": "Shutdown"
+      },
+      {
+        "command": [
+          "hyprshutdown",
+          "--post-cmd",
+          "'systemctl reboot'"
+        ],
+        "dangerous": true,
+        "description": "Reboot the system",
+        "enabled": true,
+        "icon": "cached",
+        "name": "Reboot"
+      },
+      {
+        "command": [
+          "loginctl",
+          "terminate-user",
+          ""
+        ],
+        "dangerous": true,
+        "description": "Log out of the current session",
+        "enabled": true,
+        "icon": "exit_to_app",
+        "name": "Logout"
+      },
+      {
+        "command": [
+          "caelestia",
+          "shell",
+          "lock",
+          "lock"
+        ],
+        "description": "Lock the current session",
+        "enabled": true,
+        "icon": "lock",
+        "name": "Lock"
+      },
+      {
+        "command": [
+          "systemctl",
+          "suspend-then-hibernate"
+        ],
+        "description": "Suspend then hibernate",
+        "enabled": true,
+        "icon": "bedtime",
+        "name": "Sleep"
+      },
+      {
+        "command": [
+          "caelestia",
+          "shell",
+          "controlCenter",
+          "open"
+        ],
+        "description": "Configure the shell",
+        "enabled": true,
+        "icon": "settings",
+        "name": "Settings"
+      }
+    ]
+  },
+  "session": {
+    "commands": {
+      "hibernate": [
+        "systemctl",
+        "suspend-then-hibernate"
+      ],
+      "reboot": [
+        "hyprshutdown",
+        "--post-cmd",
+        "'systemctl reboot'"
+      ],
+      "shutdown": [
+        "hyprshutdown",
+        "--post-cmd",
+        "'systemctl poweroff'"
+      ]
+    },
+    "icons": {
+      "hibernate": "bedtime"
+    }
+  }
+}

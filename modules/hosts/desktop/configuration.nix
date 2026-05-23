@@ -16,7 +16,6 @@ in
       bootloader
       brightnessctl
       cli-tools-advanced
-      deskflow
       mdns
       nextcloud
       remapcaps

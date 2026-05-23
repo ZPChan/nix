@@ -5,7 +5,7 @@
       bluetooth
       control
       ghostty
-      hyprland
+      hyprland-caelestia
       networkmanager
       printing
       slack
@@ -19,7 +19,7 @@
   flake.modules.homeManager.system-desktop = {
     imports = with inputs.self.modules.homeManager; [
       ghostty
-      hyprland
+      hyprland-caelestia
       system-simple
     ];
   };
