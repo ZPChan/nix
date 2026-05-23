@@ -1,40 +1,63 @@
 {
-    "bar": {
-        "activeWindow": {
-            "compact": true,
-            "inverted": true
-        },
-        "clock": {
-            "showDate": true
-        },
-        "status": {
-            "showAudio": true
-        },
-        "workspaces": {
-            "showWindows": true
-        }
+  "bar": {
+    "activeWindow": {
+      "compact": true,
+      "inverted": true
     },
-    "paths": {
-        "mediaGif": "",
-        "sessionGif": ""
+    "clock": {
+      "showDate": true
     },
-    "session": {
-        "commands": {
-            "hibernate": [
-                "systemctl",
-                "suspend-then-hibernate"
-            ],
-            "reboot": [
-                "systemctl",
-                "reboot"
-            ],
-            "shutdown": [
-                "systemctl",
-                "poweroff"
-            ]
-        },
-        "icons": {
-            "hibernate": "bedtime"
-        }
+    "status": {
+      "showAudio": true
+    },
+    "workspaces": {
+      "showWindows": true
     }
+  },
+  "general": {
+    "idle": {
+      "lockBeforeSleep": true,
+      "timeouts": [
+        {
+          "timeout": 180,
+          "idleAction": "lock"
+        },
+        {
+          "timeout": 300,
+          "idleAction": "dpms off",
+          "returnAction": "dpms on"
+        },
+        {
+          "timeout": 600,
+          "idleAction": [
+            "systemctl",
+            "suspend-then-hibernate"
+          ]
+        }
+      ]
+    }
+  },
+  "paths": {
+    "mediaGif": "",
+    "sessionGif": ""
+  },
+  "session": {
+    "commands": {
+      "hibernate": [
+        "systemctl",
+        "suspend-then-hibernate"
+      ],
+      "reboot": [
+        "systemctl",
+        "reboot"
+      ],
+      "shutdown": [
+        "systemctl",
+        "poweroff"
+      ]
+    },
+    "icons": {
+      "hibernate": "bedtime"
+    }
+  }
 }
