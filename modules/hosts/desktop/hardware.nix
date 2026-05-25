@@ -30,7 +30,6 @@
     [ { device = "/dev/mapper/luks-51368152-9aa8-4430-8ad0-b0f2cec626fb"; }
     ];
 
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   };
 }

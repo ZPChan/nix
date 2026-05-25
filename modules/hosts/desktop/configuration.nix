@@ -26,7 +26,7 @@ in
     ];
 
     home-manager.users.zach = 
-    { lib, ...}:
+    { config, lib, ...}:
     {
       imports = with inputs.self.modules.homeManager; [
         cli-tools-advanced
@@ -34,15 +34,6 @@ in
         system-desktop
         zach
       ];
-
-      wayland.windowManager.hyprland.settings = {
-        monitor = lib.mkForce [
-          "DP-1,disable"
-          "DP-2,preferred,auto,1"
-          ",preferred,auto,1"
-        ];
-      };
-
     };
 
   };

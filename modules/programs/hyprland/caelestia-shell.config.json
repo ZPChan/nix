@@ -1,63 +1,58 @@
 {
-  "bar": {
-    "activeWindow": {
-      "compact": true,
-      "inverted": true
-    },
-    "clock": {
-      "showDate": true
-    },
-    "status": {
-      "showAudio": true
-    },
-    "workspaces": {
-      "showWindows": true
-    }
-  },
-  "general": {
-    "idle": {
-      "lockBeforeSleep": true,
-      "timeouts": [
-        {
-          "timeout": 180,
-          "idleAction": "lock"
+    "bar": {
+        "activeWindow": {
+            "compact": true,
+            "inverted": true
         },
-        {
-          "timeout": 300,
-          "idleAction": "dpms off",
-          "returnAction": "dpms on"
+        "clock": {
+            "showDate": true
         },
-        {
-          "timeout": 600,
-          "idleAction": [
-            "systemctl",
-            "suspend-then-hibernate"
-          ]
+        "status": {
+            "showAudio": true
+        },
+        "workspaces": {
+            "showWindows": true
         }
-      ]
-    }
-  },
-  "paths": {
-    "mediaGif": "",
-    "sessionGif": ""
-  },
-  "session": {
-    "commands": {
-      "hibernate": [
-        "systemctl",
-        "suspend-then-hibernate"
-      ],
-      "reboot": [
-        "systemctl",
-        "reboot"
-      ],
-      "shutdown": [
-        "systemctl",
-        "poweroff"
-      ]
     },
-    "icons": {
-      "hibernate": "bedtime"
+    "general": {
+        "idle": {
+            "lockBeforeSleep": true,
+            "timeouts": [
+                {
+                    "idleAction": "lock",
+                    "timeout": 180
+                },
+                {
+                    "idleAction": [
+                        "systemctl",
+                        "suspend"
+                    ],
+                    "timeout": 1200
+                }
+            ]
+        }
+    },
+    "paths": {
+        "mediaGif": "",
+        "sessionGif": ""
+    },
+    "session": {
+        "commands": {
+            "hibernate": [
+                "systemctl",
+                "suspend"
+            ],
+            "reboot": [
+                "systemctl",
+                "reboot"
+            ],
+            "shutdown": [
+                "systemctl",
+                "poweroff"
+            ]
+        },
+        "icons": {
+            "hibernate": "bedtime"
+        }
     }
-  }
 }

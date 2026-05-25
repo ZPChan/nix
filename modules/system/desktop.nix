@@ -3,9 +3,9 @@
   flake.modules.nixos.system-desktop = {
     imports = with inputs.self.modules.nixos; [
       bluetooth
-      control
       ghostty
       hyprland-caelestia
+      libreoffice
       networkmanager
       printing
       slack
