@@ -55,5 +55,10 @@
         "icons": {
             "hibernate": "bedtime"
         }
+    },
+    "utilities": {
+        "toasts": {
+            "kbLayoutChanged": false
+        }
     }
 }
