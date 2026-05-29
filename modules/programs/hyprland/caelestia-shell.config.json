@@ -8,7 +8,8 @@
             "showDate": true
         },
         "status": {
-            "showAudio": true
+            "showAudio": true,
+            "showLockStatus": false
         },
         "workspaces": {
             "showWindows": true
