@@ -7,6 +7,5 @@
         variant = "";
       };
     };
-    services.displayManager.gdm.enable = true;
   };
 }
