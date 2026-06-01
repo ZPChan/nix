@@ -1,176 +1,672 @@
 {
-  flake.modules.homeManager.hyprland-base = {
-    wayland.windowManager.hyprland.configType = "hyprlang";
-    wayland.windowManager.hyprland.settings = {
-      exec-once = [
-        "hyprctl setcursor catppuccin-mocha-dark-cursors 28"
-        "systemctl --user start hyprpolkitagent"
-      ];
-      monitor = ",preferred,auto,1.0";
-      "$terminal" = "ghostty";
-      "$fileManager" = "ghostty -e yazi";
-      xwayland = {
-        force_zero_scaling = true;
-      };
-      env = [
-        "XCURSOR_SIZE,24"
-        "HYPRCURSOR_SIZE,24"
-      ];
-      input = {
-        kb_layout = "us";
-        kb_variant = "";
-        kb_model = "";
-        kb_rules = "";
-        kb_options = "";
-        follow_mouse = "1";
-        touchpad = {
-          natural_scroll = "yes";
+  flake.modules.homeManager.hyprland-base =
+    { lib, ... }:
+    {
+      wayland.windowManager.hyprland.configType = "lua";
+      wayland.windowManager.hyprland.settings = {
+
+        mainMod = {
+          _var = "SUPER";
+        };
+        terminal = {
+          _var = "ghostty";
+        };
+        fileManager = {
+          _var = "ghostty -e yazi";
         };
 
-        sensitivity = "0";
-      };
-      general = {
-        gaps_in = "8";
-        gaps_out = "8";
-        border_size = "4";
-        "col.active_border" = "$mauve $flamingo 90deg";
-        "col.inactive_border" = "$surface0";
-        resize_on_border = true;
-        layout = "scrolling";
-        allow_tearing = false;
-      };
-      decoration = {
-        rounding = 10;
-        rounding_power = 2;
-        active_opacity = 1.0;
-        inactive_opacity = 0.95;
-        shadow = {
-          enabled = true;
-          range = 4;
-          render_power = 3;
-          color = "rgba(1a1a1aee)";
+        startupcommands = {
+          _var = [
+            "hyprctl setcursor catppuccin-mocha-dark-cursors 28"
+            "systemctl --user start hyprpolkitagent"
+          ];
         };
-        blur = {
-          enabled = true;
-          size = 3;
-          passes = 1;
-          vibrancy = 0.1696;
-        };
-      };
-      animations = {
-        enabled = true;
-        bezier = [
-          "easeOutQuint,0.23,1,0.32,1"
-          "easeInOutCubic,0.65,0.05,0.36,1"
-          "linear,0,0,1,1"
-          "almostLinear,0.5,0.5,0.75,1.0"
-          "quick,0.15,0,0.1,1"
+
+        monitor = [
+          {
+            output = "";
+            mode = "preferred";
+            position = "auto";
+            scale = 1;
+          }
         ];
+
+        on = {
+          _args = [
+            "hyprland.start"
+            (lib.generators.mkLuaInline ''
+              function()
+                for i, v in ipairs(startupcommands) do
+                  hl.exec_cmd(v)
+                end
+              end
+            '')
+          ];
+        };
+
+        config = {
+          general = {
+            gaps_in = 8;
+            gaps_out = 8;
+            border_size = 4;
+            col = {
+              active_border = {
+                colors = [
+                  (lib.generators.mkLuaInline "colors.mauve")
+                  (lib.generators.mkLuaInline "colors.flamingo")
+                ];
+                angle = 90;
+              };
+              inactive_border = lib.generators.mkLuaInline "colors.surface0";
+            };
+            resize_on_border = true;
+            layout = "scrolling";
+            allow_tearing = false;
+          };
+          decoration = {
+            rounding = 10;
+            rounding_power = 2;
+            active_opacity = 1.0;
+            inactive_opacity = 0.95;
+            shadow = {
+              enabled = true;
+              range = 4;
+              render_power = 3;
+              color = "rgba(1a1a1aee)";
+            };
+            blur = {
+              enabled = true;
+              size = 3;
+              passes = 1;
+              vibrancy = 0.1696;
+            };
+          };
+          xwayland = {
+            force_zero_scaling = true;
+          };
+          input = {
+            kb_layout = "us";
+            kb_variant = "";
+            kb_model = "";
+            kb_rules = "";
+            kb_options = "";
+            follow_mouse = 1;
+            touchpad = {
+              natural_scroll = true;
+            };
+
+            sensitivity = 0;
+          };
+
+          animations = {
+            enabled = true;
+          };
+
+          dwindle = {
+            preserve_split = true;
+          };
+
+          scrolling = {
+            fullscreen_on_one_column = true;
+            column_width = 0.48;
+            explicit_column_widths = "0.32,0.48,0.64,0.96";
+          };
+
+          misc = {
+            force_default_wallpaper = 0;
+          };
+        };
+
+        env = [
+          {
+            _args = [
+              "XCURSOR_SIZE"
+              "24"
+            ];
+          }
+          {
+            _args = [
+              "HYPRCURSOR_SIZE"
+              "24"
+            ];
+          }
+        ];
+
+        curve = [
+          {
+            _args = [
+              "easeOutQuint"
+              {
+                type = "bezier";
+                points = lib.generators.mkLuaInline "{{0.23,1},{0.32,1}}";
+              }
+            ];
+          }
+          {
+            _args = [
+              "easeInOutCubic"
+              {
+                type = "bezier";
+                points = lib.generators.mkLuaInline "{{0.65,0.05},{0.36,1}}";
+              }
+            ];
+          }
+          {
+            _args = [
+              "linear"
+              {
+                type = "bezier";
+                points = lib.generators.mkLuaInline "{{0,0},{1,1}}";
+              }
+            ];
+          }
+          {
+            _args = [
+              "almostLinear"
+              {
+                type = "bezier";
+                points = lib.generators.mkLuaInline "{{0.5,0.5},{0.75,1.0}}";
+              }
+            ];
+          }
+          {
+            _args = [
+              "quick"
+              {
+                type = "bezier";
+                points = lib.generators.mkLuaInline "{{0.15,0},{0.1,1}}";
+              }
+            ];
+          }
+        ];
+
         animation = [
-          "global, 1, 10, default"
-          "border, 1, 5.39, easeOutQuint"
-          "windows, 1, 4.79, easeOutQuint"
-          "windowsIn, 1, 4.1, easeOutQuint, popin 87%"
-          "windowsOut, 1, 1.49, linear, popin 87%"
-          "fadeIn, 1, 1.73, almostLinear"
-          "fadeOut, 1, 1.46, almostLinear"
-          "fade, 1, 3.03, quick"
-          "layers, 1, 3.81, easeOutQuint"
-          "layersIn, 1, 4, easeOutQuint, fade"
-          "layersOut, 1, 1.5, linear, fade"
-          "fadeLayersIn, 1, 1.79, almostLinear"
-          "fadeLayersOut, 1, 1.39, almostLinear"
-          "workspaces, 1, 1.94, almostLinear, fade"
-          "workspacesIn, 1, 1.21, almostLinear, fade"
-          "workspacesOut, 1, 1.94, almostLinear, fade"
+          {
+            leaf = "global";
+            enabled = true;
+            speed = 10;
+            bezier = "default";
+          }
+          {
+            leaf = "border";
+            enabled = true;
+            speed = 5.39;
+            bezier = "easeOutQuint";
+          }
+          {
+            leaf = "windows";
+            enabled = true;
+            speed = 4.79;
+            bezier = "easeOutQuint";
+          }
+          {
+            leaf = "windowsIn";
+            enabled = true;
+            speed = 4.1;
+            bezier = "easeOutQuint";
+            style = "popin 87%";
+          }
+          {
+            leaf = "windowsOut";
+            enabled = true;
+            speed = 1.49;
+            bezier = "linear";
+            style = "popin 87%";
+          }
+          {
+            leaf = "fadeIn";
+            enabled = true;
+            speed = 1.73;
+            bezier = "almostLinear";
+          }
+          {
+            leaf = "fadeOut";
+            enabled = true;
+            speed = 1.46;
+            bezier = "almostLinear";
+          }
+          {
+            leaf = "fade";
+            enabled = true;
+            speed = 3.03;
+            bezier = "quick";
+          }
+          {
+            leaf = "layers";
+            enabled = true;
+            speed = 3.81;
+            bezier = "easeOutQuint";
+          }
+          {
+            leaf = "layersIn";
+            enabled = true;
+            speed = 4;
+            bezier = "easeOutQuint";
+            style = "fade";
+          }
+          {
+            leaf = "layersOut";
+            enabled = true;
+            speed = 1.5;
+            bezier = "linear";
+            style = "fade";
+          }
+          {
+            leaf = "fadeLayersIn";
+            enabled = true;
+            speed = 1.79;
+            bezier = "almostLinear";
+          }
+          {
+            leaf = "fadeLayersOut";
+            enabled = true;
+            speed = 1.39;
+            bezier = "almostLinear";
+          }
+          {
+            leaf = "workspaces";
+            enabled = true;
+            speed = 1.94;
+            bezier = "almostLinear";
+            style = "fade";
+          }
+          {
+            leaf = "workspacesIn";
+            enabled = true;
+            speed = 1.21;
+            bezier = "almostLinear";
+            style = "fade";
+          }
+          {
+            leaf = "workspacesOut";
+            enabled = true;
+            speed = 1.94;
+            bezier = "almostLinear";
+            style = "fade";
+          }
+        ];
+
+        window_rule = [
+          {
+            match.class = ".*";
+            suppress_event = "maximize";
+          }
+        ];
+
+        bind = [
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + Escape'")
+              (lib.generators.mkLuaInline "hl.dsp.exec_cmd(terminal)")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + SHIFT + Q'")
+              (lib.generators.mkLuaInline "hl.dsp.window.close()")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + E'")
+              (lib.generators.mkLuaInline "hl.dsp.exec_cmd(fileManager)")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + V'")
+              (lib.generators.mkLuaInline "hl.dsp.window.float({action = 'toggle'})")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + N'")
+              (lib.generators.mkLuaInline "hl.dsp.exec_cmd(menu)")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + SHIFT + R'")
+              (lib.generators.mkLuaInline "hl.dsp.exec_cmd('hyprctl reload')")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + S'")
+              (lib.generators.mkLuaInline "hl.dsp.exec_cmd('grim - | satty -f - --copy-command wl-copy -o \"~/Pictures/Screenshots/%Y%m%d_%H%M%S.png\"')")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + SHIFT + S'")
+              (lib.generators.mkLuaInline "hl.dsp.exec_cmd('grim -g \"$(slurp)\" - | satty -f - --copy-command wl-copy -o \"~/Pictures/Screenshots/%Y%m%d_%H%M%S.png\"')")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + F'")
+              (lib.generators.mkLuaInline "hl.dsp.window.fullscreen({action = 'toggle'})")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + H'")
+              (lib.generators.mkLuaInline "hl.dsp.focus({direction = 'l'})")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + L'")
+              (lib.generators.mkLuaInline "hl.dsp.focus({direction = 'r'})")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + K'")
+              (lib.generators.mkLuaInline "hl.dsp.focus({direction = 'u'})")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + J'")
+              (lib.generators.mkLuaInline "hl.dsp.focus({direction = 'd'})")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + SHIFT + H'")
+              (lib.generators.mkLuaInline "hl.dsp.layout('consume_or_expel prev')")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + SHIFT + L'")
+              (lib.generators.mkLuaInline "hl.dsp.layout('consume_or_expel next')")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + SHIFT + K'")
+              (lib.generators.mkLuaInline "hl.dsp.window.move({direction = 'u'})")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + SHIFT + J'")
+              (lib.generators.mkLuaInline "hl.dsp.window.move({direction = 'd'})")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + CTRL + H'")
+              (lib.generators.mkLuaInline "hl.dsp.layout('colresize -conf')")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + CTRL + L'")
+              (lib.generators.mkLuaInline "hl.dsp.layout('colresize +conf')")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + CTRL + K'")
+              (lib.generators.mkLuaInline "hl.dsp.window.resize({x = 0, y = 20})")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + CTRL + J'")
+              (lib.generators.mkLuaInline "hl.dsp.window.resize({x = 0, y = -20})")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + 1'")
+              (lib.generators.mkLuaInline "hl.dsp.focus({workspace = 1})")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + 2'")
+              (lib.generators.mkLuaInline "hl.dsp.focus({workspace = 2})")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + 3'")
+              (lib.generators.mkLuaInline "hl.dsp.focus({workspace = 3})")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + 4'")
+              (lib.generators.mkLuaInline "hl.dsp.focus({workspace = 4})")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + 5'")
+              (lib.generators.mkLuaInline "hl.dsp.focus({workspace = 5})")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + 6'")
+              (lib.generators.mkLuaInline "hl.dsp.focus({workspace = 6})")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + 7'")
+              (lib.generators.mkLuaInline "hl.dsp.focus({workspace = 7})")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + 8'")
+              (lib.generators.mkLuaInline "hl.dsp.focus({workspace = 8})")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + 9'")
+              (lib.generators.mkLuaInline "hl.dsp.focus({workspace = 9})")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + 0'")
+              (lib.generators.mkLuaInline "hl.dsp.focus({workspace = 10})")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + SHIFT + 1'")
+              (lib.generators.mkLuaInline "hl.dsp.window.move({workspace = 1})")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + SHIFT + 2'")
+              (lib.generators.mkLuaInline "hl.dsp.window.move({workspace = 2})")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + SHIFT + 3'")
+              (lib.generators.mkLuaInline "hl.dsp.window.move({workspace = 3})")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + SHIFT + 4'")
+              (lib.generators.mkLuaInline "hl.dsp.window.move({workspace = 4})")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + SHIFT + 5'")
+              (lib.generators.mkLuaInline "hl.dsp.window.move({workspace = 5})")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + SHIFT + 6'")
+              (lib.generators.mkLuaInline "hl.dsp.window.move({workspace = 6})")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + SHIFT + 7'")
+              (lib.generators.mkLuaInline "hl.dsp.window.move({workspace = 7})")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + SHIFT + 8'")
+              (lib.generators.mkLuaInline "hl.dsp.window.move({workspace = 8})")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + SHIFT + 9'")
+              (lib.generators.mkLuaInline "hl.dsp.window.move({workspace = 9})")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + SHIFT + 0'")
+              (lib.generators.mkLuaInline "hl.dsp.window.move({workspace = 10})")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + Z'")
+              (lib.generators.mkLuaInline "hl.dsp.workspace.toggle_special('zspace')")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + SHIFT + Z'")
+              (lib.generators.mkLuaInline "hl.dsp.window.move({workspace = 'special:zspace'})")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + M'")
+              (lib.generators.mkLuaInline "hl.dsp.workspace.swap_monitors({monitor1 = 0, monitor2 = 1})")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + mouse_down'") # scroll down
+              (lib.generators.mkLuaInline "hl.dsp.focus({workspace = 'e+1'})")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + mouse_up'") # scroll up
+              (lib.generators.mkLuaInline "hl.dsp.focus({workspace = 'e-1'})")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + code:21'") # equals key
+              (lib.generators.mkLuaInline "hl.dsp.exec_cmd('wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+')")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + code:20'") # minus key
+              (lib.generators.mkLuaInline "hl.dsp.exec_cmd('wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-')")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + mouse:272'") # left click
+              (lib.generators.mkLuaInline "hl.dsp.window.drag()")
+              (lib.generators.mkLuaInline "{mouse=true}")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + mouse:273'") # right click
+              (lib.generators.mkLuaInline "hl.dsp.window.resize()")
+              (lib.generators.mkLuaInline "{mouse=true}")
+            ];
+          }
+          {
+            _args = [
+              "XF86AudioRaiseVolume"
+              (lib.generators.mkLuaInline "hl.dsp.exec_cmd('wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+')")
+              (lib.generators.mkLuaInline "{repeating=true,locked=true}")
+            ];
+          }
+          {
+            _args = [
+              "XF86AudioLowerVolume"
+              (lib.generators.mkLuaInline "hl.dsp.exec_cmd('wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-')")
+              (lib.generators.mkLuaInline "{repeating=true,locked=true}")
+            ];
+          }
+          {
+            _args = [
+              "XF86AudioMute"
+              (lib.generators.mkLuaInline "hl.dsp.exec_cmd('wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle')")
+              (lib.generators.mkLuaInline "{locked=true}")
+            ];
+          }
+          {
+            _args = [
+              "XF86AudioMicMute"
+              (lib.generators.mkLuaInline "hl.dsp.exec_cmd('wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle')")
+              (lib.generators.mkLuaInline "{locked=true}")
+            ];
+          }
+          {
+            _args = [
+              "XF86MonBrightnessUp"
+              (lib.generators.mkLuaInline "hl.dsp.exec_cmd('brightnessctl s 10%+')")
+              (lib.generators.mkLuaInline "{locked=true}")
+            ];
+          }
+          {
+            _args = [
+              "XF86MonBrightnessDown"
+              (lib.generators.mkLuaInline "hl.dsp.exec_cmd('brightnessctl s 10%-')")
+              (lib.generators.mkLuaInline "{locked=true}")
+            ];
+          }
+          {
+            _args = [
+              "XF86AudioNext"
+              (lib.generators.mkLuaInline "hl.dsp.exec_cmd('playerctl next')")
+              (lib.generators.mkLuaInline "{locked=true}")
+            ];
+          }
+          {
+            _args = [
+              "XF86AudioPause"
+              (lib.generators.mkLuaInline "hl.dsp.exec_cmd('playerctl play-pause')")
+              (lib.generators.mkLuaInline "{locked=true}")
+            ];
+          }
+          {
+            _args = [
+              "XF86AudioPlay"
+              (lib.generators.mkLuaInline "hl.dsp.exec_cmd('playerctl play-pause')")
+              (lib.generators.mkLuaInline "{locked=true}")
+            ];
+          }
+          {
+            _args = [
+              "XF86AudioPrev"
+              (lib.generators.mkLuaInline "hl.dsp.exec_cmd('playerctl previous')")
+              (lib.generators.mkLuaInline "{locked=true}")
+            ];
+          }
         ];
       };
-      dwindle = {
-        preserve_split = "yes";
-      };
-      misc.force_default_wallpaper = 0;
-      device = {
-        name = "epic-mouse-v1";
-        sensitivity = -0.5;
-      };
-      windowrule = "match:class .*, suppress_event maximize";
-      "$mainMod" = "super";
-      scrolling = {
-        fullscreen_on_one_column = true;
-        column_width = 0.465;
-        explicit_column_widths = "0.32,0.465,0.64,0.93";
-      };
-      bind = [
-        "$mainMod, escape, exec, $terminal"
-        "$mainMod SHIFT, Q, killactive, "
-        "$mainMod, E, exec, $fileManager"
-        "$mainMod, V, togglefloating, "
-        "$mainMod, N, exec, $menu"
-        "$mainMod SHIFT, R, exec, hyprctl reload"
-        "$mainMod, S, exec, grim - | satty -f - --copy-command wl-copy -o \"~/Pictures/Screenshots/%Y%m%d_%H%M%S.png\""
-        "$mainMod SHIFT, S, exec, grim -g \"\$(slurp)\" - | satty -f - --copy-command wl-copy -o \"~/Pictures/Screenshots/%Y%m%d_%H%M%S.png\""
-        "$mainMod, P, pseudo, # dwindle"
-        "$mainMod, T, layoutmsg, togglesplit, # dwindle"
-        "$mainMod, F, fullscreen, # dwindle"
-        "$mainMod, W, togglegroup, # dwindle"
-        "$mainMod, H, movefocus, l"
-        "$mainMod, L, movefocus, r"
-        "$mainMod, K, movefocus, u"
-        "$mainMod, J, movefocus, d"
-        "$mainMod SHIFT, H, layoutmsg, consume_or_expel prev"
-        "$mainMod SHIFT, L, layoutmsg, consume_or_expel next"
-        "$mainMod SHIFT, K, movewindow, u"
-        "$mainMod SHIFT, J, movewindow, d"
-        "$mainMod CTRL, H, layoutmsg, colresize -conf"
-        "$mainMod CTRL, L, layoutmsg, colresize +conf"
-        "$mainMod CTRL, K, resizeactive, 0 20"
-        "$mainMod CTRL, J, resizeactive, 0 -20"
-        "$mainMod, 1, workspace, 1"
-        "$mainMod, 2, workspace, 2"
-        "$mainMod, 3, workspace, 3"
-        "$mainMod, 4, workspace, 4"
-        "$mainMod, 5, workspace, 5"
-        "$mainMod, 6, workspace, 6"
-        "$mainMod, 7, workspace, 7"
-        "$mainMod, 8, workspace, 8"
-        "$mainMod, 9, workspace, 9"
-        "$mainMod, 0, workspace, 10"
-        "$mainMod SHIFT, 1, movetoworkspace, 1"
-        "$mainMod SHIFT, 2, movetoworkspace, 2"
-        "$mainMod SHIFT, 3, movetoworkspace, 3"
-        "$mainMod SHIFT, 4, movetoworkspace, 4"
-        "$mainMod SHIFT, 5, movetoworkspace, 5"
-        "$mainMod SHIFT, 6, movetoworkspace, 6"
-        "$mainMod SHIFT, 7, movetoworkspace, 7"
-        "$mainMod SHIFT, 8, movetoworkspace, 8"
-        "$mainMod SHIFT, 9, movetoworkspace, 9"
-        "$mainMod SHIFT, 0, movetoworkspace, 10"
-        "$mainMod, Z, togglespecialworkspace, magic"
-        "$mainMod SHIFT, Z, movetoworkspace, special:magic"
-        "$mainMod, mouse_down, workspace, e+1"
-        "$mainMod, mouse_up, workspace, e-1"
-        "$mainMod, code:21, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+" # equals key
-        "$mainMod, code:20, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-" # minus key
-      ];
-      bindm = [
-        "$mainMod, mouse:272, movewindow"
-        "$mainMod, mouse:273, resizewindow"
-      ];
-      bindel = [
-        ",XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
-        ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-        ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-        ",XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-        ",XF86MonBrightnessUp, exec, brightnessctl s 10%+"
-        ",XF86MonBrightnessDown, exec, brightnessctl s 10%-"
-      ];
-      bindl = [
-        ", XF86AudioNext, exec, playerctl next"
-        ", XF86AudioPause, exec, playerctl play-pause"
-        ", XF86AudioPlay, exec, playerctl play-pause"
-        ", XF86AudioPrev, exec, playerctl previous"
-      ];
     };
-  };
 }
-

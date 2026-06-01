@@ -3,18 +3,15 @@
   ...
 }:
 let
-  home-manager-config =
-    { ... }:
-    {
-      home-manager = {
-        verbose = true;
-      };
+  home-manager-config = _: {
+    home-manager = {
+      verbose = true;
     };
+  };
 in
 {
   flake-file.inputs = {
     home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   imports = [ inputs.home-manager.flakeModules.home-manager ];

@@ -1,11 +1,20 @@
 {
   flake.modules.homeManager.hyprland = {
     wayland.windowManager.hyprland.settings = {
-      exec-once = [
-        "waybar & swaync & hyprpaper & hypridle"
-      ];
-      "$menu" = "wofi --show drun";
-      layerrule = "no_anim on, match:class = wofi";
+
+      menu = {
+        _var = "wofi --show drun";
+      };
+      startupcommands = {
+        _var = [
+          "waybar & swaync & hyprpaper & hypridle"
+        ];
+      };
+
+      layer_rule = {
+        match.class = "wofi";
+        no_anim = true;
+      };
     };
   };
 }

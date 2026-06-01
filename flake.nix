@@ -5,17 +5,11 @@
 
   inputs = {
     arion.url = "github:hercules-ci/arion";
-    caelestia-shell = {
-      url = "github:caelestia-dots/shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    caelestia-shell.url = "github:caelestia-dots/shell";
     catppuccin.url = "github:catppuccin/nix";
     flake-file.url = "github:vic/flake-file";
     flake-parts.url = "github:hercules-ci/flake-parts";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    home-manager.url = "github:nix-community/home-manager";
     import-tree.url = "github:vic/import-tree";
     lazyvim.url = "github:pfassina/lazyvim-nix";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";

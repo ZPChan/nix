@@ -1,22 +1,35 @@
 {
-  flake.modules.homeManager.hyprland-caelestia = 
+  flake.modules.homeManager.hyprland-caelestia =
     {
-      config, ...
+      config,
+      lib,
+      ...
     }:
     {
-    wayland.windowManager.hyprland.settings = {
-      exec-once = [
-          "caelestia-shell"
-      ];
-      "$menu" = "caelestia shell drawers toggle launcher";
-      bind = [
-        "$mainMod SHIFT, escape, exec, caelestia shell lock lock"
-      ];
-    };
+      wayland.windowManager.hyprland.settings = {
 
-    home.file = {
-      ".config/caelestia/shell.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/modules/programs/hyprland/caelestia-shell.config.json";
+        menu = {
+          _var = "caelestia shell drawers toggle launcher";
+        };
+        startupcommands = {
+          _var = [
+            "caelestia shell -d && caelestia shell lock lock"
+          ];
+        };
+
+        bind = [
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + SHIFT + Escape'")
+              (lib.generators.mkLuaInline "hl.dsp.exec_cmd('caelestia shell lock lock')")
+            ];
+          }
+        ];
+      };
+
+      home.file = {
+        ".config/caelestia/shell.json".source =
+          config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/modules/programs/hyprland/caelestia-shell.config.json";
+      };
     };
-  };
 }
-
