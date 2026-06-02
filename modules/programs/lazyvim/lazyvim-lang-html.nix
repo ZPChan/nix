@@ -1,24 +1,22 @@
 {
-  flake.modules.homeManager.lazyvim-lang-jinja =
+  flake.modules.homeManager.lazyvim-lang-html =
     { pkgs, ... }:
     {
       programs.lazyvim = {
         extraPackages = with pkgs; [
-          jinja-lsp
-          djlint
+          vscode-langservers-extracted
+          prettierd
         ];
         treesitterParsers = with pkgs.vimPlugins.nvim-treesitter.grammarPlugins; [
-          jinja
+          html
         ];
-        plugins."my.lang.jinja" = ''
+        plugins."my.lang.html" = ''
           return {
             {
               "neovim/nvim-lspconfig",
               opts = {
                 servers = {
-                  jinja_lsp = {
-                    filetypes = { "jinja" },
-                  },
+                  html = {},
                 },
               },
             },
@@ -26,7 +24,8 @@
               "stevearc/conform.nvim",
               opts = {
                 formatters_by_ft = {
-                  jinja = { "djlint" },
+                  html = { "prettierd" },
+                  htm = { "prettierd" },
                 },
               },
             },

@@ -9,7 +9,11 @@
       inputs.lazyvim.homeManagerModules.default
     ]
     ++ (with inputs.self.modules.homeManager; [
+      lazyvim-lang-html
+      lazyvim-lang-jinja
       lazyvim-lang-nix
+      lazyvim-lang-nu
+      lazyvim-lang-python
     ]);
 
     programs.lazyvim = {
