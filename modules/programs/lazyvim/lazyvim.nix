@@ -11,6 +11,7 @@
     ++ (with inputs.self.modules.homeManager; [
       lazyvim-lang-html
       lazyvim-lang-jinja
+      lazyvim-lang-json
       lazyvim-lang-nix
       lazyvim-lang-nu
       lazyvim-lang-python
