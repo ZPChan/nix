@@ -638,34 +638,6 @@
               (lib.generators.mkLuaInline "{locked=true}")
             ];
           }
-          {
-            _args = [
-              "XF86AudioNext"
-              (lib.generators.mkLuaInline "hl.dsp.exec_cmd('playerctl next')")
-              (lib.generators.mkLuaInline "{locked=true}")
-            ];
-          }
-          {
-            _args = [
-              "XF86AudioPause"
-              (lib.generators.mkLuaInline "hl.dsp.exec_cmd('playerctl play-pause')")
-              (lib.generators.mkLuaInline "{locked=true}")
-            ];
-          }
-          {
-            _args = [
-              "XF86AudioPlay"
-              (lib.generators.mkLuaInline "hl.dsp.exec_cmd('playerctl play-pause')")
-              (lib.generators.mkLuaInline "{locked=true}")
-            ];
-          }
-          {
-            _args = [
-              "XF86AudioPrev"
-              (lib.generators.mkLuaInline "hl.dsp.exec_cmd('playerctl previous')")
-              (lib.generators.mkLuaInline "{locked=true}")
-            ];
-          }
         ];
       };
     };

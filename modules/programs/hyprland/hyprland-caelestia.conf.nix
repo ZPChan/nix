@@ -24,6 +24,41 @@
               (lib.generators.mkLuaInline "hl.dsp.exec_cmd('caelestia shell lock lock')")
             ];
           }
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + P'")
+              (lib.generators.mkLuaInline "hl.dsp.exec_cmd('caelestia shell mpris playPause')")
+              (lib.generators.mkLuaInline "{locked=true}")
+            ];
+          }
+          {
+            _args = [
+              "XF86AudioPlay"
+              (lib.generators.mkLuaInline "hl.dsp.exec_cmd('caelestia shell mpris playPause')")
+              (lib.generators.mkLuaInline "{locked=true}")
+            ];
+          }
+          {
+            _args = [
+              "XF86AudioPause"
+              (lib.generators.mkLuaInline "hl.dsp.exec_cmd('caelestia shell mpris playPause')")
+              (lib.generators.mkLuaInline "{locked=true}")
+            ];
+          }
+          {
+            _args = [
+              "XF86AudioNext"
+              (lib.generators.mkLuaInline "hl.dsp.exec_cmd('caelestia shell mpris next')")
+              (lib.generators.mkLuaInline "{locked=true}")
+            ];
+          }
+          {
+            _args = [
+              "XF86AudioPrev"
+              (lib.generators.mkLuaInline "hl.dsp.exec_cmd('caelestia shell mpris previous')")
+              (lib.generators.mkLuaInline "{locked=true}")
+            ];
+          }
         ];
       };
 
