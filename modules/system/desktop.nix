@@ -9,6 +9,7 @@
       libreoffice
       networkmanager
       printing
+      rustdesk
       slack
       sound
       system-simple

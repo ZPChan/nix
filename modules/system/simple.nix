@@ -3,7 +3,6 @@
   flake.modules.nixos.system-simple = {
     imports = with inputs.self.modules.nixos; [
       autogc
-      autoupdate
       catppuccin
       home-manager
       locale
