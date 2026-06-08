@@ -25,9 +25,7 @@ in
       zach
     ];
 
-    home-manager.users.zach = 
-    { config, lib, ...}:
-    {
+    home-manager.users.zach = {
       imports = with inputs.self.modules.homeManager; [
         cli-tools-advanced
         remmina

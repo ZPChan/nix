@@ -20,6 +20,7 @@ in
       remapcaps
       system-desktop
       twingate
+      wifi
       zach
     ];
 
