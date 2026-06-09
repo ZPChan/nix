@@ -28,6 +28,7 @@ in
     home-manager.users.zach = {
       imports = with inputs.self.modules.homeManager; [
         cli-tools-advanced
+        music-notation
         remmina
         system-desktop
         zach
