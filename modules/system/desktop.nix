@@ -8,6 +8,7 @@
       hyprland-caelestia
       libreoffice
       networkmanager
+      noise-filtering
       printing
       rustdesk
       slack
