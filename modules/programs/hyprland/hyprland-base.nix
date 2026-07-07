@@ -18,8 +18,8 @@
 
       xdg.portal = {
         enable = true;
-        extraPortals = with pkgs; [ 
-          xdg-desktop-portal-gtk 
+        extraPortals = with pkgs; [
+          xdg-desktop-portal-gtk
         ];
       };
 
@@ -28,6 +28,7 @@
         grim
         slurp
         satty
+        wf-recorder
         hyprshutdown
       ];
 
@@ -69,4 +70,3 @@
     };
 
 }
-

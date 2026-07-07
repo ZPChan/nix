@@ -21,6 +21,7 @@ in
       nextcloud
       remapcaps
       system-desktop
+      twingate
       wifi
       zach
     ];

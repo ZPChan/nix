@@ -344,6 +344,12 @@
           }
           {
             _args = [
+              (lib.generators.mkLuaInline "mainMod .. ' + CTRL + S'")
+              (lib.generators.mkLuaInline "hl.dsp.exec_cmd('pkill wf-recorder && cd ~/Pictures/Screenshots && wf-recorder -g \"$(slurp)\" -f \"$(date %Y%m%d_%H%M%S.mkv)\"')")
+            ];
+          }
+          {
+            _args = [
               (lib.generators.mkLuaInline "mainMod .. ' + F'")
               (lib.generators.mkLuaInline "hl.dsp.window.fullscreen({action = 'toggle'})")
             ];
