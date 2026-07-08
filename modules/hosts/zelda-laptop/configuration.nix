@@ -20,7 +20,6 @@ in
     imports = with inputs.self.modules.nixos; [
       bootloader-grub
       brightnessctl
-      cli-tools-advanced
       mdns
       nextcloud
       system-kids
@@ -31,7 +30,6 @@ in
 
     home-manager.users.zach = {
       imports = with inputs.self.modules.homeManager; [
-        cli-tools-advanced
         system-kids
         zach
       ];

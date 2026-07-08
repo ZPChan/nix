@@ -12,17 +12,14 @@ in
   flake.modules = lib.mkMerge [
     (self.factory.user "${username}" true)
     {
-      nixos."${username}" =
-        { pkgs, ... }:
-        {
-          users.users."${username}" = {
-            shell = pkgs.nushell;
-            extraGroups = [
-              "docker"
-              "networkmanager"
-            ];
-          };
+      nixos."${username}" = {
+        users.users."${username}" = {
+          extraGroups = [
+            "docker"
+            "networkmanager"
+          ];
         };
+      };
 
       homeManager."${username}" = {
         programs.git.settings.user = {
