@@ -3,7 +3,7 @@
   ...
 }:
 let
-  hostName = "desktop";
+  hostName = "zelda-laptop";
 in
 {
   flake.nixosConfigurations = inputs.self.lib.mkNixos "x86_64-linux" "${hostName}";
@@ -14,30 +14,32 @@ in
 
     services.displayManager.autoLogin = {
       enable = true;
-      user = "zach";
+      user = "zelda";
     };
 
     imports = with inputs.self.modules.nixos; [
-      bootloader
+      bootloader-grub
       brightnessctl
-      clamav
       cli-tools-advanced
       mdns
       nextcloud
-      remapcaps
-      system-desktop
-      twingate
+      system-kids
       wifi
       zach
+      zelda
     ];
 
     home-manager.users.zach = {
       imports = with inputs.self.modules.homeManager; [
         cli-tools-advanced
-        music-notation
-        remmina
-        system-desktop
+        system-kids
         zach
+      ];
+    };
+    home-manager.users.zelda = {
+      imports = with inputs.self.modules.homeManager; [
+        system-kids
+        zelda
       ];
     };
 
