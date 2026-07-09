@@ -5,8 +5,8 @@
       autogc
       cinnamon
       firefox
-      flatpak
       ghostty
+      gimp
       home-manager
       libreoffice
       locale
