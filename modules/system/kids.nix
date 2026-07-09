@@ -5,6 +5,7 @@
       autogc
       cinnamon
       firefox
+      flatpak
       ghostty
       home-manager
       libreoffice
@@ -14,6 +15,7 @@
       printing
       sound
       system-minimal
+      vinegar
     ];
   };
   flake.modules.homeManager.system-kids = {
