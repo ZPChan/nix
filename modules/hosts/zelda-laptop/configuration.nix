@@ -18,7 +18,7 @@ in
     };
 
     imports = with inputs.self.modules.nixos; [
-      bootloader-grub
+      bootloader
       brightnessctl
       mdns
       nextcloud
