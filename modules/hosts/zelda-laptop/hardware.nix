@@ -12,7 +12,7 @@
       imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
       nixpkgs.config.permittedInsecurePackages = [
-        "broadcom-sta-6.30.223.271-59-6.18.38"
+        "broadcom-sta-6.30.223.271-59-7.0.10"
       ];
 
       boot.initrd.availableKernelModules = [
