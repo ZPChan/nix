@@ -19,7 +19,7 @@ in
       docker
       mdns
       ssh
-      system-simple
+      system-bare
       wifi
       zach
     ];
@@ -27,7 +27,7 @@ in
     home-manager.users.zach = {
       imports = with inputs.self.modules.homeManager; [
         cli-tools-basic
-        system-simple
+        system-bare
         zach
       ];
     };
