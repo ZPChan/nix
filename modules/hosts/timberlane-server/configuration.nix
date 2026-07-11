@@ -26,7 +26,6 @@ in
 
     home-manager.users.zach = {
       imports = with inputs.self.modules.homeManager; [
-        cli-tools-basic
         system-bare
         zach
       ];
