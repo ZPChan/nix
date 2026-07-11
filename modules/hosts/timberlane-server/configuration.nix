@@ -15,7 +15,7 @@ in
     imports = with inputs.self.modules.nixos; [
       adguardhome
       bootloader
-      cli-tools-advanced
+      cli-tools-basic
       docker
       mdns
       ssh
@@ -26,11 +26,10 @@ in
 
     home-manager.users.zach = {
       imports = with inputs.self.modules.homeManager; [
-        cli-tools-advanced
+        cli-tools-basic
         system-simple
         zach
       ];
     };
-
   };
 }
