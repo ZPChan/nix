@@ -2,6 +2,7 @@
   flake.modules.nixos.timberlane-server =
     { config, lib, ... }:
     {
+      hardware.enableRedistributableFirmware = lib.mkDefault true;
 
       boot.initrd.availableKernelModules = [
         "xhci_pci"
