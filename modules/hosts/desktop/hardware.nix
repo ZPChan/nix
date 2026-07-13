@@ -3,10 +3,11 @@
     {
       config,
       lib,
+      modulesPath,
       ...
     }:
     {
-      hardware.enableRedistributableFirmware = lib.mkDefault true;
+      imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
       boot.initrd.availableKernelModules = [
         "nvme"

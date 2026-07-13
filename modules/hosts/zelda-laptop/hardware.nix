@@ -7,8 +7,6 @@
       ...
     }:
     {
-      hardware.enableRedistributableFirmware = lib.mkDefault true;
-
       imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
       nixpkgs.config.permittedInsecurePackages = [
