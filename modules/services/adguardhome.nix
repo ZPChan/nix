@@ -1,12 +1,8 @@
 { inputs, ... }:
 {
-  flake-file.inputs = {
-    arion.url = "github:hercules-ci/arion";
-  };
-
   flake.modules.nixos.adguardhome = {
-    imports = [
-      inputs.arion.nixosModules.arion
+    imports = with inputs.self.modules.nixos; [
+      arion
     ];
 
     virtualisation.arion = {
@@ -21,7 +17,6 @@
         ports = [
           "53:53/tcp"
           "53:53/udp"
-          "80:80/tcp"
           "443:443/tcp"
           "443:443/udp"
           "3000:3000/tcp"
