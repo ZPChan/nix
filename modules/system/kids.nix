@@ -4,6 +4,7 @@
     imports = with inputs.self.modules.nixos; [
       autogc
       cinnamon
+      blender
       firefox
       ghostty
       gimp
