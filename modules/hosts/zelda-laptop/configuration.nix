@@ -12,11 +12,6 @@ in
 
     networking.hostName = "${hostName}";
 
-    services.displayManager.autoLogin = {
-      enable = true;
-      user = "zelda";
-    };
-
     imports = with inputs.self.modules.nixos; [
       bootloader
       brightnessctl
@@ -27,11 +22,12 @@ in
       wifi
       zach
       zelda
+      zelda-auto-login
     ];
 
     home-manager.users.zach = {
       imports = with inputs.self.modules.homeManager; [
-        system-kids
+        system-minimal
         zach
       ];
     };

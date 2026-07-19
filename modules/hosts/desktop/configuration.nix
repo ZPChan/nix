@@ -12,11 +12,6 @@ in
 
     networking.hostName = "${hostName}";
 
-    services.displayManager.autoLogin = {
-      enable = true;
-      user = "zach";
-    };
-
     imports = with inputs.self.modules.nixos; [
       bootloader
       brightnessctl
@@ -29,6 +24,7 @@ in
       twingate
       wifi
       zach
+      zach-auto-login
     ];
 
     home-manager.users.zach = {

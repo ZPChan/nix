@@ -22,6 +22,7 @@ in
       twingate
       wifi
       zach
+      zach-auto-login
     ];
 
     home-manager.users.zach = {

@@ -8,6 +8,7 @@
     imports = [ inputs.catppuccin.nixosModules.catppuccin ];
     catppuccin = {
       enable = true;
+      autoEnable = true;
       flavor = "mocha";
       accent = "mauve";
     };
@@ -17,6 +18,7 @@
     imports = [ inputs.catppuccin.homeModules.catppuccin ];
     catppuccin = {
       enable = true;
+      autoEnable = true;
       flavor = "mocha";
       accent = "mauve";
       nushell.enable = true;

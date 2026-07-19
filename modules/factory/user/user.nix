@@ -22,6 +22,13 @@
       };
     };
 
+    nixos."${username}-auto-login" = {
+      services.displayManager.autoLogin = {
+        enable = true;
+        user = "${username}";
+      };
+    };
+
     homeManager."${username}" = {
       home.username = "${username}";
     };
