@@ -17,7 +17,7 @@ in
       brightnessctl
       mdns
       nextcloud
-      ssh
+      ssh-pw-auth
       system-kids
       wifi
       zach

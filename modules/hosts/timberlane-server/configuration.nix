@@ -18,7 +18,7 @@ in
       cli-tools-basic
       docker
       mdns
-      ssh
+      ssh-pw-auth
       system-bare
       wifi
       zach
