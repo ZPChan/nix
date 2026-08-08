@@ -20,7 +20,7 @@ in
       mdns
       nextcloud
       remapcaps
-      ssh-pw-auth
+      ssh
       system-desktop
       twingate
       wifi

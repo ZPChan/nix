@@ -18,7 +18,7 @@ in
       cli-tools-advanced
       mdns
       remapcaps
-      ssh-pw-auth
+      ssh
       system-desktop
       twingate
       wifi
