@@ -16,6 +16,12 @@
         }
     },
     "general": {
+        "apps": {
+            "terminal": [
+                "/nix/store/kxfzlvgx543wl88jhav5lys7hz4w5fsb-ghostty-1.3.1/bin/ghostty",
+                "--gtk-single-instance=true"
+            ]
+        },
         "idle": {
             "lockBeforeSleep": true,
             "timeouts": [

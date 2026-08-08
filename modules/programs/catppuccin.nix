@@ -21,7 +21,6 @@
       autoEnable = true;
       flavor = "mocha";
       accent = "mauve";
-      nushell.enable = true;
     };
   };
 }

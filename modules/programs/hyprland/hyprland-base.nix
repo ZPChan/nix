@@ -44,17 +44,16 @@
     {
       wayland.windowManager.hyprland = {
         enable = true;
-        systemd.enable = false;
       };
 
       gtk = {
         enable = true;
-        theme = {
-          package = pkgs.magnetic-catppuccin-gtk.override {
-            size = "compact";
-          };
-          name = "Catppuccin-GTK-Dark-Compact";
-        };
+        # theme = {
+        #   package = pkgs.magnetic-catppuccin-gtk.override {
+        #     size = "compact";
+        #   };
+        #   name = "Catppuccin-GTK-Dark-Compact";
+        # };
       };
 
       services.udiskie = {
