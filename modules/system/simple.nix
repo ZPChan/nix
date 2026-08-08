@@ -2,6 +2,7 @@
 {
   flake.modules.nixos.system-simple = {
     imports = with inputs.self.modules.nixos; [
+      autoUpgrade
       autogc
       catppuccin
       system-bare
