@@ -18,6 +18,7 @@ in
       clamav
       cli-tools-advanced
       mdns
+      metrics
       nextcloud
       remapcaps
       ssh

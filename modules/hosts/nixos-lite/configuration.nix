@@ -17,6 +17,7 @@ in
       brightnessctl
       cli-tools-advanced
       mdns
+      metrics
       remapcaps
       ssh
       system-desktop
