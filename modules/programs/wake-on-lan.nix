@@ -1,11 +1,9 @@
 {
-  flake.modules.nixos.metrics =
+  flake.modules.nixos.wake-on-lan =
     { pkgs, ... }:
     {
       environment.systemPackages = with pkgs; [
-        amdgpu_top
-        btop
-        fastfetch
+        wakeonlan
       ];
     };
 }

@@ -15,6 +15,7 @@ in
     imports = with inputs.self.modules.nixos; [
       bootloader
       brightnessctl
+      can-wake-on-wlan
       clamav
       cli-tools-advanced
       mdns

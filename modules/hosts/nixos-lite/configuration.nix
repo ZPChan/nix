@@ -22,6 +22,7 @@ in
       ssh
       system-desktop
       twingate
+      wake-on-lan
       wifi
       zach
       zach-auto-login
