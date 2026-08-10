@@ -6,7 +6,7 @@
         cores = 4;
       };
     };
-    virtualisation.vmVariantWithBootloader = {
+    virtualisation.vmVariantWithBootLoader = {
       virtualisation = {
         memorySize = 4096;
         cores = 4;
