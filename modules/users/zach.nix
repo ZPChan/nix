@@ -14,6 +14,7 @@ in
     {
       nixos."${username}" = {
         users.users."${username}" = {
+          initialPassword = "password";
           extraGroups = [
             "docker"
             "networkmanager"

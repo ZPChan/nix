@@ -14,6 +14,7 @@ in
         { pkgs, ... }:
         {
           users.users."${username}" = {
+            initialPassword = "password";
             shell = pkgs.bash;
           };
         };
