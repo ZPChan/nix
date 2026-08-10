@@ -3,6 +3,7 @@
   flake.modules.nixos.system-kids = {
     imports = with inputs.self.modules.nixos; [
       autogc
+      autoUpgrade
       cinnamon
       blender
       firefox

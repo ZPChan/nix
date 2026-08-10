@@ -14,6 +14,7 @@ in
 
     imports = with inputs.self.modules.nixos; [
       adguardhome
+      autoUpgrade
       bootloader
       cli-tools-basic
       docker
