@@ -14,6 +14,7 @@
       boot.initrd.availableKernelModules = [
         "xhci_pci"
         "ahci"
+        "usbhid"
         "sd_mod"
       ];
       boot.initrd.kernelModules = [ ];
@@ -37,7 +38,6 @@
       swapDevices = [ ];
 
       networking.useDHCP = lib.mkDefault true;
-
       hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     };
 }

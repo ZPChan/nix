@@ -7,20 +7,6 @@
       ...
     }:
     {
-      imports = with inputs.self.modules.nixos; [
-        (modulesPath + "/virtualisation/qemu-vm.nix")
-        arion
-      ];
-
-      virtualisation.qemu.networkingOptions = lib.mkForce [
-        "-device e1000,netdev=net0"
-        "-netdev user,id=net0,hostfwd=tcp:127.0.0.1:3010-:3000,\${QEMU_NET_OPTS:+,$QEMU_NET_OPTS}"
-      ];
-
-      networking.firewall.allowedTCPPorts = [
-        3010
-      ];
-
       virtualisation.arion = {
         projects.adguardhome = {
           serviceName = "adguardhome";
