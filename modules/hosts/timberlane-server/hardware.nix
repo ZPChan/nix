@@ -14,8 +14,6 @@
       boot.initrd.availableKernelModules = [
         "xhci_pci"
         "ahci"
-        "usb_storage"
-        "usbhid"
         "sd_mod"
       ];
       boot.initrd.kernelModules = [ ];
@@ -23,12 +21,12 @@
       boot.extraModulePackages = [ ];
 
       fileSystems."/" = {
-        device = "/dev/disk/by-label/NIXROOT";
+        device = "/dev/disk/by-uuid/7449e652-4237-48cd-a735-103c1f141134";
         fsType = "ext4";
       };
 
       fileSystems."/boot" = {
-        device = "/dev/disk/by-label/NIXBOOT";
+        device = "/dev/disk/by-uuid/0903-9C94";
         fsType = "vfat";
         options = [
           "fmask=0022"
