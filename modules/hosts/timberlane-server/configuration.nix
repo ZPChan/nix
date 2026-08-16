@@ -14,12 +14,11 @@ in
 
     imports = with inputs.self.modules.nixos; [
       adguardhome
-      autoUpgrade
+      autoUpgrade-allowReboot
       bootloader
       cli-tools-basic
-      docker
       mdns
-      ssh-pw-auth
+      ssh
       system-bare
       wifi
       zach

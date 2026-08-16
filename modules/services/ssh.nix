@@ -4,7 +4,11 @@
       enable = true;
       openFirewall = true;
       settings = {
+        PermitRootLogin = "no";
         PasswordAuthentication = false;
+        KbdInteractiveAuthentication = false;
+        MaxAuthTries = 3;
+        PerSourcePenalties = "crash:3600s authfail:3600s max:86400s";
       };
     };
   };
@@ -13,8 +17,10 @@
       enable = true;
       openFirewall = true;
       settings = {
-        PasswordAuthentication = true;
         PermitRootLogin = "no";
+        PasswordAuthentication = true;
+        MaxAuthTries = 10;
+        PerSourcePenalties = "crash:3600s authfail:3600s max:86400s";
       };
     };
   };

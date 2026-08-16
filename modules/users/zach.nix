@@ -17,7 +17,11 @@ in
           initialPassword = "password";
           extraGroups = [
             "docker"
+            "podman"
             "networkmanager"
+          ];
+          openssh.authorizedKeys.keys = [
+            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEuPWN2PbnJpg2EpELI3sgjhbDZkquXSpOL2YsNQK6jx "
           ];
         };
       };

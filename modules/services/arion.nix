@@ -9,10 +9,15 @@
     {
       imports = [
         inputs.arion.nixosModules.arion
+        inputs.self.modules.nixos.podman
       ];
 
       environment.systemPackages = with pkgs; [
         arion
+        docker-client
       ];
+      virtualisation.arion = {
+        backend = "podman-socket";
+      };
     };
 }
