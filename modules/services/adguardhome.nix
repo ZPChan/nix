@@ -3,18 +3,9 @@
     services.adguardhome = {
       enable = true;
       host = "127.0.0.1";
-      port = 53;
+      port = 3000;
+      openFirewall = true;
       settings = { };
-    };
-
-    networking.firewall = {
-      enable = true;
-      allowedTCPPorts = [
-        53
-      ];
-      allowedUDPPorts = [
-        53
-      ];
     };
   };
 }
