@@ -2,7 +2,7 @@
   flake.modules.nixos.adguardhome = {
 
     boot.kernel.sysctl = {
-      "net.ipv4.conf.eth0.forwarding" = 1;
+      "net.ipv4.conf.wlp1s0.forwarding" = 1;
     };
 
     networking.firewall = {
