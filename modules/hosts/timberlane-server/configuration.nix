@@ -17,8 +17,8 @@ in
       autoUpgrade-allowReboot
       bootloader
       cli-tools-basic
-      firewall
       mdns
+      no-privileged-ports
       podman
       ssh
       system-bare
