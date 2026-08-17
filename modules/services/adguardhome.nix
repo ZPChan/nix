@@ -23,11 +23,11 @@
         4430
       ];
       extraCommands = ''
-        iptables -A PREROUTING -t nat -p TCP --dport 53 -j REDIRECT --to-port 5300
-        iptables -A PREROUTING -t nat -p UDP --dport 53 -j REDIRECT --to-port 5300
-        iptables -A PREROUTING -t nat -p TCP --dport 443 -j REDIRECT --to-port 4430
-        iptables -A PREROUTING -t nat -p UDP --dport 443 -j REDIRECT --to-port 4430
-        iptables -A PREROUTING -t nat -p TCP --dport 853 -j REDIRECT --to-port 8530
+        iptables -A PREROUTING -t nat -i wlp1s0 -p TCP --dport 53 -j REDIRECT --to-port 5300
+        iptables -A PREROUTING -t nat -i wlp1s0 -p UDP --dport 53 -j REDIRECT --to-port 5300
+        iptables -A PREROUTING -t nat -i wlp1s0 -p TCP --dport 443 -j REDIRECT --to-port 4430
+        iptables -A PREROUTING -t nat -i wlp1s0 -p UDP --dport 443 -j REDIRECT --to-port 4430
+        iptables -A PREROUTING -t nat -i wlp1s0 -p TCP --dport 853 -j REDIRECT --to-port 8530
       '';
     };
   };
