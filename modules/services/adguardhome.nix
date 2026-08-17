@@ -1,10 +1,11 @@
 {
   flake.modules.nixos.adguardhome = {
-
-    boot.kernel.sysctl = {
-      "net.ipv4.conf.wlp1s0.forwarding" = 1;
+    systemd.services."podman-adguardhome" = {
+      serviceConfig = {
+        AmbientCapabilities = "cap_net_bind_service";
+        CapabilityBoundingSet = "cap_net_bind_service";
+      };
     };
-
     networking.firewall = {
       allowedTCPPorts = [
         53
@@ -22,13 +23,6 @@
         443
         4430
       ];
-      extraCommands = ''
-        iptables -A PREROUTING -t nat -i wlp1s0 -p TCP --dport 53 -j REDIRECT --to-port 5300
-        iptables -A PREROUTING -t nat -i wlp1s0 -p UDP --dport 53 -j REDIRECT --to-port 5300
-        iptables -A PREROUTING -t nat -i wlp1s0 -p TCP --dport 443 -j REDIRECT --to-port 4430
-        iptables -A PREROUTING -t nat -i wlp1s0 -p UDP --dport 443 -j REDIRECT --to-port 4430
-        iptables -A PREROUTING -t nat -i wlp1s0 -p TCP --dport 853 -j REDIRECT --to-port 8530
-      '';
     };
   };
 }
