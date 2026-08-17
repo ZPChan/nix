@@ -9,13 +9,13 @@
           "adguardhome_adguardhome-work:/opt/adguardhome/work:rw"
         ];
         ports = [
-          "10053:53/tcp"
-          "10053:53/udp"
-          "10080:80/tcp"
-          "13000:3000/tcp"
-          "10443:443/tcp"
-          "10443:443/udp"
-          "10853:853/tcp"
+          "5300:53/tcp"
+          "5300:53/udp"
+          "8000:80/tcp"
+          "3000:3000/tcp"
+          "4430:443/tcp"
+          "4430:443/udp"
+          "8530:853/tcp"
         ];
         log-driver = "journald";
         extraOptions = [
