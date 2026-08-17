@@ -18,7 +18,6 @@ in
       bootloader
       cli-tools-basic
       mdns
-      no-privileged-ports
       podman
       ssh
       system-bare
