@@ -13,15 +13,18 @@ in
     networking.hostName = "${hostName}";
 
     imports = with inputs.self.modules.nixos; [
-      adguardhome
       autoUpgrade-allowReboot
       bootloader
       cli-tools-basic
       mdns
+      podman
       ssh
       system-bare
       wifi
       zach
+
+      # containers
+      adguardhome
     ];
 
     home-manager.users.zach = {
