@@ -18,7 +18,6 @@ in
       bootloader
       cli-tools-basic
       mdns
-      podman
       ssh
       system-bare
       wifi

@@ -2,15 +2,14 @@
   flake.modules.nixos.adguardhome = {
     services.adguardhome = {
       enable = true;
-      host = "192.168.10.126";
-      port = 3000;
+      port = 8080;
     };
     networking.firewall = {
       allowedTCPPorts = [
         53
-        80
         443
         3000
+        8080
       ];
       allowedUDPPorts = [
         53
