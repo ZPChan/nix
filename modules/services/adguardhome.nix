@@ -4,7 +4,7 @@
       enable = true;
       openFirewall = true;
     };
-    network.firewall = {
+    networking.firewall = {
       allowedTCPPorts = [
         53
         80
