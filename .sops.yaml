@@ -1,9 +1,11 @@
 keys:
   - &admin_zach age193lc7hl63wl7xpzga9xsf674q5xvp9xxrlku9qr3xhah5ugz2qjqp3gr0a
   - &host_desktop age13vusmuzdm94pqskf0a9dereczad9ys846azpw6dfx94wvz5kyexqpagrme
+  - &host_timberlane_server age1w68w9ah0qq7gjdv9shy7k7ddjt9yc7a0e92dq0mmncw77uackq8sxvkncp
 creation_rules:
   - path_regex: secrets/secrets.yaml$
     key_groups:
       - age:
         - *admin_zach
         - *host_desktop
+        - *host_timberlane_server
