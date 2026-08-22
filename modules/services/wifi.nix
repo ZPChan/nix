@@ -9,8 +9,7 @@
           psk = "ext:main_psk";
         };
       };
-      sops.secrets.wifi = { };
     };
-
+    sops.secrets.wifi = { };
   };
 }
