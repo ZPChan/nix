@@ -19,9 +19,7 @@ in
       nextcloud
       ssh
       system-kids
-      wifi
       zach
-      zelda
       zelda-auto-login
     ];
 

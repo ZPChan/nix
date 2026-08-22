@@ -4,6 +4,7 @@
     imports = with inputs.self.modules.nixos; [
       home-manager
       locale
+      sops-nix
       system-minimal
     ];
   };

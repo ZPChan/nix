@@ -19,12 +19,11 @@ in
       mdns
       metrics
       remapcaps
+      sops
       ssh
       system-desktop
       twingate
       wake-on-lan
-      wifi
-      zach
       zach-auto-login
     ];
 

@@ -22,11 +22,10 @@ in
       metrics
       nextcloud
       remapcaps
+      sops
       ssh
       system-desktop
       twingate
-      wifi
-      zach
       zach-auto-login
     ];
 

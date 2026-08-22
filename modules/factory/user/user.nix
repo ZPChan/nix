@@ -1,5 +1,6 @@
 {
   self,
+  inputs,
   lib,
   ...
 }:
@@ -23,6 +24,10 @@
     };
 
     nixos."${username}-auto-login" = {
+      imports = [
+        inputs.self.modules.nixos."${username}"
+      ];
+
       services.displayManager.autoLogin = {
         enable = true;
         user = "${username}";
