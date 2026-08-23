@@ -23,5 +23,9 @@
         {
           "${matchAll}".allowedUDPPorts = [ 53 ];
         };
+
+      systemd.timers."podman-auto-update" = {
+        wantedBy = [ "timers.target" ];
+      };
     };
 }
