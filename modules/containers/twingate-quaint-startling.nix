@@ -15,6 +15,7 @@
         ];
         labels = {
           "compose2nix.settings.sops.secrets" = "twingate/connectors/quaint-starling";
+          "io.containers.autoupdate" = "registry";
         };
         log-driver = "journald";
         extraOptions = [

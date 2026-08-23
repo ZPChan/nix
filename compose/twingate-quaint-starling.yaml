@@ -5,5 +5,6 @@ services:
     image: docker.io/twingate/connector:latest
     labels:
       - "compose2nix.settings.sops.secrets=twingate/connectors/quaint-starling"
+      - "io.containers.autoupdate=registry"
     sysctls:
       net.ipv4.ping_group_range: "0 2147483647"
