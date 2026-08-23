@@ -18,8 +18,10 @@ in
       bootloader
       cli-tools-basic
       mdns
+      podman
       ssh
       system-bare
+      twingate-quaint-starling
       wifi
       zach
     ];

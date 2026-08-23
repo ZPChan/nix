@@ -1,0 +1,9 @@
+services:
+  twingate-quaint-starling:
+    container_name: twingate-quaint-starling
+    restart: unless-stopped
+    image: docker.io/twingate/connector:latest
+    labels:
+      - "compose2nix.settings.sops.secrets=twingate/connectors/quaint-starling"
+    sysctls:
+      net.ipv4.ping_group_range: "0 2147483647"
