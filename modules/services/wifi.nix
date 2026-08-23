@@ -5,11 +5,11 @@
       secretsFile = "/run/secrets/wifi";
       networks = {
         main = {
-          ssid = "ext:main_ssid";
-          psk = "ext:main_psk";
+          ssid = "Dorkfest";
+          pskRaw = "ext:main_psk";
         };
       };
     };
-    sops.secrets.wifi = { };
+    sops.secrets.wifi.owner = "wpa_supplicant";
   };
 }
