@@ -1,8 +1,13 @@
-{ lib, ... }:
 {
   flake.modules.nixos.twingate-quaint-starling =
-    { pkgs, config, ... }:
     {
+      pkgs,
+      lib,
+      config,
+      ...
+    }:
+    {
+      sops.secrets."twingate/connectors/quaint-starling" = { };
       virtualisation.oci-containers.containers."twingate-quaint-starling" = {
         image = "docker.io/twingate/connector:latest";
         environmentFiles = [
