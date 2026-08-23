@@ -1,0 +1,11 @@
+services:
+  twingate-hallowed-marten:
+    container_name: twingate-hallowed-marten
+    restart: unless-stopped
+    image: docker.io/twingate/connector:latest
+    labels:
+      - "compose2nix.settings.sops.secrets=twingate/connectors/hallowed-marten"
+      - "io.containers.autoupdate=registry"
+    sysctls:
+      net.ipv4.ping_group_range: "0 2147483647"
+

@@ -22,6 +22,7 @@ in
       ssh
       system-bare
       twingate-quaint-starling
+      twingate-hallowed-marten
       wifi
       zach
     ];
