@@ -14,6 +14,7 @@
     lazyvim.url = "github:pfassina/lazyvim-nix";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
     sops-nix.url = "github:Mic92/sops-nix";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };

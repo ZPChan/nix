@@ -6,7 +6,7 @@ let
   hostName = "timberlane-server";
 in
 {
-  flake.nixosConfigurations = inputs.self.lib.mkNixos "x86_64-linux" "${hostName}";
+  flake.nixosConfigurations = inputs.self.lib.mkNixosStable "x86_64-linux" "${hostName}";
 
   flake.modules.nixos."${hostName}" = {
 
@@ -21,17 +21,11 @@ in
       podman
       ssh
       system-bare
+      telegram-notify-start
       twingate-quaint-starling
       twingate-hallowed-marten
       wifi
       zach
     ];
-
-    home-manager.users.zach = {
-      imports = with inputs.self.modules.homeManager; [
-        system-bare
-        zach
-      ];
-    };
   };
 }

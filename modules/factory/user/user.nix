@@ -15,12 +15,6 @@
           "wheel"
         ];
       };
-
-      home-manager.users."${username}" = {
-        imports = [
-          self.modules.homeManager."${username}"
-        ];
-      };
     };
 
     nixos."${username}-auto-login" = {

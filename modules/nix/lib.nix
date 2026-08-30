@@ -22,9 +22,28 @@
       };
     };
 
+    mkNixosStable = system: name: {
+      ${name} = inputs.nixpkgs-stable.lib.nixosSystem {
+        modules = [
+          inputs.self.modules.nixos.${name}
+          { nixpkgs.hostPlatform = lib.mkDefault system; }
+        ];
+      };
+    };
+
     mkHomeManager = system: name: {
       ${name} = inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = inputs.nixpkgs.legacyPackages.${system};
+        modules = [
+          inputs.self.modules.homeManager.${name}
+          { nixpkgs.config.allowUnfree = true; }
+        ];
+      };
+    };
+
+    mkHomeManagerStable = system: name: {
+      ${name} = inputs.home-manager.lib.homeManagerConfiguration {
+        pkgs = inputs.nixpkgs-stable.legacyPackages.${system};
         modules = [
           inputs.self.modules.homeManager.${name}
           { nixpkgs.config.allowUnfree = true; }

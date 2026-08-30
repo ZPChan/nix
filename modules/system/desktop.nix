@@ -14,7 +14,6 @@
       slack
       sound
       system-simple
-      system-vmVariant4Gb
       thunderbird
       xserver
       zen
