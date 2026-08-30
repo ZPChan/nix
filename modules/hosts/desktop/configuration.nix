@@ -29,6 +29,8 @@ in
       zach-auto-login
     ];
 
+    sops.secrets.wifi = { };
+
     home-manager.users.zach = {
       imports = with inputs.self.modules.homeManager; [
         cli-tools-advanced
