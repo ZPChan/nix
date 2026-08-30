@@ -10,7 +10,8 @@
         enable = true;
         description = "Send start message to Telegram";
         after = [ "network-online.target" ];
-        wantedBy = [ "network-online.target" ];
+        wants = [ "network-online.target" ];
+        wantedBy = [ "multi-user.target" ];
         serviceConfig = {
           Type = "oneshot";
           User = "root";
