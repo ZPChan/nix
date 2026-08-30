@@ -9,10 +9,11 @@
       systemd.services.telegram-notify-start = {
         enable = true;
         description = "Send start message to Telegram";
-        after = [ "network.target" ];
+        after = [ "network-online.target" ];
         wantedBy = [ "multi-user.target" ];
         serviceConfig = {
           Type = "oneshot";
+          User = "root";
           ExecStart = "${pkgs.writeShellScript "telegram-notify-start.sh" ''
 
             apiKey=$(${config.sops.secrets."telegram/apiKey".path})
