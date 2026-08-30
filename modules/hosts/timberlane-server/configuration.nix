@@ -6,7 +6,7 @@ let
   hostName = "timberlane-server";
 in
 {
-  flake.nixosConfigurations = inputs.self.lib.mkNixosStable "x86_64-linux" "${hostName}";
+  flake.nixosConfigurations = inputs.self.lib.mkNixos "x86_64-linux" "${hostName}";
 
   flake.modules.nixos."${hostName}" = {
 
