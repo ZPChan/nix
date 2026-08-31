@@ -1,6 +1,6 @@
 {
   flake.modules.nixos.telegram-notify-start =
-    { pkgs, config, ... }:
+    { config, ... }:
     {
 
       sops.secrets."telegram/apiKey" = { };
@@ -12,17 +12,15 @@
         after = [ "network-online.target" ];
         wants = [ "network-online.target" ];
         wantedBy = [ "multi-user.target" ];
+        script = ''
+          apiKey=$(cat ${config.sops.secrets."telegram/apiKey".path})
+          chatId=$(cat ${config.sops.secrets."telegram/chatId".path})
+
+          curl -X POST "https://api.telegram.org/bot''$apiKey/sendMessage" -d "chat_id=''$chatId&text=Hello"
+        '';
         serviceConfig = {
           Type = "oneshot";
           User = "root";
-          ExecStart = "${pkgs.writeShellScript "telegram-notify-start.sh" ''
-
-            apiKey=$(cat ${config.sops.secrets."telegram/apiKey".path})
-            chatId=$(cat ${config.sops.secrets."telegram/chatId".path})
-
-            curl -X POST "https://api.telegram.org/bot''$apiKey/sendMessage" -d "chat_id=''$chatId&text=Hello"
-
-          ''}";
         };
       };
     };
