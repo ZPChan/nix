@@ -17,7 +17,7 @@
 
         startupcommands = {
           _var = [
-            "hyprctl setcursor catppuccin-mocha-dark-cursors 28"
+            "hyprctl setcursor catppuccin-cursor 28"
             "systemctl --user start hyprpolkitagent"
           ];
         };
@@ -417,13 +417,13 @@
           {
             _args = [
               (lib.generators.mkLuaInline "mainMod .. ' + CTRL + K'")
-              (lib.generators.mkLuaInline "hl.dsp.window.resize({x = 0, y = 20})")
+              (lib.generators.mkLuaInline "hl.dsp.window.resize({x = 0, y = 20, relative = true })")
             ];
           }
           {
             _args = [
               (lib.generators.mkLuaInline "mainMod .. ' + CTRL + J'")
-              (lib.generators.mkLuaInline "hl.dsp.window.resize({x = 0, y = -20})")
+              (lib.generators.mkLuaInline "hl.dsp.window.resize({x = 0, y = -20, relative = true })")
             ];
           }
           {
@@ -561,7 +561,16 @@
           {
             _args = [
               (lib.generators.mkLuaInline "mainMod .. ' + M'")
-              (lib.generators.mkLuaInline "hl.dsp.workspace.swap_monitors({monitor1 = 0, monitor2 = 1})")
+              (lib.generators.mkLuaInline ''
+                function ()
+                  hl.dispatch(hl.dsp.workspace.swap_monitors({monitor1 = 0, monitor2 = 1}))
+                  for k, v in pairs(hl.get_workspaces()) do
+                    if not v.active then
+                      hl.dispatch(hl.dsp.workspace.move({workspace=v, monitor=((v.monitor == 0) and 1 or 0)}))
+                    end
+                  end
+                end
+              '')
             ];
           }
           {

@@ -42,6 +42,13 @@
   flake.modules.homeManager.hyprland-base =
     { pkgs, ... }:
     {
+      home.packages = with pkgs; [
+        catppuccin-cursors.mochaMauve
+      ];
+
+      home.file.".icons/catppuccin-cursor".source =
+        "${pkgs.catppuccin-cursors.mochaMauve}/share/icons/catppuccin-mocha-mauve-cursors";
+
       wayland.windowManager.hyprland = {
         enable = true;
       };
