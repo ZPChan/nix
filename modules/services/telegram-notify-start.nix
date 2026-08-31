@@ -1,6 +1,6 @@
 {
   flake.modules.nixos.telegram-notify-start =
-    { config, ... }:
+    { pkgs, config, ... }:
     {
 
       sops.secrets."telegram/apiKey" = { };
@@ -17,9 +17,9 @@
           apiKey=$(cat ${config.sops.secrets."telegram/apiKey".path})
           chatId=$(cat ${config.sops.secrets."telegram/chatId".path})
 
-          echo $(which curl)
+          echo "Curling..."
 
-          curl -X POST "https://api.telegram.org/bot''$apiKey/sendMessage" -d "chat_id=''$chatId&text=Hello"
+          ${pkgs.curl}/bin/curl -X POST "https://api.telegram.org/bot$apiKey/sendMessage" -d "chat_id=$chatId&text=Hello"
         '';
         serviceConfig = {
           Type = "oneshot";
