@@ -13,13 +13,10 @@
         wants = [ "network-online.target" ];
         wantedBy = [ "multi-user.target" ];
         script = ''
-          echo "Accessing secrets..."
           apiKey=$(cat ${config.sops.secrets."telegram/apiKey".path})
           chatId=$(cat ${config.sops.secrets."telegram/chatId".path})
 
-          echo "Curling..."
-
-          ${pkgs.curl}/bin/curl -X POST "https://api.telegram.org/bot$apiKey/sendMessage" -d "chat_id=$chatId&text=Hello"
+          ${pkgs.curl}/bin/curl -X POST "https://api.telegram.org/bot$apiKey/sendMessage" -d "chat_id=$chatId" --data-urlencode "text=From $HOSTNAME: Started!"
         '';
         serviceConfig = {
           Type = "oneshot";
