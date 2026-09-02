@@ -564,9 +564,10 @@
               (lib.generators.mkLuaInline ''
                 function ()
                   hl.dispatch(hl.dsp.workspace.swap_monitors({monitor1 = 0, monitor2 = 1}))
+                  hl.dispatch(hl.dsp.focus({monitor=((hl.get_active_monitor().id == 0) and 1 or 0)}))
                   for k, v in pairs(hl.get_workspaces()) do
                     if not v.active then
-                      hl.dispatch(hl.dsp.workspace.move({workspace=v, monitor=((v.monitor == 0) and 1 or 0)}))
+                      hl.dispatch(hl.dsp.workspace.move({workspace=v, monitor=((v.monitor.id == 0) and 1 or 0)}))
                     end
                   end
                 end
