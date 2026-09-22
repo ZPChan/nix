@@ -18,6 +18,7 @@ in
       can-wake-on-wlan
       clamav
       cli-tools-advanced
+      devenv
       mdns
       metrics
       nextcloud
