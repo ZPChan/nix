@@ -24,6 +24,16 @@
 
         monitor = [
           {
+            output = "DP-1";
+            mode = "preferred";
+            position = "auto";
+            scale = 1;
+          }
+          {
+            output = "DP-2";
+            mirror = "DP-1";
+          }
+          {
             output = "";
             mode = "preferred";
             position = "auto";
