@@ -27,7 +27,7 @@
       "timeouts": [
         {
           "idleAction": "lock",
-          "timeout": 1800
+          "timeout": 21600
         },
         {
           "idleAction": [
