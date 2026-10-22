@@ -16,10 +16,9 @@ in
 
     imports = with inputs.self.modules.nixos; [
       cli-tools-advanced
-      mdns
       system-wsl
-      twingate
       zach
+      ai-agent
     ];
 
     home-manager.users.zach = {
@@ -27,6 +26,15 @@ in
         cli-tools-advanced
         system-wsl
         zach
+      ];
+    };
+    home-manager.users.ai-agent = {
+      imports = with inputs.self.modules.homeManager; [
+        claude-code
+        cli-tools-advanced
+        herdr
+        system-wsl
+        ai-agent
       ];
     };
   };

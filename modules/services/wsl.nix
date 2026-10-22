@@ -24,6 +24,12 @@
 
         docker-desktop.enable = false;
 
+        wslConf = {
+          automount = {
+            options = "metadata,uid=1000,gid=100,umask=022,dmask=067,fmask=077";
+          };
+        };
+
         extraBin = with pkgs; [
           { src = "${coreutils}/bin/mkdir"; }
           { src = "${coreutils}/bin/cat"; }

@@ -17,6 +17,7 @@
   };
 
   flake.modules.homeManager.system-minimal = {
+    nixpkgs.config.allowUnfree = true;
     home.stateVersion = "26.05";
   };
 }

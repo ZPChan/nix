@@ -18,6 +18,13 @@
         $env.config.edit_mode = 'vi'
         $env.config.buffer_editor = 'nvim'
         $env.config.show_banner = false
+
+        alias spf = superfile
+
+        source ~/.zoxide.nu
+      '';
+      extraEnv = ''
+        zoxide init nushell | save -f ~/.zoxide.nu
       '';
     };
   };

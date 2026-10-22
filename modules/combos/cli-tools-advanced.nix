@@ -4,9 +4,11 @@
     { pkgs, ... }:
     {
       imports = with inputs.self.modules.nixos; [
+        fzf
         git
         nushell
         cli-tools-basic
+        superfile
       ];
 
       users.users.zach = {
@@ -20,8 +22,10 @@
       lazyvim
       nushell
       starship
+      superfile
       tmux
       yazi
+      zoxide
       zsh
     ];
   };
