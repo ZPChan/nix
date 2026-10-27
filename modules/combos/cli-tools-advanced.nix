@@ -14,10 +14,14 @@
       users.users.zach = {
         shell = pkgs.nushell;
       };
+      users.users.ai-agent = {
+        shell = pkgs.zsh;
+      };
     };
 
   flake.modules.homeManager.cli-tools-advanced = {
     imports = with inputs.self.modules.homeManager; [
+      bash
       git
       lazyvim
       nushell

@@ -17,6 +17,7 @@ in
     imports = with inputs.self.modules.nixos; [
       cli-tools-advanced
       system-wsl
+      azure-cli
       zach
       ai-agent
     ];

@@ -1,10 +1,12 @@
 {
-  flake.modules.homeManager.zoxide = {
-    programs.zoxide = {
-      enable = true;
+  flake.modules.homeManager.zoxide =
+    { pkgs, ... }:
+    {
+      home.packages = with pkgs; [
+        zoxide
+      ];
+      programs.zoxide = {
+        enable = true;
+      };
     };
-    programs.bash.bashrcExtra = ''
-      eval "$(zoxide init bash)"
-    '';
-  };
 }
