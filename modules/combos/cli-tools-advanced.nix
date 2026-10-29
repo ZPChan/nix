@@ -8,6 +8,7 @@
         git
         nushell
         cli-tools-basic
+        devenv
         superfile
       ];
 
