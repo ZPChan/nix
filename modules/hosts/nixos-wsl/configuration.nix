@@ -19,7 +19,9 @@ in
       system-wsl
       azure-cli
       zach
+      zach-default-shell-nushell
       ai-agent
+      ai-agent-default-shell-zsh
     ];
 
     home-manager.users.zach = {

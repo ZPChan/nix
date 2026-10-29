@@ -24,7 +24,9 @@ in
       system-desktop
       twingate
       wake-on-lan
+      zach
       zach-auto-login
+      zach-default-shell-nushell
     ];
 
     home-manager.users.zach = {

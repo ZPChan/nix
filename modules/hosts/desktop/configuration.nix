@@ -26,7 +26,9 @@ in
       ssh
       system-desktop
       twingate
+      zach
       zach-auto-login
+      zach-default-shell-nushell
     ];
 
     home-manager.users.zach = {

@@ -26,6 +26,7 @@ in
       twingate-hallowed-marten
       wifi
       zach
+      zach-default-shell-zsh
     ];
   };
 }

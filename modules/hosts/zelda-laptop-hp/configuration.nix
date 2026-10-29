@@ -20,6 +20,7 @@ in
       ssh
       system-kids
       zach
+      zelda
       zelda-auto-login
     ];
 
