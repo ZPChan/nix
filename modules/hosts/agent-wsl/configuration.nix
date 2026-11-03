@@ -35,7 +35,6 @@ in
       imports = with inputs.self.modules.homeManager; [
         claude-code
         cli-tools-advanced
-        herdr
         system-wsl
         ai-agent
       ];
