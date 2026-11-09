@@ -10,7 +10,6 @@
       networkmanager
       noise-filtering
       printing
-      rustdesk
       slack
       sound
       system-simple
