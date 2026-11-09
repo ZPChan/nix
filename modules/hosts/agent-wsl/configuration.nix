@@ -26,7 +26,7 @@ in
       ai-agent-default-shell-zsh
     ];
 
-    users.users."zach".uuid = 1000;
+    users.users."zach".uid = 1000;
 
     home-manager.users.zach = {
       imports = with inputs.self.modules.homeManager; [
