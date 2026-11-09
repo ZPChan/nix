@@ -27,6 +27,7 @@ in
     ];
 
     users.users."zach".uid = 1000;
+    users.users."ai-agent".uid = 1001;
 
     home-manager.users.zach = {
       imports = with inputs.self.modules.homeManager; [
