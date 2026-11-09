@@ -18,6 +18,7 @@
         modules = [
           inputs.self.modules.nixos.${name}
           { nixpkgs.hostPlatform = lib.mkDefault system; }
+          inputs.home-manager.nixosModules.default
         ];
       };
     };
@@ -27,29 +28,9 @@
         modules = [
           inputs.self.modules.nixos.${name}
           { nixpkgs.hostPlatform = lib.mkDefault system; }
+          inputs.home-manager-stable.nixosModules.default
         ];
       };
     };
-
-    mkHomeManager = system: name: {
-      ${name} = inputs.home-manager.lib.homeManagerConfiguration {
-        pkgs = inputs.nixpkgs.legacyPackages.${system};
-        modules = [
-          inputs.self.modules.homeManager.${name}
-          { nixpkgs.config.allowUnfree = true; }
-        ];
-      };
-    };
-
-    mkHomeManagerStable = system: name: {
-      ${name} = inputs.home-manager.lib.homeManagerConfiguration {
-        pkgs = inputs.nixpkgs-stable.legacyPackages.${system};
-        modules = [
-          inputs.self.modules.homeManager.${name}
-          { nixpkgs.config.allowUnfree = true; }
-        ];
-      };
-    };
-
   };
 }

@@ -26,7 +26,6 @@
       extraEnv = ''
         zoxide init nushell | save -f ~/.zoxide.nu
       '';
-      loadSessionVariables = true;
     };
   };
 }

@@ -10,6 +10,10 @@
     flake-file.url = "github:vic/flake-file";
     flake-parts.url = "github:hercules-ci/flake-parts";
     home-manager.url = "github:nix-community/home-manager";
+    home-manager-stable = {
+      url = "github:nix-community/home-manager/release-26.05";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
     import-tree.url = "github:vic/import-tree";
     lazyvim.url = "github:pfassina/lazyvim-nix";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";

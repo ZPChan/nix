@@ -18,6 +18,7 @@ in
       cli-tools-advanced
       system-wsl
       azure-cli
+      nix-ld
       zach
       zach-default-shell-nushell
       ai-agent

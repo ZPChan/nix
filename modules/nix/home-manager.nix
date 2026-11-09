@@ -1,26 +1,9 @@
 {
-  inputs,
-  ...
-}:
-let
-  home-manager-config = _: {
-    home-manager = {
-      verbose = true;
-    };
-  };
-in
-{
   flake-file.inputs = {
     home-manager.url = "github:nix-community/home-manager";
+    home-manager-stable = {
+      url = "github:nix-community/home-manager/release-26.05";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
   };
-
-  imports = [ inputs.home-manager.flakeModules.home-manager ];
-
-  flake.modules.nixos.home-manager = {
-    imports = [
-      inputs.home-manager.nixosModules.home-manager
-      home-manager-config
-    ];
-  };
-
 }
