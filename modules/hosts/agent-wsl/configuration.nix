@@ -15,6 +15,7 @@ in
     wsl.defaultUser = "ai-agent";
 
     imports = with inputs.self.modules.nixos; [
+      autoUpgrade-allowReboot
       cli-tools-advanced
       system-wsl
       azure-cli
@@ -24,6 +25,8 @@ in
       ai-agent
       ai-agent-default-shell-zsh
     ];
+
+    users.users."zach".uuid = 1000;
 
     home-manager.users.zach = {
       imports = with inputs.self.modules.homeManager; [
