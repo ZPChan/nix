@@ -6,11 +6,8 @@
         bubblewrap
         socat
       ];
-    };
-  flake.modules.homeManager.claude-code = {
-    programs.claude-code = {
-      enable = true;
-      settings = {
+
+      environment.etc."claude-code/managed-settings.json".text = builtins.toJSON {
         sandbox = {
           enabled = true;
           failIfUnavailable = true;
@@ -23,7 +20,14 @@
           ];
           disableBypassPermissionsMode = "disable";
         };
+        allowManagedPermissionRulesOnly = true;
       };
     };
+
+  flake.modules.homeManager.claude-code = {
+    programs.claude-code = {
+      enable = true;
+    };
   };
+
 }
