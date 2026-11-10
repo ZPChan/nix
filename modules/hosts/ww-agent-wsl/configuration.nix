@@ -13,6 +13,7 @@ in
 
     imports = with inputs.self.modules.nixos; [
       autoUpgrade-allowReboot
+      claude-code
       cli-tools-advanced
       system-wsl
       azure-cli
