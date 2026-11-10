@@ -3,9 +3,7 @@
   ...
 }:
 {
-  config.flake.factory.ww-agent-wsl = username: agentname: agentemail: {
-
-    networking.hostName = "${username}-agent-wsl";
+  config.flake.factory.ww-agent-wsl = userName: agentName: agentEmail: {
 
     wsl.defaultUser = "ai-agent";
 
@@ -20,10 +18,10 @@
       ai-agent-default-shell-zsh
     ];
 
-    users.users."${username}" = {
+    users.users."${userName}" = {
       uid = 1000;
       isNormalUser = true;
-      home = "/home/${username}";
+      home = "/home/${userName}";
       extraGroups = [
         "wheel"
       ];
@@ -40,8 +38,8 @@
       ];
 
       programs.git.settings.user = {
-        name = "${agentname} (AI Agent)";
-        email = "${agentemail}";
+        name = "${agentName} (AI Agent)";
+        email = "${agentEmail}";
       };
     };
   };
