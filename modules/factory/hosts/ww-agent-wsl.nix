@@ -2,13 +2,11 @@
   inputs,
   ...
 }:
-let
-  hostName = "ww-agent-wsl";
-in
 {
-  flake.nixosConfigurations = inputs.self.lib.mkNixos "x86_64-linux" "${hostName}";
+  config.flake.factory.ww-agent-wsl = username: agentname: email: {
 
-  flake.modules.nixos."${hostName}" = {
+    networking.hostName = "${username}-agent-wsl";
+
     wsl.defaultUser = "ai-agent";
 
     imports = with inputs.self.modules.nixos; [
@@ -22,6 +20,15 @@ in
       ai-agent-default-shell-zsh
     ];
 
+    users.users."${username}" = {
+      uid = 1000;
+      isNormalUser = true;
+      home = "/home/${username}";
+      extraGroups = [
+        "wheel"
+      ];
+    };
+
     users.users."ai-agent".uid = 1001;
 
     home-manager.users.ai-agent = {
@@ -31,6 +38,11 @@ in
         system-wsl
         ai-agent
       ];
+
+      programs.git.settings.user = {
+        name = "${username}";
+        email = "${email}";
+      };
     };
   };
 }

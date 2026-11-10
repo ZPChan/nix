@@ -1,38 +1,33 @@
 {
+  self,
   inputs,
+  lib,
   ...
 }:
 let
-  hostName = "zach-agent-wsl";
+  username = "zach";
+  fullname = "Zach Putman (AI Agent)";
+  gitemail = "zputman-agent@waltersandwolf.com";
+  hostName = "${username}-agent-wsl";
 in
 {
   flake.nixosConfigurations = inputs.self.lib.mkNixos "x86_64-linux" "${hostName}";
 
-  flake.modules.nixos."${hostName}" = {
-
-    networking.hostName = "${hostName}";
-
-    imports = with inputs.self.modules.nixos; [
-      ww-agent-wsl
-      zach
-      zach-default-shell-nushell
-    ];
-
-    users.users."zach".uid = 1000;
-
-    homeManager."ai-agent" = {
-      programs.git.settings.user = {
-        name = "Zach Putman (AI Agent)";
-        email = "zputman-agent@waltersandwolf.com";
-      };
-    };
-
-    home-manager.users.zach = {
-      imports = with inputs.self.modules.homeManager; [
-        cli-tools-advanced
-        system-wsl
+  flake.modules.nixos."${hostName}" = lib.mkMerge [
+    (self.factory.ww-agent-wsl "${username}" "${fullname}" "${gitemail}")
+    {
+      imports = with inputs.self.modules.nixos; [
         zach
+        zach-default-shell-nushell
       ];
-    };
-  };
+
+      home-manager.users.zach = {
+        imports = with inputs.self.modules.homeManager; [
+          cli-tools-advanced
+          system-wsl
+          zach
+        ];
+      };
+    }
+  ];
 }
