@@ -20,6 +20,13 @@ in
 
     users.users."zach".uid = 1000;
 
+    homeManager."ai-agent" = {
+      programs.git.settings.user = {
+        name = "Zach Putman (AI Agent)";
+        email = "zputman-agent@waltersandwolf.com";
+      };
+    };
+
     home-manager.users.zach = {
       imports = with inputs.self.modules.homeManager; [
         cli-tools-advanced
