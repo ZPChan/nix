@@ -12,7 +12,7 @@
       enable = true;
       settings = {
         sandbox = {
-          enable = true;
+          enabled = true;
           failIfUnavailable = true;
           allowUnsandboxedCommands = false;
         };
