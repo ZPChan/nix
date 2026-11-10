@@ -3,7 +3,7 @@
   ...
 }:
 {
-  config.flake.factory.ww-agent-wsl = username: agentname: email: {
+  config.flake.factory.ww-agent-wsl = username: agentname: agentemail: {
 
     networking.hostName = "${username}-agent-wsl";
 
@@ -40,8 +40,8 @@
       ];
 
       programs.git.settings.user = {
-        name = "${username}";
-        email = "${email}";
+        name = "${agentname} (AI Agent)";
+        email = "${agentemail}";
       };
     };
   };

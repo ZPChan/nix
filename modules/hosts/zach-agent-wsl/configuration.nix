@@ -6,7 +6,7 @@
 }:
 let
   username = "zach";
-  fullname = "Zach Putman (AI Agent)";
+  fullname = "Zach Putman";
   gitemail = "zputman-agent@waltersandwolf.com";
   hostName = "${username}-agent-wsl";
 in
